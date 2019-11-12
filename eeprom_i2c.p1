@@ -1301,17 +1301,34 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _EECON1bits `VS139  1 e@396 ]
 "1666 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\include\pic16f887.h
 [v _EECON2 `Vuc  1 e@397 ]
+"36 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
+[v _pa `*uc  1 e ]
+"37 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
+[v _in `uc  -> 17 `i e ]
+"38 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
+[v _convint `i  1 e ]
+"39 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
+[v _dir `i  1 e ]
+"51 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
+[v _init_value `uc  1 e ]
+"56 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
+[v _b0 `us  1 e ]
+"57 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
+[v _nin `i  1 e ]
+"59 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
+[v _carac `uc  -> 5 `i e ]
+"60 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
+[v _carac2 `uc  -> 3 `i e ]
+"62 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
+[v _num `f  1 e ]
+"63 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
+[v _num1 `f  1 e ]
+"64 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
+[v _num3 `f  1 e ]
 [p mainexit ]
-"80 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\include\simplec1.1.h
-[v _init_micro `(v  0 ef ]
-"108 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\include\simplec1.1.h
-[v _i2c_init `(v  0 ef ]
-"115 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\include\simplec1.1.h
-[v _I2C_EEOUT `(v  0 ef2`uc`uc ]
-"84 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\include\simplec1.1.h
-[v _pause `(v  0 ef1`ul ]
-"116 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\include\simplec1.1.h
-[v _I2C_EEIN `(uc  0 ef1`uc ]
+"206 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\include\stdio.h
+[v _sprintf `(i  0 e1v`*uc`*Cuc ]
+[p f _sprintf 8388736 ]
 [; ;pic16f887.h: 118: volatile unsigned char INDF @ 0x000;
 [; ;pic16f887.h: 122: volatile unsigned char TMR0 @ 0x001;
 [; ;pic16f887.h: 126: volatile unsigned char PCL @ 0x002;
@@ -2557,12 +2574,25 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stdio.h: 202: extern int vsscanf(const char *, const char *, va_list);
 [; ;stdio.h: 206: extern int sprintf(char *, const char *, ...);
 [; ;stdio.h: 207: extern int printf(const char *, ...);
-"21 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
-[; ;eeprom_i2c.c: 21: asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0xFFFC & 0xFFF7 & 0xFFFF & 0xFFDF & 0xFFFF & 0xFFFF & 0xFCFF & 0xFBFF & 0xF7FF & 0xEFFF & 0xFFFF");
+[; ;ctype.h: 3: extern bit isalpha(char);
+[; ;ctype.h: 4: extern bit isupper(char);
+[; ;ctype.h: 5: extern bit islower(char);
+[; ;ctype.h: 6: extern bit isdigit(char);
+[; ;ctype.h: 7: extern bit isxdigit(char);
+[; ;ctype.h: 8: extern bit isspace(char);
+[; ;ctype.h: 9: extern bit ispunct(char);
+[; ;ctype.h: 10: extern bit isalnum(char);
+[; ;ctype.h: 11: extern bit isprint(char);
+[; ;ctype.h: 12: extern bit isgraph(char);
+[; ;ctype.h: 13: extern bit iscntrl(char);
+[; ;ctype.h: 15: extern char toupper(char);
+[; ;ctype.h: 16: extern char tolower(char);
+"24 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
+[; ;eeprom_i2c.c: 24: asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0xFFFC & 0xFFF7 & 0xFFFF & 0xFFDF & 0xFFFF & 0xFFFF & 0xFCFF & 0xFBFF & 0xF7FF & 0xEFFF & 0xFFFF");
 [; 	psect config,class=CONFIG,delta=2 ;#
 [; 	dw 0xFFFC & 0xFFF7 & 0xFFFF & 0xFFDF & 0xFFFF & 0xFFFF & 0xFCFF & 0xFBFF & 0xF7FF & 0xEFFF & 0xFFFF ;#
-"22
-[; ;eeprom_i2c.c: 22: asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0xFFFF & 0xFFFF");
+"25
+[; ;eeprom_i2c.c: 25: asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0xFFFF & 0xFFFF");
 [; 	psect config,class=CONFIG,delta=2 ;#
 [; 	dw 0xFFFF & 0xFFFF ;#
 [; ;simplec1.1.h: 80: void init_micro(void);
@@ -2602,83 +2632,2684 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;simplec1.1.h: 114: unsigned char i2c_write( unsigned char i2cWriteData );
 [; ;simplec1.1.h: 115: void I2C_EEOUT (unsigned char address, unsigned char data);
 [; ;simplec1.1.h: 116: unsigned char I2C_EEIN(unsigned char address);
-"29
-[v _main `(v  1 ef ]
-{
-[; ;eeprom_i2c.c: 27: void
-[; ;eeprom_i2c.c: 28: main(void)
-[; ;eeprom_i2c.c: 29: {
-[e :U _main ]
-[f ]
-[; ;eeprom_i2c.c: 30: init_micro();
-"30
-[e ( _init_micro ..  ]
-[; ;eeprom_i2c.c: 31: i2c_init();
-"31
-[e ( _i2c_init ..  ]
-[; ;eeprom_i2c.c: 32: PORTB=0x00;
-"32
-[e = _PORTB -> -> 0 `i `uc ]
-[; ;eeprom_i2c.c: 33: TRISB=0x00;
-"33
-[e = _TRISB -> -> 0 `i `uc ]
-"35
-[v _cnt `uc  1 a ]
-[; ;eeprom_i2c.c: 35: unsigned char cnt=0;
-[e = _cnt -> -> 0 `i `uc ]
-[; ;eeprom_i2c.c: 37: while(cnt<=255)
-"37
-[e $U 143  ]
-[e :U 144 ]
-[; ;eeprom_i2c.c: 38: {
-"38
-{
-[; ;eeprom_i2c.c: 39: PORTB=cnt;
-"39
-[e = _PORTB _cnt ]
-[; ;eeprom_i2c.c: 40: I2C_EEOUT(cnt,10-cnt);
-"40
-[e ( _I2C_EEOUT (2 , _cnt -> - -> 10 `i -> _cnt `i `uc ]
-[; ;eeprom_i2c.c: 41: cnt=cnt+1;
-"41
-[e = _cnt -> + -> _cnt `i -> 1 `i `uc ]
-[; ;eeprom_i2c.c: 42: pause(255);
-"42
-[e ( _pause (1 -> -> -> 255 `i `l `ul ]
-"43
-}
-[e :U 143 ]
-"37
-[e $ <= -> _cnt `i -> 255 `i 144  ]
-[e :U 145 ]
-[; ;eeprom_i2c.c: 43: }
-[; ;eeprom_i2c.c: 45: cnt=0;
-"45
-[e = _cnt -> -> 0 `i `uc ]
-[; ;eeprom_i2c.c: 47: while(cnt<=255)
-"47
-[e $U 146  ]
-[e :U 147 ]
-[; ;eeprom_i2c.c: 48: {
-"48
-{
-[; ;eeprom_i2c.c: 49: PORTB =I2C_EEIN(cnt);
-"49
-[e = _PORTB ( _I2C_EEIN (1 _cnt ]
-[; ;eeprom_i2c.c: 50: pause (500);
-"50
-[e ( _pause (1 -> -> -> 500 `i `l `ul ]
-[; ;eeprom_i2c.c: 51: cnt=cnt + 1;
+[; ;eeprom_i2c.c: 34: void gets_Serial(char *);
+"36
+[i _pa
+-> &U _PORTA `*uc
+]
+[; ;eeprom_i2c.c: 36: unsigned char *pa=&PORTA;
+[; ;eeprom_i2c.c: 37: char in[17];
+[; ;eeprom_i2c.c: 38: int convint;
+[; ;eeprom_i2c.c: 39: int dir;
+[; ;eeprom_i2c.c: 40: int atoi( const char * s );
 "51
-[e = _cnt -> + -> _cnt `i -> 1 `i `uc ]
-"52
-}
-[e :U 146 ]
-"47
-[e $ <= -> _cnt `i -> 255 `i 147  ]
-[e :U 148 ]
-[; ;eeprom_i2c.c: 52: }
-[; ;eeprom_i2c.c: 53: }
-"53
+[i _init_value
+-> -> 3 `i `uc
+]
+[; ;eeprom_i2c.c: 51: char init_value=0x03;
+"56
+[i _b0
+-> -> 0 `i `us
+]
+[; ;eeprom_i2c.c: 56: unsigned short b0=0;
+"57
+[i _nin
+-> 0 `i
+]
+[; ;eeprom_i2c.c: 57: int nin=0x00;
+[; ;eeprom_i2c.c: 59: unsigned char carac[5];
+[; ;eeprom_i2c.c: 60: unsigned char carac2[3];
+"62
+[i _num
+-> -> 0 `i `f
+]
+[; ;eeprom_i2c.c: 62: float num=0;
+"63
+[i _num1
+-> .0.00488758553 `f
+]
+[; ;eeprom_i2c.c: 63: float num1=0.00488758553;
+"64
+[i _num3
+-> -> 0 `i `f
+]
+[; ;eeprom_i2c.c: 64: float num3=0;
+"112
+[v _init_micro `(v  1 ef ]
+{
+[; ;eeprom_i2c.c: 111: void init_micro(void)
+[; ;eeprom_i2c.c: 112: {
+[e :U _init_micro ]
+[f ]
+[; ;eeprom_i2c.c: 113: ANSEL = 0;
+"113
+[e = _ANSEL -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 114: ANSELH = 0;
+"114
+[e = _ANSELH -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 115: CM1CON0 = 0;
+"115
+[e = _CM1CON0 -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 116: CM2CON0 = 0;
+"116
+[e = _CM2CON0 -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 121: INTCON=0;
+"121
+[e = _INTCON -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 122: }
+"122
 [e :UE 142 ]
 }
+"142
+[v _usecbase `(v  1 ef ]
+{
+[; ;eeprom_i2c.c: 141: void usecbase(void)
+[; ;eeprom_i2c.c: 142: {
+[e :U _usecbase ]
+[f ]
+[; ;eeprom_i2c.c: 143: OPTION_REG = 0b00001000;
+"143
+[e = _OPTION_REG -> -> 8 `i `uc ]
+[; ;eeprom_i2c.c: 144: TMR0 = 0xF7;
+"144
+[e = _TMR0 -> -> 247 `i `uc ]
+[; ;eeprom_i2c.c: 145: while(!T0IF);
+"145
+[e $U 144  ]
+[e :U 145 ]
+[e :U 144 ]
+[e $ ! _T0IF 145  ]
+[e :U 146 ]
+[; ;eeprom_i2c.c: 146: T0IF = 0;
+"146
+[e = _T0IF -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 147: }
+"147
+[e :UE 143 ]
+}
+"156
+[v _pauseus `(v  1 ef1`ui ]
+{
+[; ;eeprom_i2c.c: 154: void pauseus ( unsigned int usvalue )
+[; ;eeprom_i2c.c: 156: {
+[e :U _pauseus ]
+[v _usvalue `ui  1 r1 ]
+[f ]
+"157
+[v _x `ui  1 a ]
+[; ;eeprom_i2c.c: 157: unsigned int x;
+[; ;eeprom_i2c.c: 159: for (x=0; x<=usvalue; x++)
+"159
+{
+[e = _x -> -> 0 `i `ui ]
+[e $U 151  ]
+"160
+[e :U 148 ]
+[; ;eeprom_i2c.c: 160: {
+{
+[; ;eeprom_i2c.c: 161: usecbase();
+"161
+[e ( _usecbase ..  ]
+"162
+}
+"159
+[e ++ _x -> -> 1 `i `ui ]
+[e :U 151 ]
+[e $ <= _x _usvalue 148  ]
+[e :U 149 ]
+"162
+}
+[; ;eeprom_i2c.c: 162: }
+[; ;eeprom_i2c.c: 163: }
+"163
+[e :UE 147 ]
+}
+"182
+[v _msecbase `(v  1 ef ]
+{
+[; ;eeprom_i2c.c: 181: void msecbase(void)
+[; ;eeprom_i2c.c: 182: {
+[e :U _msecbase ]
+[f ]
+[; ;eeprom_i2c.c: 183: OPTION_REG = 0b00000011;
+"183
+[e = _OPTION_REG -> -> 3 `i `uc ]
+[; ;eeprom_i2c.c: 184: TMR0 = 0xD;
+"184
+[e = _TMR0 -> -> 13 `i `uc ]
+[; ;eeprom_i2c.c: 185: while(!T0IF);
+"185
+[e $U 153  ]
+[e :U 154 ]
+[e :U 153 ]
+[e $ ! _T0IF 154  ]
+[e :U 155 ]
+[; ;eeprom_i2c.c: 186: T0IF = 0;
+"186
+[e = _T0IF -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 187: }
+"187
+[e :UE 152 ]
+}
+"198
+[v _pause `(v  1 ef1`ul ]
+{
+[; ;eeprom_i2c.c: 196: void pause( unsigned long usvalue )
+[; ;eeprom_i2c.c: 198: {
+[e :U _pause ]
+[v _usvalue `ul  1 r1 ]
+[f ]
+"199
+[v _x `ul  1 a ]
+[; ;eeprom_i2c.c: 199: unsigned long x;
+[; ;eeprom_i2c.c: 200: for (x=1; x<=(usvalue); x++)
+"200
+{
+[e = _x -> -> -> 1 `i `l `ul ]
+[e $U 160  ]
+"201
+[e :U 157 ]
+[; ;eeprom_i2c.c: 201: {
+{
+[; ;eeprom_i2c.c: 202: msecbase();
+"202
+[e ( _msecbase ..  ]
+"203
+}
+"200
+[e ++ _x -> -> -> 1 `i `l `ul ]
+[e :U 160 ]
+[e $ <= _x _usvalue 157  ]
+[e :U 158 ]
+"203
+}
+[; ;eeprom_i2c.c: 203: }
+[; ;eeprom_i2c.c: 204: }
+"204
+[e :UE 156 ]
+}
+"211
+[v _high `(v  1 ef1`uc ]
+{
+[; ;eeprom_i2c.c: 210: void high(char pin)
+[; ;eeprom_i2c.c: 211: {
+[e :U _high ]
+[v _pin `uc  1 r1 ]
+[f ]
+[; ;eeprom_i2c.c: 212: switch(pin)
+"212
+[e $U 163  ]
+[; ;eeprom_i2c.c: 213: {
+"213
+{
+[; ;eeprom_i2c.c: 214: case 0:
+"214
+[e :U 164 ]
+[; ;eeprom_i2c.c: 215: TRISC7 = 0;
+"215
+[e = _TRISC7 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 216: RC7 = 1;
+"216
+[e = _RC7 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 217: break;
+"217
+[e $U 162  ]
+[; ;eeprom_i2c.c: 219: case 1:
+"219
+[e :U 165 ]
+[; ;eeprom_i2c.c: 220: TRISC6 = 0;
+"220
+[e = _TRISC6 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 221: RC6 = 1;
+"221
+[e = _RC6 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 222: break;
+"222
+[e $U 162  ]
+[; ;eeprom_i2c.c: 224: case 2:
+"224
+[e :U 166 ]
+[; ;eeprom_i2c.c: 225: TRISC5 = 0;
+"225
+[e = _TRISC5 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 226: RC5 = 1;
+"226
+[e = _RC5 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 227: break;
+"227
+[e $U 162  ]
+[; ;eeprom_i2c.c: 229: case 3:
+"229
+[e :U 167 ]
+[; ;eeprom_i2c.c: 230: TRISC4 = 0;
+"230
+[e = _TRISC4 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 231: RC4 = 1;
+"231
+[e = _RC4 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 232: break;
+"232
+[e $U 162  ]
+[; ;eeprom_i2c.c: 234: case 4:
+"234
+[e :U 168 ]
+[; ;eeprom_i2c.c: 235: TRISC3 = 0;
+"235
+[e = _TRISC3 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 236: RC3 = 1;
+"236
+[e = _RC3 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 237: break;
+"237
+[e $U 162  ]
+[; ;eeprom_i2c.c: 239: case 5:
+"239
+[e :U 169 ]
+[; ;eeprom_i2c.c: 240: TRISC2 = 0;
+"240
+[e = _TRISC2 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 241: RC2 = 1;
+"241
+[e = _RC2 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 242: break;
+"242
+[e $U 162  ]
+[; ;eeprom_i2c.c: 244: case 6:
+"244
+[e :U 170 ]
+[; ;eeprom_i2c.c: 245: TRISC1 = 0;
+"245
+[e = _TRISC1 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 246: RC1 = 1;
+"246
+[e = _RC1 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 247: break;
+"247
+[e $U 162  ]
+[; ;eeprom_i2c.c: 249: case 7:
+"249
+[e :U 171 ]
+[; ;eeprom_i2c.c: 250: TRISC0 = 0;
+"250
+[e = _TRISC0 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 251: RC0 = 1;
+"251
+[e = _RC0 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 252: break;
+"252
+[e $U 162  ]
+[; ;eeprom_i2c.c: 254: case 8:
+"254
+[e :U 172 ]
+[; ;eeprom_i2c.c: 255: TRISB0 = 0;
+"255
+[e = _TRISB0 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 256: RB0 = 1;
+"256
+[e = _RB0 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 257: break;
+"257
+[e $U 162  ]
+[; ;eeprom_i2c.c: 259: case 9:
+"259
+[e :U 173 ]
+[; ;eeprom_i2c.c: 260: TRISB1 = 0;
+"260
+[e = _TRISB1 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 261: RB1 = 1;
+"261
+[e = _RB1 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 262: break;
+"262
+[e $U 162  ]
+[; ;eeprom_i2c.c: 264: case 10:
+"264
+[e :U 174 ]
+[; ;eeprom_i2c.c: 265: TRISB2 = 0;
+"265
+[e = _TRISB2 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 266: RB2 = 1;
+"266
+[e = _RB2 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 267: break;
+"267
+[e $U 162  ]
+[; ;eeprom_i2c.c: 269: case 11:
+"269
+[e :U 175 ]
+[; ;eeprom_i2c.c: 270: TRISB3 = 0;
+"270
+[e = _TRISB3 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 271: RB3 = 1;
+"271
+[e = _RB3 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 272: break;
+"272
+[e $U 162  ]
+[; ;eeprom_i2c.c: 274: case 12:
+"274
+[e :U 176 ]
+[; ;eeprom_i2c.c: 275: TRISB4 = 0;
+"275
+[e = _TRISB4 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 276: RB4 = 1;
+"276
+[e = _RB4 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 277: break;
+"277
+[e $U 162  ]
+[; ;eeprom_i2c.c: 279: case 13:
+"279
+[e :U 177 ]
+[; ;eeprom_i2c.c: 280: TRISB5 = 0;
+"280
+[e = _TRISB5 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 281: RB5 = 1;
+"281
+[e = _RB5 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 282: break;
+"282
+[e $U 162  ]
+[; ;eeprom_i2c.c: 285: default:
+"285
+[e :U 178 ]
+[; ;eeprom_i2c.c: 286: break;
+"286
+[e $U 162  ]
+"287
+}
+[; ;eeprom_i2c.c: 287: }
+[e $U 162  ]
+"212
+[e :U 163 ]
+[e [\ _pin , $ -> -> 0 `i `uc 164
+ , $ -> -> 1 `i `uc 165
+ , $ -> -> 2 `i `uc 166
+ , $ -> -> 3 `i `uc 167
+ , $ -> -> 4 `i `uc 168
+ , $ -> -> 5 `i `uc 169
+ , $ -> -> 6 `i `uc 170
+ , $ -> -> 7 `i `uc 171
+ , $ -> -> 8 `i `uc 172
+ , $ -> -> 9 `i `uc 173
+ , $ -> -> 10 `i `uc 174
+ , $ -> -> 11 `i `uc 175
+ , $ -> -> 12 `i `uc 176
+ , $ -> -> 13 `i `uc 177
+ 178 ]
+"287
+[e :U 162 ]
+[; ;eeprom_i2c.c: 288: }
+"288
+[e :UE 161 ]
+}
+"295
+[v _low `(v  1 ef1`uc ]
+{
+[; ;eeprom_i2c.c: 294: void low(char pin)
+[; ;eeprom_i2c.c: 295: {
+[e :U _low ]
+[v _pin `uc  1 r1 ]
+[f ]
+[; ;eeprom_i2c.c: 296: switch(pin)
+"296
+[e $U 181  ]
+[; ;eeprom_i2c.c: 297: {
+"297
+{
+[; ;eeprom_i2c.c: 298: case 0:
+"298
+[e :U 182 ]
+[; ;eeprom_i2c.c: 299: TRISC7 = 0;
+"299
+[e = _TRISC7 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 300: RC7 = 0;
+"300
+[e = _RC7 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 301: break;
+"301
+[e $U 180  ]
+[; ;eeprom_i2c.c: 303: case 1:
+"303
+[e :U 183 ]
+[; ;eeprom_i2c.c: 304: TRISC6 = 0;
+"304
+[e = _TRISC6 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 305: RC6 = 0;
+"305
+[e = _RC6 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 306: break;
+"306
+[e $U 180  ]
+[; ;eeprom_i2c.c: 308: case 2:
+"308
+[e :U 184 ]
+[; ;eeprom_i2c.c: 309: TRISC5 = 0;
+"309
+[e = _TRISC5 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 310: RC5 = 0;
+"310
+[e = _RC5 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 311: break;
+"311
+[e $U 180  ]
+[; ;eeprom_i2c.c: 313: case 3:
+"313
+[e :U 185 ]
+[; ;eeprom_i2c.c: 314: TRISC4 = 0;
+"314
+[e = _TRISC4 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 315: RC4 = 0;
+"315
+[e = _RC4 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 316: break;
+"316
+[e $U 180  ]
+[; ;eeprom_i2c.c: 318: case 4:
+"318
+[e :U 186 ]
+[; ;eeprom_i2c.c: 319: TRISC3 = 0;
+"319
+[e = _TRISC3 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 320: RC3 = 0;
+"320
+[e = _RC3 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 321: break;
+"321
+[e $U 180  ]
+[; ;eeprom_i2c.c: 323: case 5:
+"323
+[e :U 187 ]
+[; ;eeprom_i2c.c: 324: TRISC2 = 0;
+"324
+[e = _TRISC2 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 325: RC2 = 0;
+"325
+[e = _RC2 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 326: break;
+"326
+[e $U 180  ]
+[; ;eeprom_i2c.c: 328: case 6:
+"328
+[e :U 188 ]
+[; ;eeprom_i2c.c: 329: TRISC1 = 0;
+"329
+[e = _TRISC1 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 330: RC1 = 0;
+"330
+[e = _RC1 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 331: break;
+"331
+[e $U 180  ]
+[; ;eeprom_i2c.c: 333: case 7:
+"333
+[e :U 189 ]
+[; ;eeprom_i2c.c: 334: TRISC0 = 0;
+"334
+[e = _TRISC0 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 335: RC0 = 0;
+"335
+[e = _RC0 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 336: break;
+"336
+[e $U 180  ]
+[; ;eeprom_i2c.c: 338: case 8:
+"338
+[e :U 190 ]
+[; ;eeprom_i2c.c: 339: TRISB0 = 0;
+"339
+[e = _TRISB0 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 340: RB0 = 0;
+"340
+[e = _RB0 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 341: break;
+"341
+[e $U 180  ]
+[; ;eeprom_i2c.c: 343: case 9:
+"343
+[e :U 191 ]
+[; ;eeprom_i2c.c: 344: TRISB1 = 0;
+"344
+[e = _TRISB1 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 345: RB1 = 0;
+"345
+[e = _RB1 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 346: break;
+"346
+[e $U 180  ]
+[; ;eeprom_i2c.c: 348: case 10:
+"348
+[e :U 192 ]
+[; ;eeprom_i2c.c: 349: TRISB2 = 0;
+"349
+[e = _TRISB2 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 350: RB2 = 0;
+"350
+[e = _RB2 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 351: break;
+"351
+[e $U 180  ]
+[; ;eeprom_i2c.c: 353: case 11:
+"353
+[e :U 193 ]
+[; ;eeprom_i2c.c: 354: TRISB3 = 0;
+"354
+[e = _TRISB3 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 355: RB3 = 0;
+"355
+[e = _RB3 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 356: break;
+"356
+[e $U 180  ]
+[; ;eeprom_i2c.c: 358: case 12:
+"358
+[e :U 194 ]
+[; ;eeprom_i2c.c: 359: TRISB4 = 0;
+"359
+[e = _TRISB4 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 360: RB4 = 0;
+"360
+[e = _RB4 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 361: break;
+"361
+[e $U 180  ]
+[; ;eeprom_i2c.c: 363: case 13:
+"363
+[e :U 195 ]
+[; ;eeprom_i2c.c: 364: TRISB5 = 0;
+"364
+[e = _TRISB5 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 365: RB5 = 0;
+"365
+[e = _RB5 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 366: break;
+"366
+[e $U 180  ]
+[; ;eeprom_i2c.c: 369: default:
+"369
+[e :U 196 ]
+[; ;eeprom_i2c.c: 370: break;
+"370
+[e $U 180  ]
+"371
+}
+[; ;eeprom_i2c.c: 371: }
+[e $U 180  ]
+"296
+[e :U 181 ]
+[e [\ _pin , $ -> -> 0 `i `uc 182
+ , $ -> -> 1 `i `uc 183
+ , $ -> -> 2 `i `uc 184
+ , $ -> -> 3 `i `uc 185
+ , $ -> -> 4 `i `uc 186
+ , $ -> -> 5 `i `uc 187
+ , $ -> -> 6 `i `uc 188
+ , $ -> -> 7 `i `uc 189
+ , $ -> -> 8 `i `uc 190
+ , $ -> -> 9 `i `uc 191
+ , $ -> -> 10 `i `uc 192
+ , $ -> -> 11 `i `uc 193
+ , $ -> -> 12 `i `uc 194
+ , $ -> -> 13 `i `uc 195
+ 196 ]
+"371
+[e :U 180 ]
+[; ;eeprom_i2c.c: 372: }
+"372
+[e :UE 179 ]
+}
+"379
+[v _input `(uc  1 ef1`uc ]
+{
+[; ;eeprom_i2c.c: 378: char input(char pin)
+[; ;eeprom_i2c.c: 379: {
+[e :U _input ]
+[v _pin `uc  1 r1 ]
+[f ]
+"380
+[v _val `uc  1 a ]
+[; ;eeprom_i2c.c: 380: char val = 0;
+[e = _val -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 381: switch(pin)
+"381
+[e $U 199  ]
+[; ;eeprom_i2c.c: 382: {
+"382
+{
+[; ;eeprom_i2c.c: 383: case 0:
+"383
+[e :U 200 ]
+[; ;eeprom_i2c.c: 384: TRISC7 = 1;
+"384
+[e = _TRISC7 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 385: if (RC7 == 1)
+"385
+[e $ ! == -> _RC7 `i -> 1 `i 201  ]
+[; ;eeprom_i2c.c: 386: {val = 1;}
+"386
+{
+[e = _val -> -> 1 `i `uc ]
+}
+[e $U 202  ]
+"387
+[e :U 201 ]
+[; ;eeprom_i2c.c: 387: else
+[; ;eeprom_i2c.c: 388: {val = 0;}
+"388
+{
+[e = _val -> -> 0 `i `uc ]
+}
+[e :U 202 ]
+[; ;eeprom_i2c.c: 389: break;
+"389
+[e $U 198  ]
+[; ;eeprom_i2c.c: 391: case 1:
+"391
+[e :U 203 ]
+[; ;eeprom_i2c.c: 392: TRISC6 = 1;
+"392
+[e = _TRISC6 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 393: if (RC6 == 1)
+"393
+[e $ ! == -> _RC6 `i -> 1 `i 204  ]
+[; ;eeprom_i2c.c: 394: {val = 1;}
+"394
+{
+[e = _val -> -> 1 `i `uc ]
+}
+[e $U 205  ]
+"395
+[e :U 204 ]
+[; ;eeprom_i2c.c: 395: else
+[; ;eeprom_i2c.c: 396: {val = 0;}
+"396
+{
+[e = _val -> -> 0 `i `uc ]
+}
+[e :U 205 ]
+[; ;eeprom_i2c.c: 397: break;
+"397
+[e $U 198  ]
+[; ;eeprom_i2c.c: 399: case 2:
+"399
+[e :U 206 ]
+[; ;eeprom_i2c.c: 400: TRISC5 = 1;
+"400
+[e = _TRISC5 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 401: if (RC5 == 1)
+"401
+[e $ ! == -> _RC5 `i -> 1 `i 207  ]
+[; ;eeprom_i2c.c: 402: {val = 1;}
+"402
+{
+[e = _val -> -> 1 `i `uc ]
+}
+[e $U 208  ]
+"403
+[e :U 207 ]
+[; ;eeprom_i2c.c: 403: else
+[; ;eeprom_i2c.c: 404: {val = 0;}
+"404
+{
+[e = _val -> -> 0 `i `uc ]
+}
+[e :U 208 ]
+[; ;eeprom_i2c.c: 405: break;
+"405
+[e $U 198  ]
+[; ;eeprom_i2c.c: 407: case 3:
+"407
+[e :U 209 ]
+[; ;eeprom_i2c.c: 408: TRISC4 = 1;
+"408
+[e = _TRISC4 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 409: if (RC4 == 1)
+"409
+[e $ ! == -> _RC4 `i -> 1 `i 210  ]
+[; ;eeprom_i2c.c: 410: {val = 1;}
+"410
+{
+[e = _val -> -> 1 `i `uc ]
+}
+[e $U 211  ]
+"411
+[e :U 210 ]
+[; ;eeprom_i2c.c: 411: else
+[; ;eeprom_i2c.c: 412: {val = 0;}
+"412
+{
+[e = _val -> -> 0 `i `uc ]
+}
+[e :U 211 ]
+[; ;eeprom_i2c.c: 413: break;
+"413
+[e $U 198  ]
+[; ;eeprom_i2c.c: 415: case 4:
+"415
+[e :U 212 ]
+[; ;eeprom_i2c.c: 416: TRISC3 = 1;
+"416
+[e = _TRISC3 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 417: if (RC3 == 1)
+"417
+[e $ ! == -> _RC3 `i -> 1 `i 213  ]
+[; ;eeprom_i2c.c: 418: {val = 1;}
+"418
+{
+[e = _val -> -> 1 `i `uc ]
+}
+[e $U 214  ]
+"419
+[e :U 213 ]
+[; ;eeprom_i2c.c: 419: else
+[; ;eeprom_i2c.c: 420: {val = 0;}
+"420
+{
+[e = _val -> -> 0 `i `uc ]
+}
+[e :U 214 ]
+[; ;eeprom_i2c.c: 421: break;
+"421
+[e $U 198  ]
+[; ;eeprom_i2c.c: 423: case 5:
+"423
+[e :U 215 ]
+[; ;eeprom_i2c.c: 424: TRISC2 = 1;
+"424
+[e = _TRISC2 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 425: if (RC2 == 1)
+"425
+[e $ ! == -> _RC2 `i -> 1 `i 216  ]
+[; ;eeprom_i2c.c: 426: {val = 1;}
+"426
+{
+[e = _val -> -> 1 `i `uc ]
+}
+[e $U 217  ]
+"427
+[e :U 216 ]
+[; ;eeprom_i2c.c: 427: else
+[; ;eeprom_i2c.c: 428: {val = 0;}
+"428
+{
+[e = _val -> -> 0 `i `uc ]
+}
+[e :U 217 ]
+[; ;eeprom_i2c.c: 429: break;
+"429
+[e $U 198  ]
+[; ;eeprom_i2c.c: 431: case 6:
+"431
+[e :U 218 ]
+[; ;eeprom_i2c.c: 432: TRISC1 = 1;
+"432
+[e = _TRISC1 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 433: if (RC1 == 1)
+"433
+[e $ ! == -> _RC1 `i -> 1 `i 219  ]
+[; ;eeprom_i2c.c: 434: {val = 1;}
+"434
+{
+[e = _val -> -> 1 `i `uc ]
+}
+[e $U 220  ]
+"435
+[e :U 219 ]
+[; ;eeprom_i2c.c: 435: else
+[; ;eeprom_i2c.c: 436: {val = 0;}
+"436
+{
+[e = _val -> -> 0 `i `uc ]
+}
+[e :U 220 ]
+[; ;eeprom_i2c.c: 437: break;
+"437
+[e $U 198  ]
+[; ;eeprom_i2c.c: 439: case 7:
+"439
+[e :U 221 ]
+[; ;eeprom_i2c.c: 440: TRISC0 = 1;
+"440
+[e = _TRISC0 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 441: if (RC0 == 1)
+"441
+[e $ ! == -> _RC0 `i -> 1 `i 222  ]
+[; ;eeprom_i2c.c: 442: {val = 1;}
+"442
+{
+[e = _val -> -> 1 `i `uc ]
+}
+[e $U 223  ]
+"443
+[e :U 222 ]
+[; ;eeprom_i2c.c: 443: else
+[; ;eeprom_i2c.c: 444: {val = 0;}
+"444
+{
+[e = _val -> -> 0 `i `uc ]
+}
+[e :U 223 ]
+[; ;eeprom_i2c.c: 445: break;
+"445
+[e $U 198  ]
+[; ;eeprom_i2c.c: 447: case 8:
+"447
+[e :U 224 ]
+[; ;eeprom_i2c.c: 448: TRISB0 = 1;
+"448
+[e = _TRISB0 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 449: if (RB0 == 1)
+"449
+[e $ ! == -> _RB0 `i -> 1 `i 225  ]
+[; ;eeprom_i2c.c: 450: {val = 1;}
+"450
+{
+[e = _val -> -> 1 `i `uc ]
+}
+[e $U 226  ]
+"451
+[e :U 225 ]
+[; ;eeprom_i2c.c: 451: else
+[; ;eeprom_i2c.c: 452: {val = 0;}
+"452
+{
+[e = _val -> -> 0 `i `uc ]
+}
+[e :U 226 ]
+[; ;eeprom_i2c.c: 453: break;
+"453
+[e $U 198  ]
+[; ;eeprom_i2c.c: 455: case 9:
+"455
+[e :U 227 ]
+[; ;eeprom_i2c.c: 456: TRISB1 = 1;
+"456
+[e = _TRISB1 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 457: if (RB1 == 1)
+"457
+[e $ ! == -> _RB1 `i -> 1 `i 228  ]
+[; ;eeprom_i2c.c: 458: {val = 1;}
+"458
+{
+[e = _val -> -> 1 `i `uc ]
+}
+[e $U 229  ]
+"459
+[e :U 228 ]
+[; ;eeprom_i2c.c: 459: else
+[; ;eeprom_i2c.c: 460: {val = 0;}
+"460
+{
+[e = _val -> -> 0 `i `uc ]
+}
+[e :U 229 ]
+[; ;eeprom_i2c.c: 461: break;
+"461
+[e $U 198  ]
+[; ;eeprom_i2c.c: 463: case 10:
+"463
+[e :U 230 ]
+[; ;eeprom_i2c.c: 464: TRISB2 = 1;
+"464
+[e = _TRISB2 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 465: if (RB2 == 1)
+"465
+[e $ ! == -> _RB2 `i -> 1 `i 231  ]
+[; ;eeprom_i2c.c: 466: {val = 1;}
+"466
+{
+[e = _val -> -> 1 `i `uc ]
+}
+[e $U 232  ]
+"467
+[e :U 231 ]
+[; ;eeprom_i2c.c: 467: else
+[; ;eeprom_i2c.c: 468: {val = 0;}
+"468
+{
+[e = _val -> -> 0 `i `uc ]
+}
+[e :U 232 ]
+[; ;eeprom_i2c.c: 469: break;
+"469
+[e $U 198  ]
+[; ;eeprom_i2c.c: 471: case 11:
+"471
+[e :U 233 ]
+[; ;eeprom_i2c.c: 472: TRISB3 = 1;
+"472
+[e = _TRISB3 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 473: if (RB3 == 1)
+"473
+[e $ ! == -> _RB3 `i -> 1 `i 234  ]
+[; ;eeprom_i2c.c: 474: {val = 1;}
+"474
+{
+[e = _val -> -> 1 `i `uc ]
+}
+[e $U 235  ]
+"475
+[e :U 234 ]
+[; ;eeprom_i2c.c: 475: else
+[; ;eeprom_i2c.c: 476: {val = 0;}
+"476
+{
+[e = _val -> -> 0 `i `uc ]
+}
+[e :U 235 ]
+[; ;eeprom_i2c.c: 477: break;
+"477
+[e $U 198  ]
+[; ;eeprom_i2c.c: 479: case 12:
+"479
+[e :U 236 ]
+[; ;eeprom_i2c.c: 480: TRISB4 = 1;
+"480
+[e = _TRISB4 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 481: if (RB4 == 1)
+"481
+[e $ ! == -> _RB4 `i -> 1 `i 237  ]
+[; ;eeprom_i2c.c: 482: {val = 1;}
+"482
+{
+[e = _val -> -> 1 `i `uc ]
+}
+[e $U 238  ]
+"483
+[e :U 237 ]
+[; ;eeprom_i2c.c: 483: else
+[; ;eeprom_i2c.c: 484: {val = 0;}
+"484
+{
+[e = _val -> -> 0 `i `uc ]
+}
+[e :U 238 ]
+[; ;eeprom_i2c.c: 485: break;
+"485
+[e $U 198  ]
+[; ;eeprom_i2c.c: 487: case 13:
+"487
+[e :U 239 ]
+[; ;eeprom_i2c.c: 488: TRISB5 = 1;
+"488
+[e = _TRISB5 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 489: if (RB5 == 1)
+"489
+[e $ ! == -> _RB5 `i -> 1 `i 240  ]
+[; ;eeprom_i2c.c: 490: {val = 1;}
+"490
+{
+[e = _val -> -> 1 `i `uc ]
+}
+[e $U 241  ]
+"491
+[e :U 240 ]
+[; ;eeprom_i2c.c: 491: else
+[; ;eeprom_i2c.c: 492: {val = 0;}
+"492
+{
+[e = _val -> -> 0 `i `uc ]
+}
+[e :U 241 ]
+[; ;eeprom_i2c.c: 493: break;
+"493
+[e $U 198  ]
+[; ;eeprom_i2c.c: 496: default:
+"496
+[e :U 242 ]
+[; ;eeprom_i2c.c: 497: break;
+"497
+[e $U 198  ]
+"498
+}
+[; ;eeprom_i2c.c: 498: }
+[e $U 198  ]
+"381
+[e :U 199 ]
+[e [\ _pin , $ -> -> 0 `i `uc 200
+ , $ -> -> 1 `i `uc 203
+ , $ -> -> 2 `i `uc 206
+ , $ -> -> 3 `i `uc 209
+ , $ -> -> 4 `i `uc 212
+ , $ -> -> 5 `i `uc 215
+ , $ -> -> 6 `i `uc 218
+ , $ -> -> 7 `i `uc 221
+ , $ -> -> 8 `i `uc 224
+ , $ -> -> 9 `i `uc 227
+ , $ -> -> 10 `i `uc 230
+ , $ -> -> 11 `i `uc 233
+ , $ -> -> 12 `i `uc 236
+ , $ -> -> 13 `i `uc 239
+ 242 ]
+"498
+[e :U 198 ]
+[; ;eeprom_i2c.c: 500: return val;
+"500
+[e ) _val ]
+[e $UE 197  ]
+[; ;eeprom_i2c.c: 501: }
+"501
+[e :UE 197 ]
+}
+"508
+[v _pulseout `(v  1 ef2`uc`ul ]
+{
+[; ;eeprom_i2c.c: 507: void pulseout(char pin, unsigned long per)
+[; ;eeprom_i2c.c: 508: {
+[e :U _pulseout ]
+[v _pin `uc  1 r1 ]
+[v _per `ul  1 r2 ]
+[f ]
+[; ;eeprom_i2c.c: 509: switch(pin)
+"509
+[e $U 245  ]
+[; ;eeprom_i2c.c: 510: {
+"510
+{
+[; ;eeprom_i2c.c: 511: case 0:
+"511
+[e :U 246 ]
+[; ;eeprom_i2c.c: 512: TRISC7 = 0;
+"512
+[e = _TRISC7 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 513: RC7 = 1;
+"513
+[e = _RC7 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 514: pauseus(per);
+"514
+[e ( _pauseus (1 -> _per `ui ]
+[; ;eeprom_i2c.c: 515: RC7 = 0;
+"515
+[e = _RC7 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 516: break;
+"516
+[e $U 244  ]
+[; ;eeprom_i2c.c: 518: case 1:
+"518
+[e :U 247 ]
+[; ;eeprom_i2c.c: 519: TRISC6 = 0;
+"519
+[e = _TRISC6 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 520: RC6 = 1;
+"520
+[e = _RC6 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 521: pauseus(per);
+"521
+[e ( _pauseus (1 -> _per `ui ]
+[; ;eeprom_i2c.c: 522: RC6 = 0;
+"522
+[e = _RC6 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 523: break;
+"523
+[e $U 244  ]
+[; ;eeprom_i2c.c: 525: case 2:
+"525
+[e :U 248 ]
+[; ;eeprom_i2c.c: 526: TRISC5 = 0;
+"526
+[e = _TRISC5 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 527: RC5 = 1;
+"527
+[e = _RC5 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 528: pauseus(per);
+"528
+[e ( _pauseus (1 -> _per `ui ]
+[; ;eeprom_i2c.c: 529: RC5 = 0;
+"529
+[e = _RC5 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 530: break;
+"530
+[e $U 244  ]
+[; ;eeprom_i2c.c: 532: case 3:
+"532
+[e :U 249 ]
+[; ;eeprom_i2c.c: 533: TRISC4 = 0;
+"533
+[e = _TRISC4 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 534: RC4 = 1;
+"534
+[e = _RC4 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 535: pauseus(per);
+"535
+[e ( _pauseus (1 -> _per `ui ]
+[; ;eeprom_i2c.c: 536: RC4 = 0;
+"536
+[e = _RC4 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 537: break;
+"537
+[e $U 244  ]
+[; ;eeprom_i2c.c: 539: case 4:
+"539
+[e :U 250 ]
+[; ;eeprom_i2c.c: 540: TRISC3 = 0;
+"540
+[e = _TRISC3 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 541: RC3 = 1;
+"541
+[e = _RC3 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 542: pauseus(per);
+"542
+[e ( _pauseus (1 -> _per `ui ]
+[; ;eeprom_i2c.c: 543: RC3 = 0;
+"543
+[e = _RC3 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 544: break;
+"544
+[e $U 244  ]
+[; ;eeprom_i2c.c: 546: case 5:
+"546
+[e :U 251 ]
+[; ;eeprom_i2c.c: 547: TRISC2 = 0;
+"547
+[e = _TRISC2 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 548: RC2 = 1;
+"548
+[e = _RC2 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 549: pauseus(per);
+"549
+[e ( _pauseus (1 -> _per `ui ]
+[; ;eeprom_i2c.c: 550: RC2 = 0;
+"550
+[e = _RC2 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 551: break;
+"551
+[e $U 244  ]
+[; ;eeprom_i2c.c: 553: case 6:
+"553
+[e :U 252 ]
+[; ;eeprom_i2c.c: 554: TRISC1 = 0;
+"554
+[e = _TRISC1 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 555: RC1 = 1;
+"555
+[e = _RC1 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 556: pauseus(per);
+"556
+[e ( _pauseus (1 -> _per `ui ]
+[; ;eeprom_i2c.c: 557: RC1 = 0;
+"557
+[e = _RC1 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 558: break;
+"558
+[e $U 244  ]
+[; ;eeprom_i2c.c: 560: case 7:
+"560
+[e :U 253 ]
+[; ;eeprom_i2c.c: 561: TRISC0 = 0;
+"561
+[e = _TRISC0 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 562: RC0 = 1;
+"562
+[e = _RC0 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 563: pauseus(per);
+"563
+[e ( _pauseus (1 -> _per `ui ]
+[; ;eeprom_i2c.c: 564: RC0 = 0;
+"564
+[e = _RC0 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 565: break;
+"565
+[e $U 244  ]
+[; ;eeprom_i2c.c: 567: case 8:
+"567
+[e :U 254 ]
+[; ;eeprom_i2c.c: 568: TRISB0 = 0;
+"568
+[e = _TRISB0 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 569: RB0 = 1;
+"569
+[e = _RB0 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 570: pauseus(per);
+"570
+[e ( _pauseus (1 -> _per `ui ]
+[; ;eeprom_i2c.c: 571: RB0 = 0;
+"571
+[e = _RB0 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 572: break;
+"572
+[e $U 244  ]
+[; ;eeprom_i2c.c: 574: case 9:
+"574
+[e :U 255 ]
+[; ;eeprom_i2c.c: 575: TRISB1 = 0;
+"575
+[e = _TRISB1 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 576: RB1 = 1;
+"576
+[e = _RB1 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 577: pauseus(per);
+"577
+[e ( _pauseus (1 -> _per `ui ]
+[; ;eeprom_i2c.c: 578: RB1 = 0;
+"578
+[e = _RB1 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 579: break;
+"579
+[e $U 244  ]
+[; ;eeprom_i2c.c: 581: case 10:
+"581
+[e :U 256 ]
+[; ;eeprom_i2c.c: 582: TRISB2 = 0;
+"582
+[e = _TRISB2 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 583: RB2 = 1;
+"583
+[e = _RB2 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 584: pauseus(per);
+"584
+[e ( _pauseus (1 -> _per `ui ]
+[; ;eeprom_i2c.c: 585: RB2 = 0;
+"585
+[e = _RB2 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 586: break;
+"586
+[e $U 244  ]
+[; ;eeprom_i2c.c: 588: case 11:
+"588
+[e :U 257 ]
+[; ;eeprom_i2c.c: 589: TRISB3 = 0;
+"589
+[e = _TRISB3 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 590: RB3 = 1;
+"590
+[e = _RB3 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 591: pauseus(per);
+"591
+[e ( _pauseus (1 -> _per `ui ]
+[; ;eeprom_i2c.c: 592: RB3 = 0;
+"592
+[e = _RB3 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 593: break;
+"593
+[e $U 244  ]
+[; ;eeprom_i2c.c: 595: case 12:
+"595
+[e :U 258 ]
+[; ;eeprom_i2c.c: 596: TRISB4 = 0;
+"596
+[e = _TRISB4 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 597: RB4 = 1;
+"597
+[e = _RB4 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 598: pauseus(per);
+"598
+[e ( _pauseus (1 -> _per `ui ]
+[; ;eeprom_i2c.c: 599: RB4 = 0;
+"599
+[e = _RB4 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 600: break;
+"600
+[e $U 244  ]
+[; ;eeprom_i2c.c: 602: case 13:
+"602
+[e :U 259 ]
+[; ;eeprom_i2c.c: 603: TRISB5 = 0;
+"603
+[e = _TRISB5 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 604: RB5 = 1;
+"604
+[e = _RB5 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 605: pauseus(per);
+"605
+[e ( _pauseus (1 -> _per `ui ]
+[; ;eeprom_i2c.c: 606: RB5 = 0;
+"606
+[e = _RB5 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 607: break;
+"607
+[e $U 244  ]
+[; ;eeprom_i2c.c: 610: default:
+"610
+[e :U 260 ]
+[; ;eeprom_i2c.c: 611: break;
+"611
+[e $U 244  ]
+"612
+}
+[; ;eeprom_i2c.c: 612: }
+[e $U 244  ]
+"509
+[e :U 245 ]
+[e [\ _pin , $ -> -> 0 `i `uc 246
+ , $ -> -> 1 `i `uc 247
+ , $ -> -> 2 `i `uc 248
+ , $ -> -> 3 `i `uc 249
+ , $ -> -> 4 `i `uc 250
+ , $ -> -> 5 `i `uc 251
+ , $ -> -> 6 `i `uc 252
+ , $ -> -> 7 `i `uc 253
+ , $ -> -> 8 `i `uc 254
+ , $ -> -> 9 `i `uc 255
+ , $ -> -> 10 `i `uc 256
+ , $ -> -> 11 `i `uc 257
+ , $ -> -> 12 `i `uc 258
+ , $ -> -> 13 `i `uc 259
+ 260 ]
+"612
+[e :U 244 ]
+[; ;eeprom_i2c.c: 613: }
+"613
+[e :UE 243 ]
+}
+"623
+[v _lcd_write `(v  1 ef1`uc ]
+{
+[; ;eeprom_i2c.c: 621: void
+[; ;eeprom_i2c.c: 622: lcd_write(unsigned char c)
+[; ;eeprom_i2c.c: 623: {
+[e :U _lcd_write ]
+[v _c `uc  1 r1 ]
+[f ]
+"626
+[v _temp `uc  1 a ]
+[; ;eeprom_i2c.c: 626: char temp = ( ( ( c >> 4 ) & 0x0F );
+[e = _temp -> & >> -> _c `i -> 4 `i -> 15 `i `uc ]
+[; ;eeprom_i2c.c: 627: PORTD = PORTD & 0xF0;
+"627
+[e = _PORTD -> & -> _PORTD `i -> 240 `i `uc ]
+[; ;eeprom_i2c.c: 628: PORTD = PORTD + temp;
+"628
+[e = _PORTD -> + -> _PORTD `i -> _temp `i `uc ]
+[; ;eeprom_i2c.c: 629: ((RA6=1),(RA6=0));
+"629
+[e ; -> = _RA6 -> -> 1 `i `b `i -> = _RA6 -> -> 0 `i `b `i ]
+[; ;eeprom_i2c.c: 631: temp = ( c & 0x0F );
+"631
+[e = _temp -> & -> _c `i -> 15 `i `uc ]
+[; ;eeprom_i2c.c: 632: PORTD = PORTD & 0xF0;
+"632
+[e = _PORTD -> & -> _PORTD `i -> 240 `i `uc ]
+[; ;eeprom_i2c.c: 633: PORTD = PORTD + temp;
+"633
+[e = _PORTD -> + -> _PORTD `i -> _temp `i `uc ]
+[; ;eeprom_i2c.c: 634: ((RA6=1),(RA6=0));
+"634
+[e ; -> = _RA6 -> -> 1 `i `b `i -> = _RA6 -> -> 0 `i `b `i ]
+[; ;eeprom_i2c.c: 635: }
+"635
+[e :UE 261 ]
+}
+"643
+[v _lcd_clear `(v  1 ef ]
+{
+[; ;eeprom_i2c.c: 641: void
+[; ;eeprom_i2c.c: 642: lcd_clear(void)
+[; ;eeprom_i2c.c: 643: {
+[e :U _lcd_clear ]
+[f ]
+[; ;eeprom_i2c.c: 644: RA7 = 0;
+"644
+[e = _RA7 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 645: lcd_write(0x1);
+"645
+[e ( _lcd_write (1 -> -> 1 `i `uc ]
+[; ;eeprom_i2c.c: 647: }
+"647
+[e :UE 262 ]
+}
+"656
+[v _lcd_text `(v  1 ef1`*Cuc ]
+{
+[; ;eeprom_i2c.c: 654: void
+[; ;eeprom_i2c.c: 655: lcd_text(const char * s)
+[; ;eeprom_i2c.c: 656: {
+[e :U _lcd_text ]
+[v _s `*Cuc  1 r1 ]
+[f ]
+[; ;eeprom_i2c.c: 657: RA7 = 1;
+"657
+[e = _RA7 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 658: while(*s)
+"658
+[e $U 264  ]
+[e :U 265 ]
+[; ;eeprom_i2c.c: 659: lcd_write(*s++);
+"659
+[e ( _lcd_write (1 *U ++ _s * -> -> 1 `i `x -> -> # *U _s `i `x ]
+[e :U 264 ]
+"658
+[e $ != -> *U _s `i -> -> -> 0 `i `Cuc `i 265  ]
+[e :U 266 ]
+[; ;eeprom_i2c.c: 660: }
+"660
+[e :UE 263 ]
+}
+"670
+[v _lcd_symbol `(v  1 ef1`uc ]
+{
+[; ;eeprom_i2c.c: 668: void
+[; ;eeprom_i2c.c: 669: lcd_symbol(char c)
+[; ;eeprom_i2c.c: 670: {
+[e :U _lcd_symbol ]
+[v _c `uc  1 r1 ]
+[f ]
+[; ;eeprom_i2c.c: 671: RA7 = 1;
+"671
+[e = _RA7 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 672: lcd_write( c );
+"672
+[e ( _lcd_write (1 _c ]
+[; ;eeprom_i2c.c: 673: }
+"673
+[e :UE 267 ]
+}
+"682
+[v _lcd_goto `(v  1 ef1`uc ]
+{
+[; ;eeprom_i2c.c: 680: void
+[; ;eeprom_i2c.c: 681: lcd_goto(unsigned char pos)
+[; ;eeprom_i2c.c: 682: {
+[e :U _lcd_goto ]
+[v _pos `uc  1 r1 ]
+[f ]
+[; ;eeprom_i2c.c: 683: RA7 = 0;
+"683
+[e = _RA7 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 684: lcd_write(0x80+pos);
+"684
+[e ( _lcd_write (1 -> + -> 128 `i -> _pos `i `uc ]
+[; ;eeprom_i2c.c: 685: }
+"685
+[e :UE 268 ]
+}
+"693
+[v _lcd_number `(v  1 ef1`uc ]
+{
+[; ;eeprom_i2c.c: 691: void
+[; ;eeprom_i2c.c: 692: lcd_number(char c)
+[; ;eeprom_i2c.c: 693: {
+[e :U _lcd_number ]
+[v _c `uc  1 r1 ]
+[f ]
+"694
+[v _hund `uc  1 a ]
+[; ;eeprom_i2c.c: 694: char hund = c/100;
+[e = _hund -> / -> _c `i -> 100 `i `uc ]
+"695
+[v _tens `uc  1 a ]
+[; ;eeprom_i2c.c: 695: char tens = (c % 100)/10;
+[e = _tens -> / % -> _c `i -> 100 `i -> 10 `i `uc ]
+"696
+[v _ones `uc  1 a ]
+[; ;eeprom_i2c.c: 696: char ones = (c % 100) % 10;
+[e = _ones -> % % -> _c `i -> 100 `i -> 10 `i `uc ]
+[; ;eeprom_i2c.c: 697: RA7 = 1;
+"697
+[e = _RA7 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 698: lcd_write(hund + 0x30);
+"698
+[e ( _lcd_write (1 -> + -> _hund `i -> 48 `i `uc ]
+[; ;eeprom_i2c.c: 699: lcd_write(tens + 0x30);
+"699
+[e ( _lcd_write (1 -> + -> _tens `i -> 48 `i `uc ]
+[; ;eeprom_i2c.c: 700: lcd_write(ones + 0x30);
+"700
+[e ( _lcd_write (1 -> + -> _ones `i -> 48 `i `uc ]
+[; ;eeprom_i2c.c: 701: }
+"701
+[e :UE 269 ]
+}
+"711
+[v _lcd_init `(v  1 ef ]
+{
+[; ;eeprom_i2c.c: 709: void
+[; ;eeprom_i2c.c: 710: lcd_init()
+[; ;eeprom_i2c.c: 711: {
+[e :U _lcd_init ]
+[f ]
+[; ;eeprom_i2c.c: 713: TRISB = 0;
+"713
+[e = _TRISB -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 719: RA7 = 0;
+"719
+[e = _RA7 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 720: RA6 = 0;
+"720
+[e = _RA6 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 721: RE1 = 0;
+"721
+[e = _RE1 -> -> 0 `i `b ]
+"723
+[v _init_value `uc  1 a ]
+[; ;eeprom_i2c.c: 723: char init_value = 0x3;
+[e = _init_value -> -> 3 `i `uc ]
+[; ;eeprom_i2c.c: 725: pause (15);
+"725
+[e ( _pause (1 -> -> -> 15 `i `l `ul ]
+"726
+[v _temp `uc  1 a ]
+[; ;eeprom_i2c.c: 726: char temp = init_value;
+[e = _temp _init_value ]
+[; ;eeprom_i2c.c: 727: PORTD = PORTD & 0xF0;
+"727
+[e = _PORTD -> & -> _PORTD `i -> 240 `i `uc ]
+[; ;eeprom_i2c.c: 728: PORTD = PORTD + temp;
+"728
+[e = _PORTD -> + -> _PORTD `i -> _temp `i `uc ]
+[; ;eeprom_i2c.c: 729: ((RA6=1),(RA6=0));
+"729
+[e ; -> = _RA6 -> -> 1 `i `b `i -> = _RA6 -> -> 0 `i `b `i ]
+[; ;eeprom_i2c.c: 730: pause(10);
+"730
+[e ( _pause (1 -> -> -> 10 `i `l `ul ]
+[; ;eeprom_i2c.c: 731: ((RA6=1),(RA6=0));
+"731
+[e ; -> = _RA6 -> -> 1 `i `b `i -> = _RA6 -> -> 0 `i `b `i ]
+[; ;eeprom_i2c.c: 732: pause(10);
+"732
+[e ( _pause (1 -> -> -> 10 `i `l `ul ]
+[; ;eeprom_i2c.c: 733: ((RA6=1),(RA6=0));
+"733
+[e ; -> = _RA6 -> -> 1 `i `b `i -> = _RA6 -> -> 0 `i `b `i ]
+[; ;eeprom_i2c.c: 734: pause(10);
+"734
+[e ( _pause (1 -> -> -> 10 `i `l `ul ]
+[; ;eeprom_i2c.c: 735: char temp = 2;
+"735
+[e = _temp -> -> 2 `i `uc ]
+[; ;eeprom_i2c.c: 736: PORTD = PORTD & 0xF0;
+"736
+[e = _PORTD -> & -> _PORTD `i -> 240 `i `uc ]
+[; ;eeprom_i2c.c: 737: PORTD = PORTD + temp;
+"737
+[e = _PORTD -> + -> _PORTD `i -> _temp `i `uc ]
+[; ;eeprom_i2c.c: 738: ((RA6=1),(RA6=0));
+"738
+[e ; -> = _RA6 -> -> 1 `i `b `i -> = _RA6 -> -> 0 `i `b `i ]
+[; ;eeprom_i2c.c: 740: lcd_write(0x28);
+"740
+[e ( _lcd_write (1 -> -> 40 `i `uc ]
+[; ;eeprom_i2c.c: 742: lcd_write(0xF);
+"742
+[e ( _lcd_write (1 -> -> 15 `i `uc ]
+[; ;eeprom_i2c.c: 743: lcd_clear();
+"743
+[e ( _lcd_clear ..  ]
+[; ;eeprom_i2c.c: 744: lcd_write(0x6);
+"744
+[e ( _lcd_write (1 -> -> 6 `i `uc ]
+[; ;eeprom_i2c.c: 745: }
+"745
+[e :UE 270 ]
+}
+"756
+[v _init_serial `(v  1 ef1`i ]
+{
+[; ;eeprom_i2c.c: 755: void init_serial(int baud)
+[; ;eeprom_i2c.c: 756: {
+[e :U _init_serial ]
+[v _baud `i  1 r1 ]
+[f ]
+[; ;eeprom_i2c.c: 757: TRISC7 = 1;
+"757
+[e = _TRISC7 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 758: TRISC6 = 0;
+"758
+[e = _TRISC6 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 759: if (baud == 2400)
+"759
+[e $ ! == _baud -> 2400 `i 272  ]
+[; ;eeprom_i2c.c: 760: {SPBRG = 103;}
+"760
+{
+[e = _SPBRG -> -> 103 `i `uc ]
+}
+[e $U 273  ]
+"761
+[e :U 272 ]
+[; ;eeprom_i2c.c: 761: else
+[; ;eeprom_i2c.c: 762: {SPBRG = 25;}
+"762
+{
+[e = _SPBRG -> -> 25 `i `uc ]
+}
+[e :U 273 ]
+[; ;eeprom_i2c.c: 765: RCSTA = 0x90;
+"765
+[e = _RCSTA -> -> 144 `i `uc ]
+[; ;eeprom_i2c.c: 766: TXSTA = 0x20;
+"766
+[e = _TXSTA -> -> 32 `i `uc ]
+[; ;eeprom_i2c.c: 767: BAUDCTL = 0;
+"767
+[e = _BAUDCTL -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 768: }
+"768
+[e :UE 271 ]
+}
+"776
+[v _putch `(v  1 ef1`uc ]
+{
+[; ;eeprom_i2c.c: 774: void
+[; ;eeprom_i2c.c: 775: putch(unsigned char byte)
+[; ;eeprom_i2c.c: 776: {
+[e :U _putch ]
+[v _byte `uc  1 r1 ]
+[f ]
+[; ;eeprom_i2c.c: 778: while(!TXIF)
+"778
+[e $U 275  ]
+[e :U 276 ]
+[; ;eeprom_i2c.c: 779: continue;
+"779
+[e $U 275  ]
+[e :U 275 ]
+"778
+[e $ ! _TXIF 276  ]
+[e :U 277 ]
+[; ;eeprom_i2c.c: 780: TXREG = byte;
+"780
+[e = _TXREG _byte ]
+[; ;eeprom_i2c.c: 781: }
+"781
+[e :UE 274 ]
+}
+"790
+[v _getch `(uc  1 ef ]
+{
+[; ;eeprom_i2c.c: 788: unsigned char
+[; ;eeprom_i2c.c: 789: getch()
+[; ;eeprom_i2c.c: 790: {
+[e :U _getch ]
+[f ]
+[; ;eeprom_i2c.c: 792: while(!RCIF)
+"792
+[e $U 279  ]
+[e :U 280 ]
+[; ;eeprom_i2c.c: 793: continue;
+"793
+[e $U 279  ]
+[e :U 279 ]
+"792
+[e $ ! _RCIF 280  ]
+[e :U 281 ]
+[; ;eeprom_i2c.c: 794: return RCREG;
+"794
+[e ) _RCREG ]
+[e $UE 278  ]
+[; ;eeprom_i2c.c: 795: }
+"795
+[e :UE 278 ]
+}
+"803
+[v _spi_init `(v  1 ef ]
+{
+[; ;eeprom_i2c.c: 802: void spi_init(void)
+[; ;eeprom_i2c.c: 803: {
+[e :U _spi_init ]
+[f ]
+[; ;eeprom_i2c.c: 809: TRISC5 = 0;
+"809
+[e = _TRISC5 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 810: TRISC3 = 0;
+"810
+[e = _TRISC3 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 811: TRISA5 = 0;
+"811
+[e = _TRISA5 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 816: SSPCON = 0b00000010;
+"816
+[e = _SSPCON -> -> 2 `i `uc ]
+[; ;eeprom_i2c.c: 817: CKP = 0;
+"817
+[e = _CKP -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 820: SMP = 1;
+"820
+[e = _SMP -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 821: CKE = 1;
+"821
+[e = _CKE -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 824: SSPEN = 1;
+"824
+[e = _SSPEN -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 825: pause(1);
+"825
+[e ( _pause (1 -> -> -> 1 `i `l `ul ]
+[; ;eeprom_i2c.c: 826: }
+"826
+[e :UE 282 ]
+}
+"833
+[v _SPI_OUTPUT `(uc  1 ef1`uc ]
+{
+[; ;eeprom_i2c.c: 832: char SPI_OUTPUT ( char spi_byte )
+[; ;eeprom_i2c.c: 833: {
+[e :U _SPI_OUTPUT ]
+[v _spi_byte `uc  1 r1 ]
+[f ]
+[; ;eeprom_i2c.c: 834: SSPBUF = spi_byte;
+"834
+[e = _SSPBUF _spi_byte ]
+[; ;eeprom_i2c.c: 835: do {
+"835
+[e :U 286 ]
+{
+"836
+}
+[; ;eeprom_i2c.c: 836: }
+[; ;eeprom_i2c.c: 837: while(!BF);
+"837
+[e $ ! _BF 286  ]
+[e :U 285 ]
+[; ;eeprom_i2c.c: 838: return SSPBUF;
+"838
+[e ) _SSPBUF ]
+[e $UE 283  ]
+[; ;eeprom_i2c.c: 839: }
+"839
+[e :UE 283 ]
+}
+"848
+[v _WR_BYTE `(v  1 ef2`uc`uc ]
+{
+[; ;eeprom_i2c.c: 847: void WR_BYTE ( char EE_address, char EE_data )
+[; ;eeprom_i2c.c: 848: {
+[e :U _WR_BYTE ]
+[v _EE_address `uc  1 r1 ]
+[v _EE_data `uc  1 r2 ]
+[f ]
+"849
+[v _dummy `uc  1 a ]
+[; ;eeprom_i2c.c: 849: char dummy;
+[; ;eeprom_i2c.c: 850: RA5 = 0;
+"850
+[e = _RA5 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 851: dummy = SPI_OUTPUT ( 0x06 );
+"851
+[e = _dummy ( _SPI_OUTPUT (1 -> -> 6 `i `uc ]
+[; ;eeprom_i2c.c: 852: RA5 = 1;
+"852
+[e = _RA5 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 853: pause(5);
+"853
+[e ( _pause (1 -> -> -> 5 `i `l `ul ]
+[; ;eeprom_i2c.c: 854: RA5 = 0;
+"854
+[e = _RA5 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 855: dummy = SPI_OUTPUT ( 0x02 );
+"855
+[e = _dummy ( _SPI_OUTPUT (1 -> -> 2 `i `uc ]
+[; ;eeprom_i2c.c: 856: dummy = SPI_OUTPUT ( EE_address );
+"856
+[e = _dummy ( _SPI_OUTPUT (1 _EE_address ]
+[; ;eeprom_i2c.c: 857: dummy = SPI_OUTPUT ( EE_data );
+"857
+[e = _dummy ( _SPI_OUTPUT (1 _EE_data ]
+[; ;eeprom_i2c.c: 858: RA5 = 1;
+"858
+[e = _RA5 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 860: }
+"860
+[e :UE 287 ]
+}
+"869
+[v _RD_BYTE `(uc  1 ef1`uc ]
+{
+[; ;eeprom_i2c.c: 868: char RD_BYTE ( char EE_address )
+[; ;eeprom_i2c.c: 869: {
+[e :U _RD_BYTE ]
+[v _EE_address `uc  1 r1 ]
+[f ]
+"870
+[v _dummy `uc  1 a ]
+"871
+[v _spi_received `uc  1 a ]
+[; ;eeprom_i2c.c: 870: char dummy;
+[; ;eeprom_i2c.c: 871: char spi_received = 0;
+[e = _spi_received -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 872: RA5 = 0;
+"872
+[e = _RA5 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 873: dummy = SPI_OUTPUT (0x03);
+"873
+[e = _dummy ( _SPI_OUTPUT (1 -> -> 3 `i `uc ]
+[; ;eeprom_i2c.c: 874: dummy = SPI_OUTPUT (EE_address );
+"874
+[e = _dummy ( _SPI_OUTPUT (1 _EE_address ]
+[; ;eeprom_i2c.c: 875: spi_received = SPI_OUTPUT ( 0x00 );
+"875
+[e = _spi_received ( _SPI_OUTPUT (1 -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 876: RA5 = 1;
+"876
+[e = _RA5 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 879: return spi_received;
+"879
+[e ) _spi_received ]
+[e $UE 288  ]
+[; ;eeprom_i2c.c: 880: }
+"880
+[e :UE 288 ]
+}
+"887
+[v _WR_MCP23S08 `(v  1 ef2`uc`uc ]
+{
+[; ;eeprom_i2c.c: 886: void WR_MCP23S08 ( char regist, char data )
+[; ;eeprom_i2c.c: 887: {
+[e :U _WR_MCP23S08 ]
+[v _regist `uc  1 r1 ]
+[v _data `uc  1 r2 ]
+[f ]
+"888
+[v _dummy `uc  1 a ]
+[; ;eeprom_i2c.c: 888: char dummy;
+[; ;eeprom_i2c.c: 889: RA5 = 0;
+"889
+[e = _RA5 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 890: dummy = SPI_OUTPUT ( 0x40 );
+"890
+[e = _dummy ( _SPI_OUTPUT (1 -> -> 64 `i `uc ]
+[; ;eeprom_i2c.c: 891: dummy = SPI_OUTPUT ( regist );
+"891
+[e = _dummy ( _SPI_OUTPUT (1 _regist ]
+[; ;eeprom_i2c.c: 892: dummy = SPI_OUTPUT ( data );
+"892
+[e = _dummy ( _SPI_OUTPUT (1 _data ]
+[; ;eeprom_i2c.c: 893: RA5 = 1;
+"893
+[e = _RA5 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 895: }
+"895
+[e :UE 289 ]
+}
+"902
+[v _RD_MCP23S08 `(uc  1 ef1`uc ]
+{
+[; ;eeprom_i2c.c: 901: char RD_MCP23S08 ( char regist )
+[; ;eeprom_i2c.c: 902: {
+[e :U _RD_MCP23S08 ]
+[v _regist `uc  1 r1 ]
+[f ]
+"903
+[v _dummy `uc  1 a ]
+[; ;eeprom_i2c.c: 903: char dummy;
+[; ;eeprom_i2c.c: 904: RA5 = 0;
+"904
+[e = _RA5 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 905: dummy = SPI_OUTPUT (0x41);
+"905
+[e = _dummy ( _SPI_OUTPUT (1 -> -> 65 `i `uc ]
+[; ;eeprom_i2c.c: 906: dummy = SPI_OUTPUT (regist);
+"906
+[e = _dummy ( _SPI_OUTPUT (1 _regist ]
+"907
+[v _data `uc  1 a ]
+[; ;eeprom_i2c.c: 907: char data = SPI_OUTPUT ( 0x00 );
+[e = _data ( _SPI_OUTPUT (1 -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 908: RA5 = 1;
+"908
+[e = _RA5 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 909: return data;
+"909
+[e ) _data ]
+[e $UE 290  ]
+[; ;eeprom_i2c.c: 910: }
+"910
+[e :UE 290 ]
+}
+"915
+[v _pwmout1 `(v  1 ef2`uc`i ]
+{
+[; ;eeprom_i2c.c: 914: void pwmout1 (char duty, int freq)
+[; ;eeprom_i2c.c: 915: {
+[e :U _pwmout1 ]
+[v _duty `uc  1 r1 ]
+[v _freq `i  1 r2 ]
+[f ]
+[; ;eeprom_i2c.c: 916: TRISC2 = 1;
+"916
+[e = _TRISC2 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 917: CCP1CON = 0;
+"917
+[e = _CCP1CON -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 920: PR2 = (250000/freq)-1;
+"920
+[e = _PR2 -> - / -> 250000 `l -> _freq `l -> -> 1 `i `l `uc ]
+[; ;eeprom_i2c.c: 921: CCPR1L = ((duty*(PR2+1))/100);
+"921
+[e = _CCPR1L -> / * -> _duty `i + -> _PR2 `i -> 1 `i -> 100 `i `uc ]
+[; ;eeprom_i2c.c: 922: TMR2IE = 0;
+"922
+[e = _TMR2IE -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 923: T2CKPS0 = 1;
+"923
+[e = _T2CKPS0 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 924: T2CKPS1 = 1;
+"924
+[e = _T2CKPS1 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 925: CCP1CON = 0b00001100;
+"925
+[e = _CCP1CON -> -> 12 `i `uc ]
+[; ;eeprom_i2c.c: 926: TMR2ON = 1;
+"926
+[e = _TMR2ON -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 928: while (TMR2IF ==0)
+"928
+[e $U 292  ]
+[e :U 293 ]
+[; ;eeprom_i2c.c: 929: {}
+"929
+{
+}
+[e :U 292 ]
+"928
+[e $ == -> _TMR2IF `i -> 0 `i 293  ]
+[e :U 294 ]
+[; ;eeprom_i2c.c: 931: TRISC2 = 0;
+"931
+[e = _TRISC2 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 932: }
+"932
+[e :UE 291 ]
+}
+"938
+[v _pwmout2 `(v  1 ef2`uc`i ]
+{
+[; ;eeprom_i2c.c: 937: void pwmout2 (char duty, int freq)
+[; ;eeprom_i2c.c: 938: {
+[e :U _pwmout2 ]
+[v _duty `uc  1 r1 ]
+[v _freq `i  1 r2 ]
+[f ]
+[; ;eeprom_i2c.c: 939: TRISC1 = 1;
+"939
+[e = _TRISC1 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 940: CCP2CON = 0;
+"940
+[e = _CCP2CON -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 942: PR2 = (250000/freq)-1;
+"942
+[e = _PR2 -> - / -> 250000 `l -> _freq `l -> -> 1 `i `l `uc ]
+[; ;eeprom_i2c.c: 943: CCPR2L = ((duty*(PR2+1))/100);
+"943
+[e = _CCPR2L -> / * -> _duty `i + -> _PR2 `i -> 1 `i -> 100 `i `uc ]
+[; ;eeprom_i2c.c: 944: TMR2IE = 0;
+"944
+[e = _TMR2IE -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 945: T2CKPS0 = 1;
+"945
+[e = _T2CKPS0 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 946: T2CKPS1 = 1;
+"946
+[e = _T2CKPS1 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 947: CCP2CON = 0b00001100;
+"947
+[e = _CCP2CON -> -> 12 `i `uc ]
+[; ;eeprom_i2c.c: 948: TMR2ON = 1;
+"948
+[e = _TMR2ON -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 950: while (TMR2IF ==0)
+"950
+[e $U 296  ]
+[e :U 297 ]
+[; ;eeprom_i2c.c: 951: {}
+"951
+{
+}
+[e :U 296 ]
+"950
+[e $ == -> _TMR2IF `i -> 0 `i 297  ]
+[e :U 298 ]
+[; ;eeprom_i2c.c: 953: TRISC1 = 0;
+"953
+[e = _TRISC1 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 954: }
+"954
+[e :UE 295 ]
+}
+"960
+[v _adcin `(uc  1 ef1`uc ]
+{
+[; ;eeprom_i2c.c: 959: char adcin (char chan)
+[; ;eeprom_i2c.c: 960: {
+[e :U _adcin ]
+[v _chan `uc  1 r1 ]
+[f ]
+[; ;eeprom_i2c.c: 961: switch(chan)
+"961
+[e $U 301  ]
+[; ;eeprom_i2c.c: 962: {
+"962
+{
+[; ;eeprom_i2c.c: 963: case 0:
+"963
+[e :U 302 ]
+[; ;eeprom_i2c.c: 964: TRISA0 = 1;
+"964
+[e = _TRISA0 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 965: ANS0 = 1;
+"965
+[e = _ANS0 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 966: ADCON0 = 0b11000000;
+"966
+[e = _ADCON0 -> -> 192 `i `uc ]
+[; ;eeprom_i2c.c: 967: break;
+"967
+[e $U 300  ]
+[; ;eeprom_i2c.c: 969: case 1:
+"969
+[e :U 303 ]
+[; ;eeprom_i2c.c: 970: TRISA1 = 1;
+"970
+[e = _TRISA1 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 971: ANS1 = 1;
+"971
+[e = _ANS1 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 972: ADCON0 = 0b11000100;
+"972
+[e = _ADCON0 -> -> 196 `i `uc ]
+[; ;eeprom_i2c.c: 973: break;
+"973
+[e $U 300  ]
+[; ;eeprom_i2c.c: 975: case 2:
+"975
+[e :U 304 ]
+[; ;eeprom_i2c.c: 976: TRISA2 = 1;
+"976
+[e = _TRISA2 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 977: ANS2 = 1;
+"977
+[e = _ANS2 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 978: ADCON0 = 0b11001000;
+"978
+[e = _ADCON0 -> -> 200 `i `uc ]
+[; ;eeprom_i2c.c: 979: break;
+"979
+[e $U 300  ]
+[; ;eeprom_i2c.c: 981: case 3:
+"981
+[e :U 305 ]
+[; ;eeprom_i2c.c: 982: TRISA3 = 1;
+"982
+[e = _TRISA3 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 983: ANS3 = 1;
+"983
+[e = _ANS3 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 984: ADCON0 = 0b11001100;
+"984
+[e = _ADCON0 -> -> 204 `i `uc ]
+[; ;eeprom_i2c.c: 985: break;
+"985
+[e $U 300  ]
+[; ;eeprom_i2c.c: 987: case 4:
+"987
+[e :U 306 ]
+[; ;eeprom_i2c.c: 988: TRISA5 = 1;
+"988
+[e = _TRISA5 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 989: ANS4 = 1;
+"989
+[e = _ANS4 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 990: ADCON0 = 0b11010000;
+"990
+[e = _ADCON0 -> -> 208 `i `uc ]
+[; ;eeprom_i2c.c: 991: break;
+"991
+[e $U 300  ]
+[; ;eeprom_i2c.c: 993: default:
+"993
+[e :U 307 ]
+[; ;eeprom_i2c.c: 994: break;
+"994
+[e $U 300  ]
+"995
+}
+[; ;eeprom_i2c.c: 995: }
+[e $U 300  ]
+"961
+[e :U 301 ]
+[e [\ _chan , $ -> -> 0 `i `uc 302
+ , $ -> -> 1 `i `uc 303
+ , $ -> -> 2 `i `uc 304
+ , $ -> -> 3 `i `uc 305
+ , $ -> -> 4 `i `uc 306
+ 307 ]
+"995
+[e :U 300 ]
+[; ;eeprom_i2c.c: 997: ADON = 1;
+"997
+[e = _ADON -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 998: pause (1);
+"998
+[e ( _pause (1 -> -> -> 1 `i `l `ul ]
+[; ;eeprom_i2c.c: 999: GO_DONE = 1;
+"999
+[e = _GO_DONE -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 1000: while(GO_DONE == 1);
+"1000
+[e $U 308  ]
+[e :U 309 ]
+[e :U 308 ]
+[e $ == -> _GO_DONE `i -> 1 `i 309  ]
+[e :U 310 ]
+"1001
+[v _value `uc  1 a ]
+[; ;eeprom_i2c.c: 1001: char value = ADRESH;
+[e = _value _ADRESH ]
+[; ;eeprom_i2c.c: 1002: return value;
+"1002
+[e ) _value ]
+[e $UE 299  ]
+[; ;eeprom_i2c.c: 1004: }
+"1004
+[e :UE 299 ]
+}
+"1020
+[v _i2c_init `(v  1 ef ]
+{
+[; ;eeprom_i2c.c: 1019: void i2c_init()
+[; ;eeprom_i2c.c: 1020: {
+[e :U _i2c_init ]
+[f ]
+[; ;eeprom_i2c.c: 1021: TRISC3=1;
+"1021
+[e = _TRISC3 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 1022: TRISC4=1;
+"1022
+[e = _TRISC4 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 1024: SSPCON = 0x38;
+"1024
+[e = _SSPCON -> -> 56 `i `uc ]
+[; ;eeprom_i2c.c: 1025: SSPCON2 = 0x00;
+"1025
+[e = _SSPCON2 -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 1028: SSPADD = 0x27;
+"1028
+[e = _SSPADD -> -> 39 `i `uc ]
+[; ;eeprom_i2c.c: 1031: CKE=1;
+"1031
+[e = _CKE -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 1032: SMP=1;
+"1032
+[e = _SMP -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 1034: SSPIF=0;
+"1034
+[e = _SSPIF -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 1035: BCLIF=0;
+"1035
+[e = _BCLIF -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 1036: }
+"1036
+[e :UE 311 ]
+}
+"1041
+[v _i2c_waitForIdle `(v  1 ef ]
+{
+[; ;eeprom_i2c.c: 1040: void i2c_waitForIdle()
+[; ;eeprom_i2c.c: 1041: {
+[e :U _i2c_waitForIdle ]
+[f ]
+[; ;eeprom_i2c.c: 1042: while (( SSPCON2 & 0x1F ) | R_W ) {};
+"1042
+[e $U 313  ]
+[e :U 314 ]
+{
+}
+[e :U 313 ]
+[e $ != | & -> _SSPCON2 `i -> 31 `i -> _R_W `i -> 0 `i 314  ]
+[e :U 315 ]
+[; ;eeprom_i2c.c: 1043: }
+"1043
+[e :UE 312 ]
+}
+"1048
+[v _i2c_start `(v  1 ef ]
+{
+[; ;eeprom_i2c.c: 1047: void i2c_start()
+[; ;eeprom_i2c.c: 1048: {
+[e :U _i2c_start ]
+[f ]
+[; ;eeprom_i2c.c: 1049: i2c_waitForIdle();
+"1049
+[e ( _i2c_waitForIdle ..  ]
+[; ;eeprom_i2c.c: 1050: SEN=1;
+"1050
+[e = _SEN -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 1051: }
+"1051
+[e :UE 316 ]
+}
+"1056
+[v _i2c_repStart `(v  1 ef ]
+{
+[; ;eeprom_i2c.c: 1055: void i2c_repStart()
+[; ;eeprom_i2c.c: 1056: {
+[e :U _i2c_repStart ]
+[f ]
+[; ;eeprom_i2c.c: 1057: i2c_waitForIdle();
+"1057
+[e ( _i2c_waitForIdle ..  ]
+[; ;eeprom_i2c.c: 1058: RSEN=1;
+"1058
+[e = _RSEN -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 1059: }
+"1059
+[e :UE 317 ]
+}
+"1064
+[v _i2c_stop `(v  1 ef ]
+{
+[; ;eeprom_i2c.c: 1063: void i2c_stop()
+[; ;eeprom_i2c.c: 1064: {
+[e :U _i2c_stop ]
+[f ]
+[; ;eeprom_i2c.c: 1065: i2c_waitForIdle();
+"1065
+[e ( _i2c_waitForIdle ..  ]
+[; ;eeprom_i2c.c: 1066: PEN=1;
+"1066
+[e = _PEN -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 1067: }
+"1067
+[e :UE 318 ]
+}
+"1072
+[v _i2c_read `(i  1 ef1`uc ]
+{
+[; ;eeprom_i2c.c: 1071: int i2c_read( unsigned char ack )
+[; ;eeprom_i2c.c: 1072: {
+[e :U _i2c_read ]
+[v _ack `uc  1 r1 ]
+[f ]
+"1073
+[v _i2cReadData `uc  1 a ]
+[; ;eeprom_i2c.c: 1073: unsigned char i2cReadData;
+[; ;eeprom_i2c.c: 1075: i2c_waitForIdle();
+"1075
+[e ( _i2c_waitForIdle ..  ]
+[; ;eeprom_i2c.c: 1077: RCEN=1;
+"1077
+[e = _RCEN -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 1079: i2c_waitForIdle();
+"1079
+[e ( _i2c_waitForIdle ..  ]
+[; ;eeprom_i2c.c: 1081: i2cReadData = SSPBUF;
+"1081
+[e = _i2cReadData _SSPBUF ]
+[; ;eeprom_i2c.c: 1083: i2c_waitForIdle();
+"1083
+[e ( _i2c_waitForIdle ..  ]
+[; ;eeprom_i2c.c: 1085: if ( ack )
+"1085
+[e $ ! != -> _ack `i -> -> -> 0 `i `uc `i 320  ]
+[; ;eeprom_i2c.c: 1086: {
+"1086
+{
+[; ;eeprom_i2c.c: 1087: ACKDT=0;
+"1087
+[e = _ACKDT -> -> 0 `i `b ]
+"1088
+}
+[; ;eeprom_i2c.c: 1088: }
+[e $U 321  ]
+"1089
+[e :U 320 ]
+[; ;eeprom_i2c.c: 1089: else
+[; ;eeprom_i2c.c: 1090: {
+"1090
+{
+[; ;eeprom_i2c.c: 1091: ACKDT=1;
+"1091
+[e = _ACKDT -> -> 1 `i `b ]
+"1092
+}
+[e :U 321 ]
+[; ;eeprom_i2c.c: 1092: }
+[; ;eeprom_i2c.c: 1093: ACKEN=1;
+"1093
+[e = _ACKEN -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 1095: return( i2cReadData );
+"1095
+[e ) -> _i2cReadData `i ]
+[e $UE 319  ]
+[; ;eeprom_i2c.c: 1096: }
+"1096
+[e :UE 319 ]
+}
+"1101
+[v _i2c_write `(uc  1 ef1`uc ]
+{
+[; ;eeprom_i2c.c: 1100: unsigned char i2c_write( unsigned char i2cWriteData )
+[; ;eeprom_i2c.c: 1101: {
+[e :U _i2c_write ]
+[v _i2cWriteData `uc  1 r1 ]
+[f ]
+[; ;eeprom_i2c.c: 1102: i2c_waitForIdle();
+"1102
+[e ( _i2c_waitForIdle ..  ]
+[; ;eeprom_i2c.c: 1103: SSPBUF = i2cWriteData;
+"1103
+[e = _SSPBUF _i2cWriteData ]
+[; ;eeprom_i2c.c: 1105: return ( ! ACKSTAT );
+"1105
+[e ) -> -> ! _ACKSTAT `i `uc ]
+[e $UE 322  ]
+[; ;eeprom_i2c.c: 1106: }
+"1106
+[e :UE 322 ]
+}
+"1114
+[v _I2C_EEOUT `(v  1 ef2`uc`uc ]
+{
+[; ;eeprom_i2c.c: 1113: void I2C_EEOUT(unsigned char address, unsigned char data)
+[; ;eeprom_i2c.c: 1114: {
+[e :U _I2C_EEOUT ]
+[v _address `uc  1 r1 ]
+[v _data `uc  1 r2 ]
+[f ]
+[; ;eeprom_i2c.c: 1115: i2c_start();
+"1115
+[e ( _i2c_start ..  ]
+[; ;eeprom_i2c.c: 1116: i2c_write(0xa0);
+"1116
+[e ( _i2c_write (1 -> -> 160 `i `uc ]
+[; ;eeprom_i2c.c: 1117: i2c_write(address);
+"1117
+[e ( _i2c_write (1 _address ]
+[; ;eeprom_i2c.c: 1118: i2c_write(data);
+"1118
+[e ( _i2c_write (1 _data ]
+[; ;eeprom_i2c.c: 1119: i2c_stop();
+"1119
+[e ( _i2c_stop ..  ]
+[; ;eeprom_i2c.c: 1120: pause(11);
+"1120
+[e ( _pause (1 -> -> -> 11 `i `l `ul ]
+[; ;eeprom_i2c.c: 1121: }
+"1121
+[e :UE 323 ]
+}
+"1129
+[v _I2C_EEIN `(uc  1 ef1`uc ]
+{
+[; ;eeprom_i2c.c: 1128: unsigned char I2C_EEIN(unsigned char address)
+[; ;eeprom_i2c.c: 1129: {
+[e :U _I2C_EEIN ]
+[v _address `uc  1 r1 ]
+[f ]
+"1130
+[v _data `uc  1 a ]
+[; ;eeprom_i2c.c: 1130: unsigned char data;
+[; ;eeprom_i2c.c: 1132: i2c_start();
+"1132
+[e ( _i2c_start ..  ]
+[; ;eeprom_i2c.c: 1133: i2c_write(0xa0);
+"1133
+[e ( _i2c_write (1 -> -> 160 `i `uc ]
+[; ;eeprom_i2c.c: 1134: i2c_write(address);
+"1134
+[e ( _i2c_write (1 _address ]
+[; ;eeprom_i2c.c: 1135: i2c_repStart();
+"1135
+[e ( _i2c_repStart ..  ]
+[; ;eeprom_i2c.c: 1136: i2c_write(0xa1);
+"1136
+[e ( _i2c_write (1 -> -> 161 `i `uc ]
+[; ;eeprom_i2c.c: 1137: data=i2c_read(0);
+"1137
+[e = _data -> ( _i2c_read (1 -> -> 0 `i `uc `uc ]
+[; ;eeprom_i2c.c: 1138: i2c_stop();
+"1138
+[e ( _i2c_stop ..  ]
+[; ;eeprom_i2c.c: 1139: return(data);
+"1139
+[e ) _data ]
+[e $UE 324  ]
+[; ;eeprom_i2c.c: 1140: }
+"1140
+[e :UE 324 ]
+}
+"1146
+[v _main `(v  1 ef ]
+{
+[; ;eeprom_i2c.c: 1144: void
+[; ;eeprom_i2c.c: 1145: main(void)
+[; ;eeprom_i2c.c: 1146: {
+[e :U _main ]
+[f ]
+[; ;eeprom_i2c.c: 1148: init_micro();
+"1148
+[e ( _init_micro ..  ]
+[; ;eeprom_i2c.c: 1149: i2c_init();
+"1149
+[e ( _i2c_init ..  ]
+[; ;eeprom_i2c.c: 1150: ANSEL=0x00;
+"1150
+[e = _ANSEL -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 1151: ANSELH=0x00;
+"1151
+[e = _ANSELH -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 1152: PORTB=0x00;
+"1152
+[e = _PORTB -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 1153: TRISB=0x00;
+"1153
+[e = _TRISB -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 1154: TRISA=0x00;
+"1154
+[e = _TRISA -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 1155: TRISD=0x00;
+"1155
+[e = _TRISD -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 1169: RA7=0;
+"1169
+[e = _RA7 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 1170: RA6=0;
+"1170
+[e = _RA6 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 1171: RE1=0;
+"1171
+[e = _RE1 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 1173: pause(15);
+"1173
+[e ( _pause (1 -> -> -> 15 `i `l `ul ]
+[; ;eeprom_i2c.c: 1174: PORTD=init_value;
+"1174
+[e = _PORTD _init_value ]
+[; ;eeprom_i2c.c: 1175: ((RA6=1),(RA6=0));
+"1175
+[e ; -> = _RA6 -> -> 1 `i `b `i -> = _RA6 -> -> 0 `i `b `i ]
+[; ;eeprom_i2c.c: 1176: pause(10);
+"1176
+[e ( _pause (1 -> -> -> 10 `i `l `ul ]
+[; ;eeprom_i2c.c: 1177: ((RA6=1),(RA6=0));
+"1177
+[e ; -> = _RA6 -> -> 1 `i `b `i -> = _RA6 -> -> 0 `i `b `i ]
+[; ;eeprom_i2c.c: 1178: pause(10);
+"1178
+[e ( _pause (1 -> -> -> 10 `i `l `ul ]
+[; ;eeprom_i2c.c: 1179: ((RA6=1),(RA6=0));
+"1179
+[e ; -> = _RA6 -> -> 1 `i `b `i -> = _RA6 -> -> 0 `i `b `i ]
+[; ;eeprom_i2c.c: 1180: pause(10);
+"1180
+[e ( _pause (1 -> -> -> 10 `i `l `ul ]
+[; ;eeprom_i2c.c: 1181: PORTD=2;
+"1181
+[e = _PORTD -> -> 2 `i `uc ]
+[; ;eeprom_i2c.c: 1182: ((RA6=1),(RA6=0));
+"1182
+[e ; -> = _RA6 -> -> 1 `i `b `i -> = _RA6 -> -> 0 `i `b `i ]
+[; ;eeprom_i2c.c: 1184: lcd_write(0x28);
+"1184
+[e ( _lcd_write (1 -> -> 40 `i `uc ]
+[; ;eeprom_i2c.c: 1185: lcd_write(0xC);
+"1185
+[e ( _lcd_write (1 -> -> 12 `i `uc ]
+[; ;eeprom_i2c.c: 1186: lcd_clear();
+"1186
+[e ( _lcd_clear ..  ]
+[; ;eeprom_i2c.c: 1187: lcd_write(0x06);
+"1187
+[e ( _lcd_write (1 -> -> 6 `i `uc ]
+[; ;eeprom_i2c.c: 1189: TRISC7=1;
+"1189
+[e = _TRISC7 -> -> 1 `i `b ]
+[; ;eeprom_i2c.c: 1190: TRISC6=0;
+"1190
+[e = _TRISC6 -> -> 0 `i `b ]
+[; ;eeprom_i2c.c: 1191: OSCCON=0x70;
+"1191
+[e = _OSCCON -> -> 112 `i `uc ]
+[; ;eeprom_i2c.c: 1192: SPBRG=12;
+"1192
+[e = _SPBRG -> -> 12 `i `uc ]
+[; ;eeprom_i2c.c: 1193: RCSTA=0x90;
+"1193
+[e = _RCSTA -> -> 144 `i `uc ]
+[; ;eeprom_i2c.c: 1194: TXSTA=0x20;
+"1194
+[e = _TXSTA -> -> 32 `i `uc ]
+[; ;eeprom_i2c.c: 1195: BAUDCTL=0x00;
+"1195
+[e = _BAUDCTL -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 1196: pause(500);
+"1196
+[e ( _pause (1 -> -> -> 500 `i `l `ul ]
+"1199
+[v _char_recibido `uc  1 a ]
+"1200
+[v _char_pwm `uc  1 a ]
+"1201
+[v _buffer `uc  -> 15 `i a ]
+[; ;eeprom_i2c.c: 1199: char char_recibido;
+[; ;eeprom_i2c.c: 1200: char char_pwm;
+[; ;eeprom_i2c.c: 1201: char buffer[15];
+[; ;eeprom_i2c.c: 1204: PORTA=0x01;
+"1204
+[e = _PORTA -> -> 1 `i `uc ]
+[; ;eeprom_i2c.c: 1205: *pa=0xFF;
+"1205
+[e = *U _pa -> -> 255 `i `uc ]
+[; ;eeprom_i2c.c: 1207: putch(0x0D);
+"1207
+[e ( _putch (1 -> -> 13 `i `uc ]
+[; ;eeprom_i2c.c: 1208: putch(0x0A);
+"1208
+[e ( _putch (1 -> -> 10 `i `uc ]
+[; ;eeprom_i2c.c: 1210: for(int i=97; i<123; i++){
+"1210
+{
+[v _i `i  1 a ]
+[e = _i -> 97 `i ]
+[e $ < _i -> 123 `i 326  ]
+[e $U 327  ]
+[e :U 326 ]
+{
+[; ;eeprom_i2c.c: 1211: putch(i);
+"1211
+[e ( _putch (1 -> _i `uc ]
+[; ;eeprom_i2c.c: 1212: pause(20);
+"1212
+[e ( _pause (1 -> -> -> 20 `i `l `ul ]
+"1213
+}
+"1210
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 123 `i 326  ]
+[e :U 327 ]
+"1213
+}
+[; ;eeprom_i2c.c: 1213: }
+[; ;eeprom_i2c.c: 1214: putch(0x0D);
+"1214
+[e ( _putch (1 -> -> 13 `i `uc ]
+[; ;eeprom_i2c.c: 1215: putch(0x0A);
+"1215
+[e ( _putch (1 -> -> 10 `i `uc ]
+"1219
+[v _cnt `uc  1 a ]
+[; ;eeprom_i2c.c: 1219: unsigned char cnt=0;
+[e = _cnt -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 1221: while(cnt<=255)
+"1221
+[e $U 329  ]
+[e :U 330 ]
+[; ;eeprom_i2c.c: 1222: {
+"1222
+{
+[; ;eeprom_i2c.c: 1223: PORTB=cnt;
+"1223
+[e = _PORTB _cnt ]
+[; ;eeprom_i2c.c: 1224: I2C_EEOUT(cnt,10-cnt);
+"1224
+[e ( _I2C_EEOUT (2 , _cnt -> - -> 10 `i -> _cnt `i `uc ]
+[; ;eeprom_i2c.c: 1225: cnt=cnt+1;
+"1225
+[e = _cnt -> + -> _cnt `i -> 1 `i `uc ]
+[; ;eeprom_i2c.c: 1226: pause(255);
+"1226
+[e ( _pause (1 -> -> -> 255 `i `l `ul ]
+"1227
+}
+[e :U 329 ]
+"1221
+[e $ <= -> _cnt `i -> 255 `i 330  ]
+[e :U 331 ]
+[; ;eeprom_i2c.c: 1227: }
+[; ;eeprom_i2c.c: 1229: cnt=0;
+"1229
+[e = _cnt -> -> 0 `i `uc ]
+[; ;eeprom_i2c.c: 1231: while(cnt<=255)
+"1231
+[e $U 332  ]
+[e :U 333 ]
+[; ;eeprom_i2c.c: 1232: {
+"1232
+{
+[; ;eeprom_i2c.c: 1233: PORTB =I2C_EEIN(cnt);
+"1233
+[e = _PORTB ( _I2C_EEIN (1 _cnt ]
+[; ;eeprom_i2c.c: 1234: pause (100);
+"1234
+[e ( _pause (1 -> -> -> 100 `i `l `ul ]
+[; ;eeprom_i2c.c: 1236: sprintf(buffer,"Valor es:%i  ", cnt);
+"1236
+[e ( _sprintf (1 , (. , &U _buffer :s 1C -> _cnt `i ]
+[; ;eeprom_i2c.c: 1238: for (char x = 0; x<17; x++)
+"1238
+{
+[v _x `uc  1 a ]
+[e = _x -> -> 0 `i `uc ]
+[e $ < -> _x `i -> 17 `i 335  ]
+[e $U 336  ]
+"1239
+[e :U 335 ]
+[; ;eeprom_i2c.c: 1239: {
+{
+[; ;eeprom_i2c.c: 1240: putch (buffer[x]);
+"1240
+[e ( _putch (1 *U + &U _buffer * -> _x `ux -> -> # *U &U _buffer `ui `ux ]
+"1241
+}
+"1238
+[e ++ _x -> -> 1 `i `uc ]
+[e $ < -> _x `i -> 17 `i 335  ]
+[e :U 336 ]
+"1241
+}
+[; ;eeprom_i2c.c: 1241: }
+[; ;eeprom_i2c.c: 1242: pause(200);
+"1242
+[e ( _pause (1 -> -> -> 200 `i `l `ul ]
+[; ;eeprom_i2c.c: 1244: putch(0x0D);
+"1244
+[e ( _putch (1 -> -> 13 `i `uc ]
+[; ;eeprom_i2c.c: 1245: putch(0x0A);
+"1245
+[e ( _putch (1 -> -> 10 `i `uc ]
+[; ;eeprom_i2c.c: 1247: cnt=cnt + 1;
+"1247
+[e = _cnt -> + -> _cnt `i -> 1 `i `uc ]
+"1248
+}
+[e :U 332 ]
+"1231
+[e $ <= -> _cnt `i -> 255 `i 333  ]
+[e :U 334 ]
+[; ;eeprom_i2c.c: 1248: }
+[; ;eeprom_i2c.c: 1249: }
+"1249
+[e :UE 325 ]
+}
+[a 1C 86 97 108 111 114 32 101 115 58 37 105 32 32 0 ]
+

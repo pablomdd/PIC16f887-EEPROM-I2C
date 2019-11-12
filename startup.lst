@@ -1,7 +1,7 @@
 
 
 HI-TECH Software PIC Macro Assembler V9.82 build 9453 
-                                                                                                           Mon Nov 11 19:13:54 2019
+                                                                                                           Mon Nov 11 19:44:21 2019
 
 
      1                           
@@ -9,7 +9,7 @@ HI-TECH Software PIC Macro Assembler V9.82 build 9453
      3                           	; Copyright (C) 1984-2011 HI-TECH Software
      4                           	;Serial no. HCPICP-654321
      5                           
-     6                           	; Auto-generated runtime startup code for prelink stage.
+     6                           	; Auto-generated runtime startup code for final link stage.
      7                           
      8                           	;
      9                           	; Compiler options:
@@ -69,12 +69,12 @@ HI-TECH Software PIC Macro Assembler V9.82 build 9453
     63  0000                     _exit
     64                           	psect	end_init
     65                           	global start_initialization
-    66  0000  120A  118A  2FBC   	ljmp start_initialization	;jump to C runtime clear & initialization
+    66  0000  120A  118A  2D14   	ljmp start_initialization	;jump to C runtime clear & initialization
 
 
 HI-TECH Software PICC Macro Assembler V9.82 build 9453 
-Symbol Table                                                                                               Mon Nov 11 19:13:54 2019
+Symbol Table                                                                                               Mon Nov 11 19:44:21 2019
 
-               _main 07C0                 _exit 0000                 start 0000  start_initialization 07BC  
+               _main 06D4                 _exit 0000                 start 0000  start_initialization 0514  
            intlevel0 0000             intlevel1 0000             intlevel2 0000             intlevel3 0000  
            intlevel4 0000             intlevel5 0000             reset_vec 0000  

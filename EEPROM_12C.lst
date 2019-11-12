@@ -1,311 +1,2389 @@
 
 
 HI-TECH Software PIC PRO Macro Assembler V9.82 build 9453 
-                                                                                               Mon Nov 11 19:13:54 2019
+                                                                                               Mon Nov 11 19:44:21 2019
 
 HI-TECH Software Omniscient Code Generator (PRO mode) build 9453
      1                           	processor	16F887
      2                           	opt	pw 120
      3                           	opt	pm
      4                           	psect	config,global,class=CONFIG,delta=2
-     5                           	psect	maintext,global,class=CODE,delta=2
+     5                           	psect	strings,global,class=STRING,delta=2
      6                           	psect	cinit,global,class=CODE,delta=2
      7                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
-     8                           	psect	pa_nodes,global,class=CODE,delta=2
-     9                           	dabs	1,0x7E,2
-    10  000A                     	;#
-    11                           
-    12                           	psect	config
-    13  2007  E0D4               	dw	57556	;#
-    14  2008  FFFF               	dw	65535	;#
-    15                           
-    16                           	psect	maintext
-    17  07C0                     __pmaintext:	
-    18  0006                     _PORTB	set	6
-    19  0086                     _TRISB	set	134
+     8                           	psect	cstackBANK0,global,class=BANK0,space=1,delta=1
+     9                           	psect	maintext,global,class=CODE,delta=2
+    10                           	psect	text400,local,class=CODE,delta=2
+    11                           	psect	text401,local,class=CODE,delta=2
+    12                           	psect	text407,local,class=CODE,delta=2
+    13                           	psect	text412,local,class=CODE,delta=2
+    14                           	psect	text413,local,class=CODE,delta=2
+    15                           	psect	text416,local,class=CODE,delta=2
+    16                           	psect	text417,local,class=CODE,delta=2
+    17                           	psect	pa_nodes,global,class=CODE,delta=2
+    18                           	dabs	1,0x7E,2
+    19  000A                     	;#
     20                           
-    21 ;;Data sizes: Strings 0, constant 0, data 0, bss 0, persistent 0 stack 0
-    22 ;;Auto spaces:   Size  Autos    Used
-    23 ;; COMMON          14      5       5
-    24 ;; BANK0           80      0       0
-    25 ;; BANK1           80      0       0
-    26 ;; BANK3           96      0       0
-    27 ;; BANK2           96      0       0
-    28 ;;
-    29 ;; Pointer list with targets:
-    30 ;;
-    31 ;; Critical Paths under _main in COMMON
-    32 ;;
-    33 ;;   _main->_pause
-    34 ;;
-    35 ;; Critical Paths under _main in BANK0
-    36 ;;
-    37 ;;   None.
-    38 ;;
-    39 ;; Critical Paths under _main in BANK1
-    40 ;;
-    41 ;;   None.
-    42 ;;
-    43 ;; Critical Paths under _main in BANK3
-    44 ;;
-    45 ;;   None.
-    46 ;;
-    47 ;; Critical Paths under _main in BANK2
-    48 ;;
-    49 ;;   None.
-    50 ;;
-    51 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
-    52 ;;
-    53 ;;
-    54 ;;Call Graph Tables:
-    55 ;;
-    56 ;; ---------------------------------------------------------------------------------
-    57 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
-    58 ;; ---------------------------------------------------------------------------------
-    59 ;; (0) _main                                                 1     1      0      60
-    60 ;;                                              4 COMMON     1     1      0
-    61 ;;                         _init_micro
-    62 ;;                           _i2c_init
-    63 ;;                          _I2C_EEOUT
-    64 ;;                              _pause
-    65 ;;                           _I2C_EEIN
-    66 ;; ---------------------------------------------------------------------------------
-    67 ;; (1) _I2C_EEIN                                             0     0      0       0
-    68 ;; ---------------------------------------------------------------------------------
-    69 ;; (1) _pause                                                4     0      4       0
-    70 ;;                                              0 COMMON     4     0      4
-    71 ;; ---------------------------------------------------------------------------------
-    72 ;; (1) _I2C_EEOUT                                            1     0      1       0
-    73 ;;                                              0 COMMON     1     0      1
-    74 ;; ---------------------------------------------------------------------------------
-    75 ;; (1) _i2c_init                                             0     0      0       0
-    76 ;; ---------------------------------------------------------------------------------
-    77 ;; (1) _init_micro                                           0     0      0       0
-    78 ;; ---------------------------------------------------------------------------------
-    79 ;; Estimated maximum stack depth 1
-    80 ;; ---------------------------------------------------------------------------------
-    81 ;; Call Graph Graphs:
-    82 ;; _main (ROOT)
-    83 ;;   _init_micro
-    84 ;;   _i2c_init
-    85 ;;   _I2C_EEOUT
-    86 ;;   _pause
-    87 ;;   _I2C_EEIN
-    88 ;;
-    89 ;; Address spaces:
-    90 ;;Name               Size   Autos  Total    Cost      Usage
-    91 ;;BITCOMMON            E      0       0       0        0.0%
-    92 ;;EEDATA             100      0       0       0        0.0%
-    93 ;;NULL                 0      0       0       0        0.0%
-    94 ;;CODE                 0      0       0       0        0.0%
-    95 ;;COMMON               E      5       5       1       35.7%
-    96 ;;BITSFR0              0      0       0       1        0.0%
-    97 ;;SFR0                 0      0       0       1        0.0%
-    98 ;;BITSFR1              0      0       0       2        0.0%
-    99 ;;SFR1                 0      0       0       2        0.0%
-   100 ;;STACK                0      0       1       2        0.0%
-   101 ;;ABS                  0      0       0       3        0.0%
-   102 ;;BITBANK0            50      0       0       4        0.0%
-   103 ;;BITSFR3              0      0       0       4        0.0%
-   104 ;;SFR3                 0      0       0       4        0.0%
-   105 ;;BANK0               50      0       0       5        0.0%
-   106 ;;BITSFR2              0      0       0       5        0.0%
-   107 ;;SFR2                 0      0       0       5        0.0%
-   108 ;;BITBANK1            50      0       0       6        0.0%
-   109 ;;BANK1               50      0       0       7        0.0%
-   110 ;;BITBANK3            60      0       0       8        0.0%
-   111 ;;BANK3               60      0       0       9        0.0%
-   112 ;;BITBANK2            60      0       0      10        0.0%
-   113 ;;BANK2               60      0       0      11        0.0%
-   114 ;;DATA                 0      0       0      12        0.0%
-   115 ;; *************** function _main *****************
-   116 ;; Defined at:
-   117 ;;		line 29 in file "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
-   118 ;; Parameters:    Size  Location     Type
-   119 ;;		None
-   120 ;; Auto vars:     Size  Location     Type
-   121 ;;  cnt             1    4[COMMON] unsigned char 
-   122 ;; Return value:  Size  Location     Type
-   123 ;;		None               void
-   124 ;; Registers used:
-   125 ;;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, status,2, status,0, btemp+1, pclath, cstack
-   126 ;; Tracked objects:
-   127 ;;		On entry : 17F/0
-   128 ;;		On exit  : 0/0
-   129 ;;		Unchanged: 0/0
-   130 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
-   131 ;;      Params:         0       0       0       0       0
-   132 ;;      Locals:         1       0       0       0       0
-   133 ;;      Temps:          0       0       0       0       0
-   134 ;;      Totals:         1       0       0       0       0
-   135 ;;Total ram usage:        1 bytes
-   136 ;; Hardware stack levels required when called:    1
-   137 ;; This function calls:
-   138 ;;		_init_micro
-   139 ;;		_i2c_init
-   140 ;;		_I2C_EEOUT
-   141 ;;		_pause
-   142 ;;		_I2C_EEIN
-   143 ;; This function is called by:
-   144 ;;		Startup code after reset
-   145 ;; This function uses a non-reentrant model
-   146 ;;
-   147  07C0                     _main:	
-   148                           
-   149                           ;eeprom_i2c.c: 30: init_micro();
-   150                           
-   151                           ; Regs used in _main: [allreg]
-   152  07C0  120A  118A  2000   	fcall	_init_micro
-      +       120A  118A         
-   153                           
-   154                           ;eeprom_i2c.c: 31: i2c_init();
-   155  07C5  120A  118A  2000   	fcall	_i2c_init
-      +       120A  118A         
-   156                           
-   157                           ;eeprom_i2c.c: 32: PORTB=0x00;
-   158  07CA  1283               	bcf	3,5	;RP0=0, select bank0
-   159  07CB  1303               	bcf	3,6	;RP1=0, select bank0
-   160  07CC  0186               	clrf	6	;volatile
+    21                           	psect	config
+    22  2007  E0D4               	dw	57556	;#
+    23  2008  FFFF               	dw	65535	;#
+    24                           
+    25                           	psect	strings
+    26  0003                     __pstrings:	
+    27  0003                     stringtab:	
+    28                           ;	global	stringdir,stringtab,__stringbase
+    29                           
+    30  0003                     stringcode:	
+    31                           ;	String table - string pointers are 1 byte each
+    32                           
+    33  0003                     stringdir:	
+    34  0003  3000               	movlw	high stringdir
+    35  0004  008A               	movwf	10
+    36  0005  0804               	movf	4,w
+    37  0006  0A84               	incf	4,f
+    38  0007  0782               	addwf	2,f
+    39  0008                     __stringbase:	
+    40  0008  3400               	retlw	0
+    41  0009                     _dpowers:	
+    42  0009  3401               	retlw	1
+    43  000A  3400               	retlw	0
+    44  000B  340A               	retlw	10
+    45  000C  3400               	retlw	0
+    46  000D  3464               	retlw	100
+    47  000E  3400               	retlw	0
+    48  000F  34E8               	retlw	232
+    49  0010  3403               	retlw	3
+    50  0011  3410               	retlw	16
+    51  0012  3427               	retlw	39
+    52  000B                     _INTCON	set	11
+    53  0006                     _PORTB	set	6
+    54  0008                     _PORTD	set	8
+    55  0018                     _RCSTA	set	24
+    56  0013                     _SSPBUF	set	19
+    57  0014                     _SSPCON	set	20
+    58  0001                     _TMR0	set	1
+    59  0019                     _TXREG	set	25
+    60  006B                     _BCLIF	set	107
+    61  002E                     _RA6	set	46
+    62  002F                     _RA7	set	47
+    63  0049                     _RE1	set	73
+    64  0063                     _SSPIF	set	99
+    65  005A                     _T0IF	set	90
+    66  0064                     _TXIF	set	100
+    67  0081                     _OPTION_REG	set	129
+    68  008F                     _OSCCON	set	143
+    69  0099                     _SPBRG	set	153
+    70  0093                     _SSPADD	set	147
+    71  0091                     _SSPCON2	set	145
+    72  0085                     _TRISA	set	133
+    73  0086                     _TRISB	set	134
+    74  0088                     _TRISD	set	136
+    75  0098                     _TXSTA	set	152
+    76  048D                     _ACKDT	set	1165
+    77  048C                     _ACKEN	set	1164
+    78  048E                     _ACKSTAT	set	1166
+    79  04A6                     _CKE	set	1190
+    80  048A                     _PEN	set	1162
+    81  048B                     _RCEN	set	1163
+    82  0489                     _RSEN	set	1161
+    83  04A2                     _R_W	set	1186
+    84  0488                     _SEN	set	1160
+    85  04A7                     _SMP	set	1191
+    86  043B                     _TRISC3	set	1083
+    87  043C                     _TRISC4	set	1084
+    88  043E                     _TRISC6	set	1086
+    89  043F                     _TRISC7	set	1087
+    90  0107                     _CM1CON0	set	263
+    91  0108                     _CM2CON0	set	264
+    92  0188                     _ANSEL	set	392
+    93  0189                     _ANSELH	set	393
+    94  0187                     _BAUDCTL	set	391
+    95  0005                     _PORTA	set	5
+    96  0013                     STR_1:	
+    97  0013  3456               	retlw	86	;'V'
+    98  0014  3461               	retlw	97	;'a'
+    99  0015  346C               	retlw	108	;'l'
+   100  0016  346F               	retlw	111	;'o'
+   101  0017  3472               	retlw	114	;'r'
+   102  0018  3420               	retlw	32	;' '
+   103  0019  3465               	retlw	101	;'e'
+   104  001A  3473               	retlw	115	;'s'
+   105  001B  343A               	retlw	58	;':'
+   106  001C  3425               	retlw	37	;'%'
+   107  001D  3469               	retlw	105	;'i'
+   108  001E  3420               	retlw	32	;' '
+   109  001F  3420               	retlw	32	;' '
+   110  0020  3400               	retlw	0
+   111                           
+   112                           	psect	cinit
+   113  0514                     start_initialization:	
+   114  0514                     end_of_initialization:	
+   115                           ;End of C runtime variable initialization code
+   116                           
+   117  0514  0183               	clrf	3
+   118  0515  120A  118A  2ED4   	ljmp	_main	;jump to C main() function
+   119                           
+   120                           	psect	cstackCOMMON
+   121  0070                     __pcstackCOMMON:	
+   122  0070                     ?_init_micro:	
+   123  0070                     ??_init_micro:	
+   124                           ; 0 bytes @ 0x0
+   125                           
+   126  0070                     ?_msecbase:	
+   127                           ; 0 bytes @ 0x0
+   128                           
+   129  0070                     ??_msecbase:	
+   130                           ; 0 bytes @ 0x0
+   131                           
+   132  0070                     ?_pause:	
+   133                           ; 0 bytes @ 0x0
+   134                           
+   135  0070                     ?_lcd_write:	
+   136                           ; 0 bytes @ 0x0
+   137                           
+   138  0070                     ??_lcd_write:	
+   139                           ; 0 bytes @ 0x0
+   140                           
+   141  0070                     ?_lcd_clear:	
+   142                           ; 0 bytes @ 0x0
+   143                           
+   144  0070                     ?_putch:	
+   145                           ; 0 bytes @ 0x0
+   146                           
+   147  0070                     ??_putch:	
+   148                           ; 0 bytes @ 0x0
+   149                           
+   150  0070                     ?_i2c_init:	
+   151                           ; 0 bytes @ 0x0
+   152                           
+   153  0070                     ??_i2c_init:	
+   154                           ; 0 bytes @ 0x0
+   155                           
+   156  0070                     ?_i2c_waitForIdle:	
+   157                           ; 0 bytes @ 0x0
+   158                           
+   159  0070                     ??_i2c_waitForIdle:	
+   160                           ; 0 bytes @ 0x0
    161                           
-   162                           ;eeprom_i2c.c: 33: TRISB=0x00;
-   163  07CD  1683               	bsf	3,5	;RP0=1, select bank1
-   164  07CE  0186               	clrf	6	;volatile
-   165                           
-   166                           ;eeprom_i2c.c: 35: unsigned char cnt=0;
-   167  07CF  01F4               	clrf	main@cnt
-   168  07D0                     l2402:	
-   169                           ;eeprom_i2c.c: 37: while(cnt<=255)
+   162  0070                     ?_i2c_start:	
+   163                           ; 0 bytes @ 0x0
+   164                           
+   165  0070                     ?_i2c_repStart:	
+   166                           ; 0 bytes @ 0x0
+   167                           
+   168  0070                     ?_i2c_stop:	
+   169                           ; 0 bytes @ 0x0
    170                           
-   171                           
-   172                           ;eeprom_i2c.c: 38: {
-   173                           ;eeprom_i2c.c: 39: PORTB=cnt;
-   174  07D0  0874               	movf	main@cnt,w
-   175  07D1  1283               	bcf	3,5	;RP0=0, select bank0
-   176  07D2  1303               	bcf	3,6	;RP1=0, select bank0
-   177  07D3  0086               	movwf	6	;volatile
-   178                           
-   179                           ;eeprom_i2c.c: 40: I2C_EEOUT(cnt,10-cnt);
-   180  07D4  0874               	movf	main@cnt,w
-   181  07D5  3C0A               	sublw	10
-   182  07D6  00F0               	movwf	?_I2C_EEOUT
-   183  07D7  0874               	movf	main@cnt,w
-   184  07D8  120A  118A  2000   	fcall	_I2C_EEOUT
-      +       120A  118A         
-   185  07DD  30FF               	movlw	255
-   186                           
-   187                           ;eeprom_i2c.c: 41: cnt=cnt+1;
-   188  07DE  0AF4               	incf	main@cnt,f
-   189                           
-   190                           ;eeprom_i2c.c: 42: pause(255);
-   191  07DF  00F0               	movwf	?_pause
-   192  07E0  01F1               	clrf	?_pause+1
-   193  07E1  01F2               	clrf	?_pause+2
-   194  07E2  01F3               	clrf	?_pause+3
-   195  07E3  120A  118A  2000   	fcall	_pause
-      +       120A  118A         
-   196  07E8  2FD0               	goto	l2402
-   197  07E9                     l2412:	
-   198                           
-   199                           ;eeprom_i2c.c: 48: {
-   200                           ;eeprom_i2c.c: 49: PORTB =I2C_EEIN(cnt);
-   201  07E9  0874               	movf	main@cnt,w
-   202  07EA  120A  118A  2000   	fcall	_I2C_EEIN
-      +       120A  118A         
-   203  07EF  1283               	bcf	3,5	;RP0=0, select bank0
-   204  07F0  1303               	bcf	3,6	;RP1=0, select bank0
-   205  07F1  0086               	movwf	6	;volatile
+   171  0070                     ?_main:	
+   172                           ; 0 bytes @ 0x0
+   173                           
+   174  0070                     ?_i2c_write:	
+   175                           ; 0 bytes @ 0x0
+   176                           
+   177  0070                     ?_I2C_EEIN:	
+   178                           ; 1 bytes @ 0x0
+   179                           
+   180  0070                     ?___lwdiv:	
+   181                           ; 1 bytes @ 0x0
+   182                           
+   183  0070                     lcd_write@c:	
+   184                           ; 2 bytes @ 0x0
+   185                           
+   186  0070                     putch@byte:	
+   187                           ; 1 bytes @ 0x0
+   188                           
+   189  0070                     ___lwdiv@divisor:	
+   190                           ; 1 bytes @ 0x0
+   191                           
+   192  0070                     pause@usvalue:	
+   193                           ; 2 bytes @ 0x0
+   194                           
+   195                           
+   196                           ; 4 bytes @ 0x0
+   197  0070                     	ds	1
+   198  0071                     lcd_write@temp:	
+   199                           
+   200                           ; 1 bytes @ 0x1
+   201  0071                     	ds	1
+   202  0072                     ??_lcd_clear:	
+   203  0072                     ___lwdiv@dividend:	
+   204                           ; 0 bytes @ 0x2
+   205                           
    206                           
-   207                           ;eeprom_i2c.c: 50: pause (500);
-   208  07F2  3000               	movlw	0
-   209  07F3  00F3               	movwf	?_pause+3
-   210  07F4  00F2               	movwf	?_pause+2
-   211  07F5  3001               	movlw	1
-   212  07F6  00F1               	movwf	?_pause+1
-   213  07F7  30F4               	movlw	244
-   214  07F8  00F0               	movwf	?_pause
-   215  07F9  120A  118A  2000   	fcall	_pause
-      +       120A  118A         
-   216                           
-   217                           ;eeprom_i2c.c: 51: cnt=cnt + 1;
-   218  07FE  0AF4               	incf	main@cnt,f
-   219  07FF  2FE9               	goto	l2412
-   220  0800                     __end_of_main:	
-   221                           
-   222 ;; =============== function _main ends ============
-   223  007E                     btemp	set	126	;btemp
-   224  007E                     wtemp0	set	126
+   207                           ; 2 bytes @ 0x2
+   208  0072                     	ds	2
+   209  0074                     ??_pause:	
+   210  0074                     ??___lwdiv:	
+   211                           ; 0 bytes @ 0x4
+   212                           
+   213  0074                     ___lwdiv@quotient:	
+   214                           ; 0 bytes @ 0x4
+   215                           
+   216  0074                     pause@x:	
+   217                           ; 2 bytes @ 0x4
+   218                           
+   219                           
+   220                           ; 4 bytes @ 0x4
+   221  0074                     	ds	1
+   222  0075                     ??_i2c_start:	
+   223  0075                     ??_i2c_repStart:	
+   224                           ; 0 bytes @ 0x5
    225                           
-   226                           	psect	cinit
-   227  07BC                     start_initialization:	
-   228  07BC                     end_of_initialization:	
-   229                           ;End of C runtime variable initialization code
-   230                           
-   231  07BC  0183               	clrf	3
-   232  07BD  120A  118A  2FC0   	ljmp	_main	;jump to C main() function
-   233                           
-   234                           	psect	cstackCOMMON
-   235  0070                     __pcstackCOMMON:	
-   236  0070                     ?_init_micro:	
-   237  0070                     ??_init_micro:	
-   238                           ; 0 bytes @ 0x0
-   239                           
-   240  0070                     ?_i2c_init:	
-   241                           ; 0 bytes @ 0x0
+   226  0075                     ??_i2c_stop:	
+   227                           ; 0 bytes @ 0x5
+   228                           
+   229  0075                     ??_i2c_write:	
+   230                           ; 0 bytes @ 0x5
+   231                           
+   232  0075                     ?_i2c_read:	
+   233                           ; 0 bytes @ 0x5
+   234                           
+   235  0075                     i2c_write@i2cWriteData:	
+   236                           ; 2 bytes @ 0x5
+   237                           
+   238                           
+   239                           ; 1 bytes @ 0x5
+   240  0075                     	ds	1
+   241  0076                     ___lwdiv@counter:	
    242                           
-   243  0070                     ??_i2c_init:	
-   244                           ; 0 bytes @ 0x0
-   245                           
-   246  0070                     ?_I2C_EEOUT:	
-   247                           ; 0 bytes @ 0x0
+   243                           ; 1 bytes @ 0x6
+   244  0076                     	ds	1
+   245  0077                     ??_i2c_read:	
+   246  0077                     ?___lwmod:	
+   247                           ; 0 bytes @ 0x7
    248                           
-   249  0070                     ?_pause:	
-   250                           ; 0 bytes @ 0x0
+   249  0077                     i2c_read@ack:	
+   250                           ; 2 bytes @ 0x7
    251                           
-   252  0070                     ??_I2C_EEIN:	
-   253                           ; 0 bytes @ 0x0
+   252  0077                     ___lwmod@divisor:	
+   253                           ; 1 bytes @ 0x7
    254                           
-   255  0070                     ?_main:	
-   256                           ; 0 bytes @ 0x0
-   257                           
-   258  0070                     ?_I2C_EEIN:	
-   259                           ; 0 bytes @ 0x0
-   260                           
-   261  0070                     _I2C_EEOUT$1:	
-   262                           ; 1 bytes @ 0x0
-   263                           
-   264  0070                     _pause$0:	
-   265                           ; 1 bytes @ 0x0
-   266                           
-   267                           
-   268                           ; 4 bytes @ 0x0
-   269  0070                     	ds	1
-   270  0071                     ??_I2C_EEOUT:	
+   255                           
+   256                           ; 2 bytes @ 0x7
+   257  0077                     	ds	1
+   258  0078                     ?_I2C_EEOUT:	
+   259  0078                     i2c_read@i2cReadData:	
+   260                           ; 0 bytes @ 0x8
+   261                           
+   262  0078                     I2C_EEOUT@data:	
+   263                           ; 1 bytes @ 0x8
+   264                           
+   265                           
+   266                           ; 1 bytes @ 0x8
+   267  0078                     	ds	1
+   268  0079                     ??_I2C_EEOUT:	
+   269  0079                     ??_I2C_EEIN:	
+   270                           ; 0 bytes @ 0x9
    271                           
-   272                           ; 0 bytes @ 0x1
-   273  0071                     	ds	3
-   274  0074                     ??_pause:	
-   275  0074                     ??_main:	
-   276                           ; 0 bytes @ 0x4
+   272  0079                     I2C_EEOUT@address:	
+   273                           ; 0 bytes @ 0x9
+   274                           
+   275  0079                     I2C_EEIN@address:	
+   276                           ; 1 bytes @ 0x9
    277                           
-   278  0074                     main@cnt:	
-   279                           ; 0 bytes @ 0x4
+   278  0079                     ___lwmod@dividend:	
+   279                           ; 1 bytes @ 0x9
    280                           
    281                           
-   282                           ; 1 bytes @ 0x4
-   283  0074                     	ds	1
+   282                           ; 2 bytes @ 0x9
+   283  0079                     	ds	1
+   284  007A                     I2C_EEIN@data:	
+   285                           
+   286                           ; 1 bytes @ 0xA
+   287  007A                     	ds	1
+   288  007B                     ??___lwmod:	
+   289  007B                     ___lwmod@counter:	
+   290                           ; 0 bytes @ 0xB
+   291                           
+   292                           
+   293                           ; 1 bytes @ 0xB
+   294  007B                     	ds	1
+   295  007C                     ??_sprintf:	
+   296                           
+   297                           ; 0 bytes @ 0xC
+   298  007C                     	ds	2
+   299  007E                     ??_main:	
+   300                           
+   301                           	psect	cstackBANK0
+   302  0020                     __pcstackBANK0:	
+   303                           ; 0 bytes @ 0xE
+   304                           
+   305  0020                     ?_sprintf:	
+   306  0020                     sprintf@f:	
+   307                           ; 2 bytes @ 0x0
+   308                           
+   309                           
+   310                           ; 1 bytes @ 0x0
+   311  0020                     	ds	3
+   312  0023                     sprintf@ap:	
+   313                           
+   314                           ; 1 bytes @ 0x3
+   315  0023                     	ds	1
+   316  0024                     sprintf@flag:	
+   317                           
+   318                           ; 1 bytes @ 0x4
+   319  0024                     	ds	1
+   320  0025                     sprintf@prec:	
+   321                           
+   322                           ; 1 bytes @ 0x5
+   323  0025                     	ds	1
+   324  0026                     sprintf@_val:	
+   325                           
+   326                           ; 4 bytes @ 0x6
+   327  0026                     	ds	4
+   328  002A                     sprintf@sp:	
+   329                           
+   330                           ; 1 bytes @ 0xA
+   331  002A                     	ds	1
+   332  002B                     sprintf@c:	
+   333                           
+   334                           ; 1 bytes @ 0xB
+   335  002B                     	ds	1
+   336  002C                     main@buffer:	
+   337                           
+   338                           ; 15 bytes @ 0xC
+   339  002C                     	ds	15
+   340  003B                     main@i:	
+   341                           
+   342                           ; 2 bytes @ 0x1B
+   343  003B                     	ds	2
+   344  003D                     main@x:	
+   345                           
+   346                           ; 1 bytes @ 0x1D
+   347  003D                     	ds	1
+   348  003E                     main@cnt:	
+   349                           
+   350                           ; 1 bytes @ 0x1E
+   351  003E                     	ds	1
+   352                           
+   353                           	psect	maintext
+   354  06D4                     __pmaintext:	
+   355 ;;Data sizes: Strings 14, constant 10, data 0, bss 0, persistent 0 stack 0
+   356 ;;Auto spaces:   Size  Autos    Used
+   357 ;; COMMON          14     14      14
+   358 ;; BANK0           80     31      31
+   359 ;; BANK1           80      0       0
+   360 ;; BANK3           96      0       0
+   361 ;; BANK2           96      0       0
+   362 ;;
+   363 ;; Pointer list with targets:
+   364 ;; ?___lwdiv	unsigned int  size(1) Largest target is 0
+   365 ;;
+   366 ;; ?___lwmod	unsigned int  size(1) Largest target is 0
+   367 ;;
+   368 ;; ?_i2c_read	int  size(1) Largest target is 0
+   369 ;;
+   370 ;; sprintf@f	PTR const unsigned char  size(1) Largest target is 14
+   371 ;;		 -> STR_1(CODE[14]), 
+   372 ;;
+   373 ;; sprintf@sp	PTR unsigned char  size(1) Largest target is 15
+   374 ;;		 -> main@buffer(BANK0[15]), 
+   375 ;;
+   376 ;; ?_sprintf	int  size(1) Largest target is 0
+   377 ;;
+   378 ;; sprintf@ap	PTR void [1] size(1) Largest target is 2
+   379 ;;		 -> ?_sprintf(BANK0[2]), 
+   380 ;;
+   381 ;; S1907$_cp	PTR const unsigned char  size(1) Largest target is 0
+   382 ;;
+   383 ;; _val._str._cp	PTR const unsigned char  size(1) Largest target is 0
+   384 ;;
+   385 ;; pa	PTR unsigned char  size(1) Largest target is 1
+   386 ;;		 -> PORTA(BITSFR0[1]), 
+   387 ;;
+   388 ;;
+   389 ;; Critical Paths under _main in COMMON
+   390 ;;
+   391 ;;   _main->_sprintf
+   392 ;;   _I2C_EEIN->_i2c_read
+   393 ;;   _I2C_EEOUT->_pause
+   394 ;;   _sprintf->___lwmod
+   395 ;;   _i2c_write->_i2c_waitForIdle
+   396 ;;   _i2c_read->_i2c_waitForIdle
+   397 ;;   _i2c_stop->_i2c_waitForIdle
+   398 ;;   _i2c_repStart->_i2c_waitForIdle
+   399 ;;   _i2c_start->_i2c_waitForIdle
+   400 ;;   _lcd_clear->_lcd_write
+   401 ;;   ___lwmod->___lwdiv
+   402 ;;
+   403 ;; Critical Paths under _main in BANK0
+   404 ;;
+   405 ;;   _main->_sprintf
+   406 ;;
+   407 ;; Critical Paths under _main in BANK1
+   408 ;;
+   409 ;;   None.
+   410 ;;
+   411 ;; Critical Paths under _main in BANK3
+   412 ;;
+   413 ;;   None.
+   414 ;;
+   415 ;; Critical Paths under _main in BANK2
+   416 ;;
+   417 ;;   None.
+   418 ;;
+   419 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   420 ;;
+   421 ;;
+   422 ;;Call Graph Tables:
+   423 ;;
+   424 ;; ---------------------------------------------------------------------------------
+   425 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+   426 ;; ---------------------------------------------------------------------------------
+   427 ;; (0) _main                                                21    21      0    1577
+   428 ;;                                             12 BANK0     19    19      0
+   429 ;;                         _init_micro
+   430 ;;                           _i2c_init
+   431 ;;                              _pause
+   432 ;;                          _lcd_write
+   433 ;;                          _lcd_clear
+   434 ;;                              _putch
+   435 ;;                          _I2C_EEOUT
+   436 ;;                           _I2C_EEIN
+   437 ;;                            _sprintf
+   438 ;; ---------------------------------------------------------------------------------
+   439 ;; (1) _I2C_EEIN                                             2     2      0     112
+   440 ;;                                              9 COMMON     2     2      0
+   441 ;;                          _i2c_start
+   442 ;;                          _i2c_write
+   443 ;;                       _i2c_repStart
+   444 ;;                           _i2c_read
+   445 ;;                           _i2c_stop
+   446 ;; ---------------------------------------------------------------------------------
+   447 ;; (1) _I2C_EEOUT                                            2     1      1     112
+   448 ;;                                              8 COMMON     2     1      1
+   449 ;;                          _i2c_start
+   450 ;;                          _i2c_write
+   451 ;;                           _i2c_stop
+   452 ;;                              _pause
+   453 ;; ---------------------------------------------------------------------------------
+   454 ;; (1) _sprintf                                             14    11      3     798
+   455 ;;                                             12 COMMON     2     2      0
+   456 ;;                                              0 BANK0     12     9      3
+   457 ;;                            ___lwdiv
+   458 ;;                            ___lwmod
+   459 ;; ---------------------------------------------------------------------------------
+   460 ;; (2) _i2c_write                                            1     1      0      22
+   461 ;;                                              5 COMMON     1     1      0
+   462 ;;                    _i2c_waitForIdle
+   463 ;; ---------------------------------------------------------------------------------
+   464 ;; (2) _i2c_read                                             4     2      2      45
+   465 ;;                                              5 COMMON     4     2      2
+   466 ;;                    _i2c_waitForIdle
+   467 ;; ---------------------------------------------------------------------------------
+   468 ;; (2) _i2c_stop                                             0     0      0       0
+   469 ;;                    _i2c_waitForIdle
+   470 ;; ---------------------------------------------------------------------------------
+   471 ;; (2) _i2c_repStart                                         0     0      0       0
+   472 ;;                    _i2c_waitForIdle
+   473 ;; ---------------------------------------------------------------------------------
+   474 ;; (2) _i2c_start                                            0     0      0       0
+   475 ;;                    _i2c_waitForIdle
+   476 ;; ---------------------------------------------------------------------------------
+   477 ;; (1) _lcd_clear                                            0     0      0      92
+   478 ;;                          _lcd_write
+   479 ;; ---------------------------------------------------------------------------------
+   480 ;; (2) _pause                                                8     4      4      46
+   481 ;;                                              0 COMMON     8     4      4
+   482 ;;                           _msecbase
+   483 ;; ---------------------------------------------------------------------------------
+   484 ;; (2) ___lwmod                                              5     1      4     159
+   485 ;;                                              7 COMMON     5     1      4
+   486 ;;                            ___lwdiv (ARG)
+   487 ;; ---------------------------------------------------------------------------------
+   488 ;; (2) ___lwdiv                                              7     3      4     162
+   489 ;;                                              0 COMMON     7     3      4
+   490 ;; ---------------------------------------------------------------------------------
+   491 ;; (3) _i2c_waitForIdle                                      5     5      0       0
+   492 ;;                                              0 COMMON     5     5      0
+   493 ;; ---------------------------------------------------------------------------------
+   494 ;; (1) _i2c_init                                             0     0      0       0
+   495 ;; ---------------------------------------------------------------------------------
+   496 ;; (1) _putch                                                1     1      0      22
+   497 ;;                                              0 COMMON     1     1      0
+   498 ;; ---------------------------------------------------------------------------------
+   499 ;; (2) _lcd_write                                            2     2      0      92
+   500 ;;                                              0 COMMON     2     2      0
+   501 ;; ---------------------------------------------------------------------------------
+   502 ;; (3) _msecbase                                             0     0      0       0
+   503 ;; ---------------------------------------------------------------------------------
+   504 ;; (1) _init_micro                                           0     0      0       0
+   505 ;; ---------------------------------------------------------------------------------
+   506 ;; Estimated maximum stack depth 3
+   507 ;; ---------------------------------------------------------------------------------
+   508 ;; Call Graph Graphs:
+   509 ;; _main (ROOT)
+   510 ;;   _init_micro
+   511 ;;   _i2c_init
+   512 ;;   _pause
+   513 ;;     _msecbase
+   514 ;;   _lcd_write
+   515 ;;   _lcd_clear
+   516 ;;     _lcd_write
+   517 ;;   _putch
+   518 ;;   _I2C_EEOUT
+   519 ;;     _i2c_start
+   520 ;;       _i2c_waitForIdle
+   521 ;;     _i2c_write
+   522 ;;       _i2c_waitForIdle
+   523 ;;     _i2c_stop
+   524 ;;       _i2c_waitForIdle
+   525 ;;     _pause
+   526 ;;       _msecbase
+   527 ;;   _I2C_EEIN
+   528 ;;     _i2c_start
+   529 ;;       _i2c_waitForIdle
+   530 ;;     _i2c_write
+   531 ;;       _i2c_waitForIdle
+   532 ;;     _i2c_repStart
+   533 ;;       _i2c_waitForIdle
+   534 ;;     _i2c_read
+   535 ;;       _i2c_waitForIdle
+   536 ;;     _i2c_stop
+   537 ;;       _i2c_waitForIdle
+   538 ;;   _sprintf
+   539 ;;     ___lwdiv
+   540 ;;     ___lwmod
+   541 ;;       ___lwdiv (ARG)
+   542 ;;
+   543 ;; Address spaces:
+   544 ;;Name               Size   Autos  Total    Cost      Usage
+   545 ;;BITCOMMON            E      0       0       0        0.0%
+   546 ;;EEDATA             100      0       0       0        0.0%
+   547 ;;NULL                 0      0       0       0        0.0%
+   548 ;;CODE                 0      0       0       0        0.0%
+   549 ;;COMMON               E      E       E       1      100.0%
+   550 ;;BITSFR0              0      0       0       1        0.0%
+   551 ;;SFR0                 0      0       0       1        0.0%
+   552 ;;BITSFR1              0      0       0       2        0.0%
+   553 ;;SFR1                 0      0       0       2        0.0%
+   554 ;;STACK                0      0       3       2        0.0%
+   555 ;;ABS                  0      0       0       3        0.0%
+   556 ;;BITBANK0            50      0       0       4        0.0%
+   557 ;;BITSFR3              0      0       0       4        0.0%
+   558 ;;SFR3                 0      0       0       4        0.0%
+   559 ;;BANK0               50     1F      1F       5       38.8%
+   560 ;;BITSFR2              0      0       0       5        0.0%
+   561 ;;SFR2                 0      0       0       5        0.0%
+   562 ;;BITBANK1            50      0       0       6        0.0%
+   563 ;;BANK1               50      0       0       7        0.0%
+   564 ;;BITBANK3            60      0       0       8        0.0%
+   565 ;;BANK3               60      0       0       9        0.0%
+   566 ;;BITBANK2            60      0       0      10        0.0%
+   567 ;;BANK2               60      0       0      11        0.0%
+   568 ;;DATA                 0      0       0      12        0.0%
+   569                           
+   570                           
+   571 ;; *************** function _main *****************
+   572 ;; Defined at:
+   573 ;;		line 1146 in file "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
+   574 ;; Parameters:    Size  Location     Type
+   575 ;;		None
+   576 ;; Auto vars:     Size  Location     Type
+   577 ;;  x               1   29[BANK0 ] unsigned char 
+   578 ;;  i               2   27[BANK0 ] int 
+   579 ;;  buffer         15   12[BANK0 ] unsigned char [15]
+   580 ;;  cnt             1   30[BANK0 ] unsigned char 
+   581 ;;  char_pwm        1    0        unsigned char 
+   582 ;;  char_recibid    1    0        unsigned char 
+   583 ;; Return value:  Size  Location     Type
+   584 ;;		None               void
+   585 ;; Registers used:
+   586 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+   587 ;; Tracked objects:
+   588 ;;		On entry : 17F/0
+   589 ;;		On exit  : 17F/0
+   590 ;;		Unchanged: FFE00/0
+   591 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   592 ;;      Params:         0       0       0       0       0
+   593 ;;      Locals:         0      19       0       0       0
+   594 ;;      Temps:          0       0       0       0       0
+   595 ;;      Totals:         0      19       0       0       0
+   596 ;;Total ram usage:       19 bytes
+   597 ;; Hardware stack levels required when called:    3
+   598 ;; This function calls:
+   599 ;;		_init_micro
+   600 ;;		_i2c_init
+   601 ;;		_pause
+   602 ;;		_lcd_write
+   603 ;;		_lcd_clear
+   604 ;;		_putch
+   605 ;;		_I2C_EEOUT
+   606 ;;		_I2C_EEIN
+   607 ;;		_sprintf
+   608 ;; This function is called by:
+   609 ;;		Startup code after reset
+   610 ;; This function uses a non-reentrant model
+   611 ;;
+   612  06D4                     _main:	
+   613                           
+   614                           ;eeprom_i2c.c: 1148: init_micro();
+   615                           
+   616                           ; Regs used in _main: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+   617  06D4  120A  118A  2520   	fcall	_init_micro
+      +       120A  118A         
+   618                           
+   619                           ;eeprom_i2c.c: 1149: i2c_init();
+   620  06D9  120A  118A  2529   	fcall	_i2c_init
+      +       120A  118A         
+   621                           
+   622                           ;eeprom_i2c.c: 1150: ANSEL=0x00;
+   623  06DE  1683               	bsf	3,5	;RP0=1, select bank3
+   624  06DF  1703               	bsf	3,6	;RP1=1, select bank3
+   625  06E0  0188               	clrf	8	;volatile
+   626                           
+   627                           ;eeprom_i2c.c: 1151: ANSELH=0x00;
+   628  06E1  0189               	clrf	9	;volatile
+   629                           
+   630                           ;eeprom_i2c.c: 1152: PORTB=0x00;
+   631  06E2  1283               	bcf	3,5	;RP0=0, select bank0
+   632  06E3  1303               	bcf	3,6	;RP1=0, select bank0
+   633  06E4  0186               	clrf	6	;volatile
+   634                           
+   635                           ;eeprom_i2c.c: 1153: TRISB=0x00;
+   636  06E5  1683               	bsf	3,5	;RP0=1, select bank1
+   637  06E6  0186               	clrf	6	;volatile
+   638                           
+   639                           ;eeprom_i2c.c: 1154: TRISA=0x00;
+   640  06E7  0185               	clrf	5	;volatile
+   641                           
+   642                           ;eeprom_i2c.c: 1155: TRISD=0x00;
+   643  06E8  0188               	clrf	8	;volatile
+   644                           
+   645                           ;eeprom_i2c.c: 1169: RA7=0;
+   646  06E9  1283               	bcf	3,5	;RP0=0, select bank0
+   647  06EA  300F               	movlw	15
+   648  06EB  1385               	bcf	5,7
+   649                           
+   650                           ;eeprom_i2c.c: 1170: RA6=0;
+   651  06EC  1305               	bcf	5,6
+   652                           
+   653                           ;eeprom_i2c.c: 1171: RE1=0;
+   654  06ED  1089               	bcf	9,1
+   655                           
+   656                           ;eeprom_i2c.c: 1173: pause(15);
+   657  06EE  00F0               	movwf	?_pause
+   658  06EF  01F1               	clrf	?_pause+1
+   659  06F0  01F2               	clrf	?_pause+2
+   660  06F1  01F3               	clrf	?_pause+3
+   661  06F2  120A  118A  25C1   	fcall	_pause
+      +       120A  118A         
+   662                           
+   663                           ;eeprom_i2c.c: 1174: PORTD=init_value;
+   664  06F7  3003               	movlw	3
+   665  06F8  1283               	bcf	3,5	;RP0=0, select bank0
+   666  06F9  1303               	bcf	3,6	;RP1=0, select bank0
+   667  06FA  0088               	movwf	8	;volatile
+   668  06FB  300A               	movlw	10
+   669                           
+   670                           ;eeprom_i2c.c: 1175: ((RA6=1),(RA6=0));
+   671  06FC  1705               	bsf	5,6
+   672  06FD  1305               	bcf	5,6
+   673                           
+   674                           ;eeprom_i2c.c: 1176: pause(10);
+   675  06FE  00F0               	movwf	?_pause
+   676  06FF  01F1               	clrf	?_pause+1
+   677  0700  01F2               	clrf	?_pause+2
+   678  0701  01F3               	clrf	?_pause+3
+   679  0702  120A  118A  25C1   	fcall	_pause
+      +       120A  118A         
+   680                           
+   681                           ;eeprom_i2c.c: 1177: ((RA6=1),(RA6=0));
+   682  0707  1283               	bcf	3,5	;RP0=0, select bank0
+   683  0708  1303               	bcf	3,6	;RP1=0, select bank0
+   684  0709  300A               	movlw	10
+   685  070A  1705               	bsf	5,6
+   686  070B  1305               	bcf	5,6
+   687                           
+   688                           ;eeprom_i2c.c: 1178: pause(10);
+   689  070C  00F0               	movwf	?_pause
+   690  070D  01F1               	clrf	?_pause+1
+   691  070E  01F2               	clrf	?_pause+2
+   692  070F  01F3               	clrf	?_pause+3
+   693  0710  120A  118A  25C1   	fcall	_pause
+      +       120A  118A         
+   694                           
+   695                           ;eeprom_i2c.c: 1179: ((RA6=1),(RA6=0));
+   696  0715  1283               	bcf	3,5	;RP0=0, select bank0
+   697  0716  1303               	bcf	3,6	;RP1=0, select bank0
+   698  0717  300A               	movlw	10
+   699  0718  1705               	bsf	5,6
+   700  0719  1305               	bcf	5,6
+   701                           
+   702                           ;eeprom_i2c.c: 1180: pause(10);
+   703  071A  00F0               	movwf	?_pause
+   704  071B  01F1               	clrf	?_pause+1
+   705  071C  01F2               	clrf	?_pause+2
+   706  071D  01F3               	clrf	?_pause+3
+   707  071E  120A  118A  25C1   	fcall	_pause
+      +       120A  118A         
+   708                           
+   709                           ;eeprom_i2c.c: 1181: PORTD=2;
+   710  0723  3002               	movlw	2
+   711  0724  1283               	bcf	3,5	;RP0=0, select bank0
+   712  0725  1303               	bcf	3,6	;RP1=0, select bank0
+   713  0726  0088               	movwf	8	;volatile
+   714  0727  3028               	movlw	40
+   715                           
+   716                           ;eeprom_i2c.c: 1182: ((RA6=1),(RA6=0));
+   717  0728  1705               	bsf	5,6
+   718  0729  1305               	bcf	5,6
+   719                           
+   720                           ;eeprom_i2c.c: 1184: lcd_write(0x28);
+   721  072A  120A  118A  253D   	fcall	_lcd_write
+      +       120A  118A         
+   722                           
+   723                           ;eeprom_i2c.c: 1185: lcd_write(0xC);
+   724  072F  300C               	movlw	12
+   725  0730  120A  118A  253D   	fcall	_lcd_write
+      +       120A  118A         
+   726                           
+   727                           ;eeprom_i2c.c: 1186: lcd_clear();
+   728  0735  120A  118A  253A   	fcall	_lcd_clear
+      +       120A  118A         
+   729                           
+   730                           ;eeprom_i2c.c: 1187: lcd_write(0x06);
+   731  073A  3006               	movlw	6
+   732  073B  120A  118A  253D   	fcall	_lcd_write
+      +       120A  118A         
+   733                           
+   734                           ;eeprom_i2c.c: 1189: TRISC7=1;
+   735  0740  1683               	bsf	3,5	;RP0=1, select bank1
+   736  0741  3070               	movlw	112
+   737  0742  1787               	bsf	7,7
+   738                           
+   739                           ;eeprom_i2c.c: 1190: TRISC6=0;
+   740  0743  1307               	bcf	7,6
+   741                           
+   742                           ;eeprom_i2c.c: 1191: OSCCON=0x70;
+   743  0744  008F               	movwf	15	;volatile
+   744                           
+   745                           ;eeprom_i2c.c: 1192: SPBRG=12;
+   746  0745  300C               	movlw	12
+   747  0746  0099               	movwf	25	;volatile
+   748                           
+   749                           ;eeprom_i2c.c: 1193: RCSTA=0x90;
+   750  0747  3090               	movlw	144
+   751  0748  1283               	bcf	3,5	;RP0=0, select bank0
+   752  0749  0098               	movwf	24	;volatile
+   753                           
+   754                           ;eeprom_i2c.c: 1194: TXSTA=0x20;
+   755  074A  3020               	movlw	32
+   756  074B  1683               	bsf	3,5	;RP0=1, select bank1
+   757  074C  0098               	movwf	24	;volatile
+   758                           
+   759                           ;eeprom_i2c.c: 1195: BAUDCTL=0x00;
+   760  074D  1703               	bsf	3,6	;RP1=1, select bank3
+   761  074E  0187               	clrf	7	;volatile
+   762                           
+   763                           ;eeprom_i2c.c: 1196: pause(500);
+   764  074F  3000               	movlw	0
+   765  0750  00F3               	movwf	?_pause+3
+   766  0751  00F2               	movwf	?_pause+2
+   767  0752  3001               	movlw	1
+   768  0753  00F1               	movwf	?_pause+1
+   769  0754  30F4               	movlw	244
+   770  0755  00F0               	movwf	?_pause
+   771  0756  120A  118A  25C1   	fcall	_pause
+      +       120A  118A         
+   772                           
+   773                           ;eeprom_i2c.c: 1199: char char_recibido;
+   774                           ;eeprom_i2c.c: 1200: char char_pwm;
+   775                           ;eeprom_i2c.c: 1201: char buffer[15];
+   776                           ;eeprom_i2c.c: 1204: PORTA=0x01;
+   777  075B  3001               	movlw	1
+   778  075C  1283               	bcf	3,5	;RP0=0, select bank0
+   779  075D  1303               	bcf	3,6	;RP1=0, select bank0
+   780  075E  0085               	movwf	5	;volatile
+   781                           
+   782                           ;eeprom_i2c.c: 1205: *pa=0xFF;
+   783  075F  30FF               	movlw	255
+   784  0760  0085               	movwf	5
+   785                           
+   786                           ;eeprom_i2c.c: 1207: putch(0x0D);
+   787  0761  300D               	movlw	13
+   788  0762  120A  118A  2518   	fcall	_putch
+      +       120A  118A         
+   789                           
+   790                           ;eeprom_i2c.c: 1208: putch(0x0A);
+   791  0767  300A               	movlw	10
+   792  0768  120A  118A  2518   	fcall	_putch
+      +       120A  118A         
+   793                           
+   794                           ;eeprom_i2c.c: 1210: for(int i=97; i<123; i++){
+   795  076D  3061               	movlw	97
+   796  076E  00BB               	movwf	main@i
+   797  076F  01BC               	clrf	main@i+1
+   798  0770                     l3428:	
+   799                           
+   800                           ;eeprom_i2c.c: 1211: putch(i);
+   801  0770  1283               	bcf	3,5	;RP0=0, select bank0
+   802  0771  1303               	bcf	3,6	;RP1=0, select bank0
+   803  0772  083B               	movf	main@i,w
+   804  0773  120A  118A  2518   	fcall	_putch
+      +       120A  118A         
+   805                           
+   806                           ;eeprom_i2c.c: 1212: pause(20);
+   807  0778  3014               	movlw	20
+   808  0779  00F0               	movwf	?_pause
+   809  077A  01F1               	clrf	?_pause+1
+   810  077B  01F2               	clrf	?_pause+2
+   811  077C  01F3               	clrf	?_pause+3
+   812  077D  120A  118A  25C1   	fcall	_pause
+      +       120A  118A         
+   813  0782  1283               	bcf	3,5	;RP0=0, select bank0
+   814  0783  1303               	bcf	3,6	;RP1=0, select bank0
+   815  0784  0ABB               	incf	main@i,f
+   816  0785  1903               	skipnz
+   817  0786  0ABC               	incf	main@i+1,f
+   818  0787  083C               	movf	main@i+1,w
+   819  0788  3A80               	xorlw	128
+   820  0789  00FF               	movwf	127
+   821  078A  3080               	movlw	128
+   822  078B  027F               	subwf	127,w
+   823  078C  1D03               	skipz
+   824  078D  2F90               	goto	u435
+   825  078E  307B               	movlw	123
+   826  078F  023B               	subwf	main@i,w
+   827  0790                     u435:	
+   828  0790  1C03               	skipc
+   829  0791  2F70               	goto	l3428
+   830                           
+   831                           ;eeprom_i2c.c: 1213: }
+   832                           ;eeprom_i2c.c: 1214: putch(0x0D);
+   833  0792  300D               	movlw	13
+   834  0793  120A  118A  2518   	fcall	_putch
+      +       120A  118A         
+   835                           
+   836                           ;eeprom_i2c.c: 1215: putch(0x0A);
+   837  0798  300A               	movlw	10
+   838  0799  120A  118A  2518   	fcall	_putch
+      +       120A  118A         
+   839                           
+   840                           ;eeprom_i2c.c: 1219: unsigned char cnt=0;
+   841  079E  01BE               	clrf	main@cnt
+   842  079F                     l3438:	
+   843                           ;eeprom_i2c.c: 1221: while(cnt<=255)
+   844                           
+   845                           
+   846                           ;eeprom_i2c.c: 1222: {
+   847                           ;eeprom_i2c.c: 1223: PORTB=cnt;
+   848  079F  1283               	bcf	3,5	;RP0=0, select bank0
+   849  07A0  1303               	bcf	3,6	;RP1=0, select bank0
+   850  07A1  083E               	movf	main@cnt,w
+   851  07A2  0086               	movwf	6	;volatile
+   852                           
+   853                           ;eeprom_i2c.c: 1224: I2C_EEOUT(cnt,10-cnt);
+   854  07A3  083E               	movf	main@cnt,w
+   855  07A4  3C0A               	sublw	10
+   856  07A5  00F8               	movwf	?_I2C_EEOUT
+   857  07A6  083E               	movf	main@cnt,w
+   858  07A7  120A  118A  2550   	fcall	_I2C_EEOUT
+      +       120A  118A         
+   859                           
+   860                           ;eeprom_i2c.c: 1225: cnt=cnt+1;
+   861  07AC  1283               	bcf	3,5	;RP0=0, select bank0
+   862  07AD  1303               	bcf	3,6	;RP1=0, select bank0
+   863  07AE  30FF               	movlw	255
+   864  07AF  0ABE               	incf	main@cnt,f
+   865                           
+   866                           ;eeprom_i2c.c: 1226: pause(255);
+   867  07B0  00F0               	movwf	?_pause
+   868  07B1  01F1               	clrf	?_pause+1
+   869  07B2  01F2               	clrf	?_pause+2
+   870  07B3  01F3               	clrf	?_pause+3
+   871  07B4  120A  118A  25C1   	fcall	_pause
+      +       120A  118A         
+   872  07B9  2F9F               	goto	l3438
+   873  07BA                     l3448:	
+   874                           
+   875                           ;eeprom_i2c.c: 1232: {
+   876                           ;eeprom_i2c.c: 1233: PORTB =I2C_EEIN(cnt);
+   877  07BA  083E               	movf	main@cnt,w
+   878  07BB  120A  118A  2569   	fcall	_I2C_EEIN
+      +       120A  118A         
+   879  07C0  1283               	bcf	3,5	;RP0=0, select bank0
+   880  07C1  0086               	movwf	6	;volatile
+   881                           
+   882                           ;eeprom_i2c.c: 1234: pause (100);
+   883  07C2  3064               	movlw	100
+   884  07C3  00F0               	movwf	?_pause
+   885  07C4  01F1               	clrf	?_pause+1
+   886  07C5  01F2               	clrf	?_pause+2
+   887  07C6  01F3               	clrf	?_pause+3
+   888  07C7  120A  118A  25C1   	fcall	_pause
+      +       120A  118A         
+   889                           
+   890                           ;eeprom_i2c.c: 1236: sprintf(buffer,"Valor es:%i  ", cnt);
+   891  07CC  300B               	movlw	(STR_1-__stringbase)& (0+255)
+   892  07CD  1283               	bcf	3,5	;RP0=0, select bank0
+   893  07CE  1303               	bcf	3,6	;RP1=0, select bank0
+   894  07CF  00A0               	movwf	?_sprintf
+   895  07D0  083E               	movf	main@cnt,w
+   896  07D1  00A1               	movwf	?_sprintf+1
+   897  07D2  302C               	movlw	main@buffer& (0+255)
+   898  07D3  01A2               	clrf	?_sprintf+2
+   899  07D4  120A  118A  25EC   	fcall	_sprintf
+      +       120A  118A         
+   900                           
+   901                           ;eeprom_i2c.c: 1238: for (char x = 0; x<17; x++)
+   902  07D9  01BD               	clrf	main@x
+   903  07DA                     l3458:	
+   904                           
+   905                           ;eeprom_i2c.c: 1239: {
+   906                           ;eeprom_i2c.c: 1240: putch (buffer[x]);
+   907  07DA  083D               	movf	main@x,w
+   908  07DB  3E2C               	addlw	main@buffer& (0+255)
+   909  07DC  0084               	movwf	4
+   910  07DD  0800               	movf	0,w
+   911  07DE  120A  118A  2518   	fcall	_putch
+      +       120A  118A         
+   912  07E3  3011               	movlw	17
+   913  07E4  0ABD               	incf	main@x,f
+   914  07E5  023D               	subwf	main@x,w
+   915  07E6  1C03               	skipc
+   916  07E7  2FDA               	goto	l3458
+   917                           
+   918                           ;eeprom_i2c.c: 1241: }
+   919                           ;eeprom_i2c.c: 1242: pause(200);
+   920  07E8  30C8               	movlw	200
+   921  07E9  00F0               	movwf	?_pause
+   922  07EA  01F1               	clrf	?_pause+1
+   923  07EB  01F2               	clrf	?_pause+2
+   924  07EC  01F3               	clrf	?_pause+3
+   925  07ED  120A  118A  25C1   	fcall	_pause
+      +       120A  118A         
+   926                           
+   927                           ;eeprom_i2c.c: 1244: putch(0x0D);
+   928  07F2  300D               	movlw	13
+   929  07F3  120A  118A  2518   	fcall	_putch
+      +       120A  118A         
+   930                           
+   931                           ;eeprom_i2c.c: 1245: putch(0x0A);
+   932  07F8  300A               	movlw	10
+   933  07F9  120A  118A  2518   	fcall	_putch
+      +       120A  118A         
+   934                           
+   935                           ;eeprom_i2c.c: 1247: cnt=cnt + 1;
+   936  07FE  0ABE               	incf	main@cnt,f
+   937  07FF  2FBA               	goto	l3448
+   938  0800                     __end_of_main:	
+   939                           
+   940                           	psect	text400
+   941  0550                     __ptext400:	
+   942 ;; =============== function _I2C_EEIN ends ============
+   943                           
+   944                           
+   945 ;; *************** function _I2C_EEOUT *****************
+   946 ;; Defined at:
+   947 ;;		line 1114 in file "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
+   948 ;; Parameters:    Size  Location     Type
+   949 ;;  address         1    wreg     unsigned char 
+   950 ;;  data            1    8[COMMON] unsigned char 
+   951 ;; Auto vars:     Size  Location     Type
+   952 ;;  address         1    9[COMMON] unsigned char 
+   953 ;; Return value:  Size  Location     Type
+   954 ;;		None               void
+   955 ;; Registers used:
+   956 ;;		wreg, status,2, status,0, pclath, cstack
+   957 ;; Tracked objects:
+   958 ;;		On entry : 60/0
+   959 ;;		On exit  : 0/0
+   960 ;;		Unchanged: FFF9F/0
+   961 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   962 ;;      Params:         1       0       0       0       0
+   963 ;;      Locals:         1       0       0       0       0
+   964 ;;      Temps:          0       0       0       0       0
+   965 ;;      Totals:         2       0       0       0       0
+   966 ;;Total ram usage:        2 bytes
+   967 ;; Hardware stack levels used:    1
+   968 ;; Hardware stack levels required when called:    2
+   969 ;; This function calls:
+   970 ;;		_i2c_start
+   971 ;;		_i2c_write
+   972 ;;		_i2c_stop
+   973 ;;		_pause
+   974 ;; This function is called by:
+   975 ;;		_main
+   976 ;; This function uses a non-reentrant model
+   977 ;;
+   978  0550                     _I2C_EEOUT:	
+   979                           
+   980                           ; Regs used in _I2C_EEOUT: [wreg+status,2+status,0+pclath+cstack]
+   981                           ;I2C_EEOUT@address stored from wreg
+   982  0550  00F9               	movwf	I2C_EEOUT@address
+   983                           
+   984                           ;eeprom_i2c.c: 1115: i2c_start();
+   985  0551  258B  120A  118A   	fcall	_i2c_start
+   986                           
+   987                           ;eeprom_i2c.c: 1116: i2c_write(0xa0);
+   988  0554  30A0               	movlw	160
+   989  0555  2585  120A  118A   	fcall	_i2c_write
+   990                           
+   991                           ;eeprom_i2c.c: 1117: i2c_write(address);
+   992  0558  0879               	movf	I2C_EEOUT@address,w
+   993  0559  2585  120A  118A   	fcall	_i2c_write
+   994                           
+   995                           ;eeprom_i2c.c: 1118: i2c_write(data);
+   996  055C  0878               	movf	I2C_EEOUT@data,w
+   997  055D  2585  120A  118A   	fcall	_i2c_write
+   998                           
+   999                           ;eeprom_i2c.c: 1119: i2c_stop();
+  1000  0560  25BB  120A  118A   	fcall	_i2c_stop
+  1001                           
+  1002                           ;eeprom_i2c.c: 1120: pause(11);
+  1003  0563  300B               	movlw	11
+  1004  0564  00F0               	movwf	?_pause
+  1005  0565  01F1               	clrf	?_pause+1
+  1006  0566  01F2               	clrf	?_pause+2
+  1007  0567  01F3               	clrf	?_pause+3
+  1008  0568  2DC1               	ljmp	l3234
+  1009  0569                     __end_of_I2C_EEOUT:	
+  1010  0569                     __ptext399:	
+  1011 ;; =============== function _main ends ============
+  1012                           
+  1013                           
+  1014 ;; *************** function _I2C_EEIN *****************
+  1015 ;; Defined at:
+  1016 ;;		line 1129 in file "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
+  1017 ;; Parameters:    Size  Location     Type
+  1018 ;;  address         1    wreg     unsigned char 
+  1019 ;; Auto vars:     Size  Location     Type
+  1020 ;;  address         1    9[COMMON] unsigned char 
+  1021 ;;  data            1   10[COMMON] unsigned char 
+  1022 ;; Return value:  Size  Location     Type
+  1023 ;;                  1    wreg      unsigned char 
+  1024 ;; Registers used:
+  1025 ;;		wreg, status,2, status,0, pclath, cstack
+  1026 ;; Tracked objects:
+  1027 ;;		On entry : 17F/0
+  1028 ;;		On exit  : 17F/20
+  1029 ;;		Unchanged: FFE80/0
+  1030 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1031 ;;      Params:         0       0       0       0       0
+  1032 ;;      Locals:         2       0       0       0       0
+  1033 ;;      Temps:          0       0       0       0       0
+  1034 ;;      Totals:         2       0       0       0       0
+  1035 ;;Total ram usage:        2 bytes
+  1036 ;; Hardware stack levels used:    1
+  1037 ;; Hardware stack levels required when called:    2
+  1038 ;; This function calls:
+  1039 ;;		_i2c_start
+  1040 ;;		_i2c_write
+  1041 ;;		_i2c_repStart
+  1042 ;;		_i2c_read
+  1043 ;;		_i2c_stop
+  1044 ;; This function is called by:
+  1045 ;;		_main
+  1046 ;; This function uses a non-reentrant model
+  1047 ;;
+  1048  0569                     _I2C_EEIN:	
+  1049                           
+  1050                           ; Regs used in _I2C_EEIN: [wreg+status,2+status,0+pclath+cstack]
+  1051                           ;I2C_EEIN@address stored from wreg
+  1052  0569  00F9               	movwf	I2C_EEIN@address
+  1053                           
+  1054                           ;eeprom_i2c.c: 1130: unsigned char data;
+  1055                           ;eeprom_i2c.c: 1132: i2c_start();
+  1056  056A  258B  120A  118A   	fcall	_i2c_start
+  1057                           
+  1058                           ;eeprom_i2c.c: 1133: i2c_write(0xa0);
+  1059  056D  30A0               	movlw	160
+  1060  056E  2585  120A  118A   	fcall	_i2c_write
+  1061                           
+  1062                           ;eeprom_i2c.c: 1134: i2c_write(address);
+  1063  0571  0879               	movf	I2C_EEIN@address,w
+  1064  0572  2585  120A  118A   	fcall	_i2c_write
+  1065                           
+  1066                           ;eeprom_i2c.c: 1135: i2c_repStart();
+  1067  0575  25BE  120A  118A   	fcall	_i2c_repStart
+  1068                           
+  1069                           ;eeprom_i2c.c: 1136: i2c_write(0xa1);
+  1070  0578  30A1               	movlw	161
+  1071  0579  2585  120A  118A   	fcall	_i2c_write
+  1072                           
+  1073                           ;eeprom_i2c.c: 1137: data=i2c_read(0);
+  1074  057C  3000               	movlw	0
+  1075  057D  258E  120A  118A   	fcall	_i2c_read
+  1076  0580  0875               	movf	?_i2c_read,w
+  1077  0581  00FA               	movwf	I2C_EEIN@data
+  1078                           
+  1079                           ;eeprom_i2c.c: 1138: i2c_stop();
+  1080  0582  25BB               	fcall	_i2c_stop
+  1081                           
+  1082                           ;eeprom_i2c.c: 1139: return(data);
+  1083  0583  087A               	movf	I2C_EEIN@data,w
+  1084  0584  0008               	return
+  1085  0585                     __end_of_I2C_EEIN:	
+  1086  0585                     __ptext402:	
+  1087 ;; =============== function _sprintf ends ============
+  1088                           
+  1089                           
+  1090 ;; *************** function _i2c_write *****************
+  1091 ;; Defined at:
+  1092 ;;		line 1101 in file "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
+  1093 ;; Parameters:    Size  Location     Type
+  1094 ;;  i2cWriteData    1    wreg     unsigned char 
+  1095 ;; Auto vars:     Size  Location     Type
+  1096 ;;  i2cWriteData    1    5[COMMON] unsigned char 
+  1097 ;; Return value:  Size  Location     Type
+  1098 ;;                  1    wreg      unsigned char 
+  1099 ;; Registers used:
+  1100 ;;		wreg, status,2, status,0, pclath, cstack
+  1101 ;; Tracked objects:
+  1102 ;;		On entry : 40/20
+  1103 ;;		On exit  : 60/0
+  1104 ;;		Unchanged: FFF9F/0
+  1105 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1106 ;;      Params:         0       0       0       0       0
+  1107 ;;      Locals:         1       0       0       0       0
+  1108 ;;      Temps:          0       0       0       0       0
+  1109 ;;      Totals:         1       0       0       0       0
+  1110 ;;Total ram usage:        1 bytes
+  1111 ;; Hardware stack levels used:    1
+  1112 ;; Hardware stack levels required when called:    1
+  1113 ;; This function calls:
+  1114 ;;		_i2c_waitForIdle
+  1115 ;; This function is called by:
+  1116 ;;		_I2C_EEOUT
+  1117 ;;		_I2C_EEIN
+  1118 ;; This function uses a non-reentrant model
+  1119 ;;
+  1120  0585                     _i2c_write:	
+  1121                           
+  1122                           ; Regs used in _i2c_write: [wreg+status,2+status,0+pclath+cstack]
+  1123                           ;i2c_write@i2cWriteData stored from wreg
+  1124  0585  00F5               	movwf	i2c_write@i2cWriteData
+  1125                           
+  1126                           ;eeprom_i2c.c: 1102: i2c_waitForIdle();
+  1127  0586  25A7               	fcall	_i2c_waitForIdle
+  1128                           
+  1129                           ;eeprom_i2c.c: 1103: SSPBUF = i2cWriteData;
+  1130  0587  0875               	movf	i2c_write@i2cWriteData,w
+  1131  0588  1283               	bcf	3,5	;RP0=0, select bank0
+  1132  0589  0093               	movwf	19	;volatile
+  1133                           
+  1134                           ;eeprom_i2c.c: 1105: return ( ! ACKSTAT );
+  1135                           ;	Return value of _i2c_write is never used
+  1136  058A  0008               	return
+  1137  058B                     __end_of_i2c_write:	
+  1138  058B                     __ptext406:	
+  1139 ;; =============== function _i2c_repStart ends ============
+  1140                           
+  1141                           
+  1142 ;; *************** function _i2c_start *****************
+  1143 ;; Defined at:
+  1144 ;;		line 1048 in file "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
+  1145 ;; Parameters:    Size  Location     Type
+  1146 ;;		None
+  1147 ;; Auto vars:     Size  Location     Type
+  1148 ;;		None
+  1149 ;; Return value:  Size  Location     Type
+  1150 ;;		None               void
+  1151 ;; Registers used:
+  1152 ;;		wreg, status,2, status,0, pclath, cstack
+  1153 ;; Tracked objects:
+  1154 ;;		On entry : 60/0
+  1155 ;;		On exit  : 60/20
+  1156 ;;		Unchanged: FFF9F/0
+  1157 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1158 ;;      Params:         0       0       0       0       0
+  1159 ;;      Locals:         0       0       0       0       0
+  1160 ;;      Temps:          0       0       0       0       0
+  1161 ;;      Totals:         0       0       0       0       0
+  1162 ;;Total ram usage:        0 bytes
+  1163 ;; Hardware stack levels used:    1
+  1164 ;; Hardware stack levels required when called:    1
+  1165 ;; This function calls:
+  1166 ;;		_i2c_waitForIdle
+  1167 ;; This function is called by:
+  1168 ;;		_I2C_EEOUT
+  1169 ;;		_I2C_EEIN
+  1170 ;; This function uses a non-reentrant model
+  1171 ;;
+  1172  058B                     _i2c_start:	
+  1173                           
+  1174                           ;eeprom_i2c.c: 1049: i2c_waitForIdle();
+  1175                           
+  1176                           ; Regs used in _i2c_start: [wreg+status,2+status,0+pclath+cstack]
+  1177  058B  25A7               	fcall	_i2c_waitForIdle
+  1178                           
+  1179                           ;eeprom_i2c.c: 1050: SEN=1;
+  1180  058C  1411               	bsf	17,0
+  1181  058D  0008               	return
+  1182  058E                     __end_of_i2c_start:	
+  1183  058E                     __ptext403:	
+  1184 ;; =============== function _i2c_write ends ============
+  1185                           
+  1186                           
+  1187 ;; *************** function _i2c_read *****************
+  1188 ;; Defined at:
+  1189 ;;		line 1072 in file "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
+  1190 ;; Parameters:    Size  Location     Type
+  1191 ;;  ack             1    wreg     unsigned char 
+  1192 ;; Auto vars:     Size  Location     Type
+  1193 ;;  ack             1    7[COMMON] unsigned char 
+  1194 ;;  i2cReadData     1    8[COMMON] unsigned char 
+  1195 ;; Return value:  Size  Location     Type
+  1196 ;;                  2    5[COMMON] int 
+  1197 ;; Registers used:
+  1198 ;;		wreg, status,2, status,0, pclath, cstack
+  1199 ;; Tracked objects:
+  1200 ;;		On entry : 17F/0
+  1201 ;;		On exit  : 17F/20
+  1202 ;;		Unchanged: FFE80/0
+  1203 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1204 ;;      Params:         2       0       0       0       0
+  1205 ;;      Locals:         2       0       0       0       0
+  1206 ;;      Temps:          0       0       0       0       0
+  1207 ;;      Totals:         4       0       0       0       0
+  1208 ;;Total ram usage:        4 bytes
+  1209 ;; Hardware stack levels used:    1
+  1210 ;; Hardware stack levels required when called:    1
+  1211 ;; This function calls:
+  1212 ;;		_i2c_waitForIdle
+  1213 ;; This function is called by:
+  1214 ;;		_I2C_EEIN
+  1215 ;; This function uses a non-reentrant model
+  1216 ;;
+  1217  058E                     _i2c_read:	
+  1218                           
+  1219                           ; Regs used in _i2c_read: [wreg+status,2+status,0+pclath+cstack]
+  1220                           ;i2c_read@ack stored from wreg
+  1221  058E  00F7               	movwf	i2c_read@ack
+  1222                           
+  1223                           ;eeprom_i2c.c: 1073: unsigned char i2cReadData;
+  1224                           ;eeprom_i2c.c: 1075: i2c_waitForIdle();
+  1225  058F  25A7  120A  118A   	fcall	_i2c_waitForIdle
+  1226                           
+  1227                           ;eeprom_i2c.c: 1077: RCEN=1;
+  1228  0592  1591               	bsf	17,3
+  1229                           
+  1230                           ;eeprom_i2c.c: 1079: i2c_waitForIdle();
+  1231  0593  25A7  120A  118A   	fcall	_i2c_waitForIdle
+  1232                           
+  1233                           ;eeprom_i2c.c: 1081: i2cReadData = SSPBUF;
+  1234  0596  1283               	bcf	3,5	;RP0=0, select bank0
+  1235  0597  0813               	movf	19,w	;volatile
+  1236  0598  00F8               	movwf	i2c_read@i2cReadData
+  1237                           
+  1238                           ;eeprom_i2c.c: 1083: i2c_waitForIdle();
+  1239  0599  25A7  120A  118A   	fcall	_i2c_waitForIdle
+  1240                           
+  1241                           ;eeprom_i2c.c: 1085: if ( ack )
+  1242  059C  0877               	movf	i2c_read@ack,w
+  1243  059D  1903               	btfsc	3,2
+  1244  059E  2DA1               	goto	l1291
+  1245                           
+  1246                           ;eeprom_i2c.c: 1086: {
+  1247                           ;eeprom_i2c.c: 1087: ACKDT=0;
+  1248  059F  1291               	bcf	17,5
+  1249                           
+  1250                           ;eeprom_i2c.c: 1088: }
+  1251  05A0  2DA2               	goto	l1292
+  1252  05A1                     l1291:	
+  1253                           
+  1254                           ;eeprom_i2c.c: 1089: else
+  1255                           ;eeprom_i2c.c: 1090: {
+  1256                           ;eeprom_i2c.c: 1091: ACKDT=1;
+  1257  05A1  1691               	bsf	17,5
+  1258  05A2                     l1292:	
+  1259                           
+  1260                           ;eeprom_i2c.c: 1092: }
+  1261                           ;eeprom_i2c.c: 1093: ACKEN=1;
+  1262  05A2  1611               	bsf	17,4
+  1263                           
+  1264                           ;eeprom_i2c.c: 1095: return( i2cReadData );
+  1265  05A3  0878               	movf	i2c_read@i2cReadData,w
+  1266  05A4  00F5               	movwf	?_i2c_read
+  1267  05A5  01F6               	clrf	?_i2c_read+1
+  1268  05A6  0008               	return
+  1269  05A7                     __end_of_i2c_read:	
+  1270  05A7                     __ptext411:	
+  1271 ;; =============== function ___lwdiv ends ============
+  1272                           
+  1273                           
+  1274 ;; *************** function _i2c_waitForIdle *****************
+  1275 ;; Defined at:
+  1276 ;;		line 1041 in file "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
+  1277 ;; Parameters:    Size  Location     Type
+  1278 ;;		None
+  1279 ;; Auto vars:     Size  Location     Type
+  1280 ;;		None
+  1281 ;; Return value:  Size  Location     Type
+  1282 ;;		None               void
+  1283 ;; Registers used:
+  1284 ;;		wreg, status,2, status,0
+  1285 ;; Tracked objects:
+  1286 ;;		On entry : 40/20
+  1287 ;;		On exit  : 60/20
+  1288 ;;		Unchanged: FFF9F/0
+  1289 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1290 ;;      Params:         0       0       0       0       0
+  1291 ;;      Locals:         0       0       0       0       0
+  1292 ;;      Temps:          5       0       0       0       0
+  1293 ;;      Totals:         5       0       0       0       0
+  1294 ;;Total ram usage:        5 bytes
+  1295 ;; Hardware stack levels used:    1
+  1296 ;; This function calls:
+  1297 ;;		Nothing
+  1298 ;; This function is called by:
+  1299 ;;		_i2c_start
+  1300 ;;		_i2c_repStart
+  1301 ;;		_i2c_stop
+  1302 ;;		_i2c_read
+  1303 ;;		_i2c_write
+  1304 ;; This function uses a non-reentrant model
+  1305 ;;
+  1306  05A7                     _i2c_waitForIdle:	
+  1307  05A7                     l3186:	
+  1308                           ;eeprom_i2c.c: 1042: while (( SSPCON2 & 0x1F ) | R_W ) {};
+  1309                           
+  1310                           ; Regs used in _i2c_waitForIdle: [wreg+status,2+status,0]
+  1311                           
+  1312  05A7  1003               	clrc
+  1313  05A8  1683               	bsf	3,5	;RP0=1, select bank1
+  1314  05A9  1914               	btfsc	20,2
+  1315  05AA  1403               	setc
+  1316  05AB  3000               	movlw	0
+  1317  05AC  1803               	skipnc
+  1318  05AD  3001               	movlw	1
+  1319  05AE  00F0               	movwf	??_i2c_waitForIdle
+  1320  05AF  301F               	movlw	31
+  1321  05B0  01F1               	clrf	??_i2c_waitForIdle+1
+  1322  05B1  0511               	andwf	17,w
+  1323  05B2  00F2               	movwf	??_i2c_waitForIdle+2
+  1324  05B3  0470               	iorwf	??_i2c_waitForIdle,w
+  1325  05B4  00F3               	movwf	??_i2c_waitForIdle+3
+  1326  05B5  0871               	movf	??_i2c_waitForIdle+1,w
+  1327  05B6  00F4               	movwf	??_i2c_waitForIdle+4
+  1328  05B7  0473               	iorwf	??_i2c_waitForIdle+3,w
+  1329  05B8  1903               	btfsc	3,2
+  1330  05B9  0008               	return
+  1331  05BA  2DA7               	goto	l3186
+  1332  05BB                     __end_of_i2c_waitForIdle:	
+  1333  05BB                     __ptext404:	
+  1334 ;; =============== function _i2c_read ends ============
+  1335                           
+  1336                           
+  1337 ;; *************** function _i2c_stop *****************
+  1338 ;; Defined at:
+  1339 ;;		line 1064 in file "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
+  1340 ;; Parameters:    Size  Location     Type
+  1341 ;;		None
+  1342 ;; Auto vars:     Size  Location     Type
+  1343 ;;		None
+  1344 ;; Return value:  Size  Location     Type
+  1345 ;;		None               void
+  1346 ;; Registers used:
+  1347 ;;		wreg, status,2, status,0, pclath, cstack
+  1348 ;; Tracked objects:
+  1349 ;;		On entry : 40/20
+  1350 ;;		On exit  : 60/20
+  1351 ;;		Unchanged: FFF9F/0
+  1352 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1353 ;;      Params:         0       0       0       0       0
+  1354 ;;      Locals:         0       0       0       0       0
+  1355 ;;      Temps:          0       0       0       0       0
+  1356 ;;      Totals:         0       0       0       0       0
+  1357 ;;Total ram usage:        0 bytes
+  1358 ;; Hardware stack levels used:    1
+  1359 ;; Hardware stack levels required when called:    1
+  1360 ;; This function calls:
+  1361 ;;		_i2c_waitForIdle
+  1362 ;; This function is called by:
+  1363 ;;		_I2C_EEOUT
+  1364 ;;		_I2C_EEIN
+  1365 ;; This function uses a non-reentrant model
+  1366 ;;
+  1367  05BB                     _i2c_stop:	
+  1368                           
+  1369                           ;eeprom_i2c.c: 1065: i2c_waitForIdle();
+  1370                           
+  1371                           ; Regs used in _i2c_stop: [wreg+status,2+status,0+pclath+cstack]
+  1372  05BB  25A7               	fcall	_i2c_waitForIdle
+  1373                           
+  1374                           ;eeprom_i2c.c: 1066: PEN=1;
+  1375  05BC  1511               	bsf	17,2
+  1376  05BD  0008               	return
+  1377  05BE                     __end_of_i2c_stop:	
+  1378  05BE                     __ptext405:	
+  1379 ;; =============== function _i2c_stop ends ============
+  1380                           
+  1381                           
+  1382 ;; *************** function _i2c_repStart *****************
+  1383 ;; Defined at:
+  1384 ;;		line 1056 in file "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
+  1385 ;; Parameters:    Size  Location     Type
+  1386 ;;		None
+  1387 ;; Auto vars:     Size  Location     Type
+  1388 ;;		None
+  1389 ;; Return value:  Size  Location     Type
+  1390 ;;		None               void
+  1391 ;; Registers used:
+  1392 ;;		wreg, status,2, status,0, pclath, cstack
+  1393 ;; Tracked objects:
+  1394 ;;		On entry : 17F/0
+  1395 ;;		On exit  : 17F/20
+  1396 ;;		Unchanged: FFE80/0
+  1397 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1398 ;;      Params:         0       0       0       0       0
+  1399 ;;      Locals:         0       0       0       0       0
+  1400 ;;      Temps:          0       0       0       0       0
+  1401 ;;      Totals:         0       0       0       0       0
+  1402 ;;Total ram usage:        0 bytes
+  1403 ;; Hardware stack levels used:    1
+  1404 ;; Hardware stack levels required when called:    1
+  1405 ;; This function calls:
+  1406 ;;		_i2c_waitForIdle
+  1407 ;; This function is called by:
+  1408 ;;		_I2C_EEIN
+  1409 ;; This function uses a non-reentrant model
+  1410 ;;
+  1411  05BE                     _i2c_repStart:	
+  1412                           
+  1413                           ;eeprom_i2c.c: 1057: i2c_waitForIdle();
+  1414                           
+  1415                           ; Regs used in _i2c_repStart: [wreg+status,2+status,0+pclath+cstack]
+  1416  05BE  25A7               	fcall	_i2c_waitForIdle
+  1417                           
+  1418                           ;eeprom_i2c.c: 1058: RSEN=1;
+  1419  05BF  1491               	bsf	17,1
+  1420  05C0  0008               	return
+  1421  05C1                     __end_of_i2c_repStart:	
+  1422  05C1                     __ptext408:	
+  1423 ;; =============== function _lcd_clear ends ============
+  1424                           
+  1425                           
+  1426 ;; *************** function _pause *****************
+  1427 ;; Defined at:
+  1428 ;;		line 198 in file "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
+  1429 ;; Parameters:    Size  Location     Type
+  1430 ;;  usvalue         4    0[COMMON] unsigned long 
+  1431 ;; Auto vars:     Size  Location     Type
+  1432 ;;  x               4    4[COMMON] unsigned long 
+  1433 ;; Return value:  Size  Location     Type
+  1434 ;;		None               void
+  1435 ;; Registers used:
+  1436 ;;		wreg, status,2, status,0, pclath, cstack
+  1437 ;; Tracked objects:
+  1438 ;;		On entry : 0/0
+  1439 ;;		On exit  : 0/0
+  1440 ;;		Unchanged: FFF9F/0
+  1441 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1442 ;;      Params:         4       0       0       0       0
+  1443 ;;      Locals:         4       0       0       0       0
+  1444 ;;      Temps:          0       0       0       0       0
+  1445 ;;      Totals:         8       0       0       0       0
+  1446 ;;Total ram usage:        8 bytes
+  1447 ;; Hardware stack levels used:    1
+  1448 ;; Hardware stack levels required when called:    1
+  1449 ;; This function calls:
+  1450 ;;		_msecbase
+  1451 ;; This function is called by:
+  1452 ;;		_I2C_EEOUT
+  1453 ;;		_main
+  1454 ;; This function uses a non-reentrant model
+  1455 ;;
+  1456  05C1                     _pause:	
+  1457  05C1                     l3234:	
+  1458                           ; Regs used in _pause: [wreg+status,2+status,0+pclath+cstack]
+  1459                           
+  1460                           
+  1461                           ;eeprom_i2c.c: 199: unsigned long x;
+  1462                           ;eeprom_i2c.c: 200: for (x=1; x<=(usvalue); x++)
+  1463  05C1  01F4               	clrf	pause@x
+  1464  05C2  0AF4               	incf	pause@x,f
+  1465  05C3  01F5               	clrf	pause@x+1
+  1466  05C4  01F6               	clrf	pause@x+2
+  1467  05C5  01F7               	clrf	pause@x+3
+  1468  05C6                     l3240:	
+  1469  05C6  0877               	movf	pause@x+3,w
+  1470  05C7  0273               	subwf	pause@usvalue+3,w
+  1471  05C8  1D03               	skipz
+  1472  05C9  2DD4               	goto	u345
+  1473  05CA  0876               	movf	pause@x+2,w
+  1474  05CB  0272               	subwf	pause@usvalue+2,w
+  1475  05CC  1D03               	skipz
+  1476  05CD  2DD4               	goto	u345
+  1477  05CE  0875               	movf	pause@x+1,w
+  1478  05CF  0271               	subwf	pause@usvalue+1,w
+  1479  05D0  1D03               	skipz
+  1480  05D1  2DD4               	goto	u345
+  1481  05D2  0874               	movf	pause@x,w
+  1482  05D3  0270               	subwf	pause@usvalue,w
+  1483  05D4                     u345:	
+  1484  05D4  1C03               	btfss	3,0
+  1485  05D5  0008               	return
+  1486                           
+  1487                           ;eeprom_i2c.c: 201: {
+  1488                           ;eeprom_i2c.c: 202: msecbase();
+  1489  05D6  25E1  120A  118A   	fcall	_msecbase
+  1490  05D9  0AF4               	incf	pause@x,f
+  1491  05DA  1903               	skipnz
+  1492  05DB  0AF5               	incf	pause@x+1,f
+  1493  05DC  1903               	skipnz
+  1494  05DD  0AF6               	incf	pause@x+2,f
+  1495  05DE  1903               	skipnz
+  1496  05DF  0AF7               	incf	pause@x+3,f
+  1497  05E0  2DC6               	goto	l3240
+  1498  05E1                     __end_of_pause:	
+  1499  05E1                     __ptext415:	
+  1500 ;; =============== function _lcd_write ends ============
+  1501                           
+  1502                           
+  1503 ;; *************** function _msecbase *****************
+  1504 ;; Defined at:
+  1505 ;;		line 182 in file "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
+  1506 ;; Parameters:    Size  Location     Type
+  1507 ;;		None
+  1508 ;; Auto vars:     Size  Location     Type
+  1509 ;;		None
+  1510 ;; Return value:  Size  Location     Type
+  1511 ;;		None               void
+  1512 ;; Registers used:
+  1513 ;;		wreg
+  1514 ;; Tracked objects:
+  1515 ;;		On entry : 0/0
+  1516 ;;		On exit  : 0/0
+  1517 ;;		Unchanged: FFF9F/0
+  1518 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1519 ;;      Params:         0       0       0       0       0
+  1520 ;;      Locals:         0       0       0       0       0
+  1521 ;;      Temps:          0       0       0       0       0
+  1522 ;;      Totals:         0       0       0       0       0
+  1523 ;;Total ram usage:        0 bytes
+  1524 ;; Hardware stack levels used:    1
+  1525 ;; This function calls:
+  1526 ;;		Nothing
+  1527 ;; This function is called by:
+  1528 ;;		_pause
+  1529 ;; This function uses a non-reentrant model
+  1530 ;;
+  1531  05E1                     _msecbase:	
+  1532                           
+  1533                           ;eeprom_i2c.c: 183: OPTION_REG = 0b00000011;
+  1534                           
+  1535                           ; Regs used in _msecbase: [wreg]
+  1536  05E1  3003               	movlw	3
+  1537  05E2  1683               	bsf	3,5	;RP0=1, select bank1
+  1538  05E3  1303               	bcf	3,6	;RP1=0, select bank1
+  1539  05E4  0081               	movwf	1	;volatile
+  1540                           
+  1541                           ;eeprom_i2c.c: 184: TMR0 = 0xD;
+  1542  05E5  300D               	movlw	13
+  1543  05E6  1283               	bcf	3,5	;RP0=0, select bank0
+  1544  05E7  0081               	movwf	1	;volatile
+  1545  05E8                     l1066:	
+  1546                           ;eeprom_i2c.c: 185: while(!T0IF);
+  1547                           
+  1548  05E8  1D0B               	btfss	11,2
+  1549  05E9  2DE8               	goto	l1066
+  1550                           
+  1551                           ;eeprom_i2c.c: 186: T0IF = 0;
+  1552  05EA  110B               	bcf	11,2
+  1553  05EB  0008               	return
+  1554  05EC                     __end_of_msecbase:	
+  1555                           
+  1556                           	psect	text401
+  1557  05EC                     __ptext401:	
+  1558 ;; =============== function _I2C_EEOUT ends ============
+  1559                           
+  1560                           
+  1561 ;; *************** function _sprintf *****************
+  1562 ;; Defined at:
+  1563 ;;		line 488 in file "C:\Program Files (x86)\HI-TECH Software\PICC\9.82\lib\doprnt.c"
+  1564 ;; Parameters:    Size  Location     Type
+  1565 ;;  sp              1    wreg     PTR unsigned char 
+  1566 ;;		 -> main@buffer(15), 
+  1567 ;;  f               1    0[BANK0 ] PTR const unsigned char 
+  1568 ;;		 -> STR_1(14), 
+  1569 ;; Auto vars:     Size  Location     Type
+  1570 ;;  sp              1   10[BANK0 ] PTR unsigned char 
+  1571 ;;		 -> main@buffer(15), 
+  1572 ;;  _val            4    6[BANK0 ] struct .
+  1573 ;;  c               1   11[BANK0 ] char 
+  1574 ;;  prec            1    5[BANK0 ] char 
+  1575 ;;  flag            1    4[BANK0 ] unsigned char 
+  1576 ;;  ap              1    3[BANK0 ] PTR void [1]
+  1577 ;;		 -> ?_sprintf(2), 
+  1578 ;; Return value:  Size  Location     Type
+  1579 ;;                  2    0[BANK0 ] int 
+  1580 ;; Registers used:
+  1581 ;;		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
+  1582 ;; Tracked objects:
+  1583 ;;		On entry : 17F/0
+  1584 ;;		On exit  : 17F/0
+  1585 ;;		Unchanged: FFE80/0
+  1586 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1587 ;;      Params:         0       3       0       0       0
+  1588 ;;      Locals:         0       9       0       0       0
+  1589 ;;      Temps:          2       0       0       0       0
+  1590 ;;      Totals:         2      12       0       0       0
+  1591 ;;Total ram usage:       14 bytes
+  1592 ;; Hardware stack levels used:    1
+  1593 ;; Hardware stack levels required when called:    1
+  1594 ;; This function calls:
+  1595 ;;		___lwdiv
+  1596 ;;		___lwmod
+  1597 ;; This function is called by:
+  1598 ;;		_main
+  1599 ;; This function uses a non-reentrant model
+  1600 ;;
+  1601  05EC                     _sprintf:	
+  1602                           
+  1603                           ; Regs used in _sprintf: [wreg-fsr0h+status,2+status,0+btemp+1+pclath+cstack]
+  1604                           ;sprintf@sp stored from wreg
+  1605  05EC  00AA               	movwf	sprintf@sp
+  1606  05ED  3021               	movlw	(?_sprintf+1)& (0+255)
+  1607  05EE  00A3               	movwf	sprintf@ap
+  1608  05EF                     l3332:	
+  1609  05EF  0820               	movf	sprintf@f,w
+  1610  05F0  0AA0               	incf	sprintf@f,f
+  1611  05F1  0084               	movwf	4
+  1612  05F2  120A  118A  2003   	fcall	stringdir
+      +       120A  118A         
+  1613  05F7  00AB               	movwf	sprintf@c
+  1614  05F8  08AB               	movf	sprintf@c,f
+  1615  05F9  1903               	btfsc	3,2
+  1616  05FA  2E82               	goto	l3334
+  1617  05FB  082B               	movf	sprintf@c,w
+  1618  05FC  3A25               	xorlw	37
+  1619  05FD  1903               	skipnz
+  1620  05FE  2E05               	goto	l3288
+  1621  05FF  082A               	movf	sprintf@sp,w
+  1622  0600  0084               	movwf	4
+  1623  0601  082B               	movf	sprintf@c,w
+  1624  0602  0080               	movwf	0
+  1625  0603  0AAA               	incf	sprintf@sp,f
+  1626  0604  2DEF               	goto	l3332
+  1627  0605                     l3288:	
+  1628  0605  01A4               	clrf	sprintf@flag
+  1629  0606  0820               	movf	sprintf@f,w
+  1630  0607  0AA0               	incf	sprintf@f,f
+  1631  0608  0084               	movwf	4
+  1632  0609  120A  118A  2003   	fcall	stringdir
+      +       120A  118A         
+  1633  060E  00AB               	movwf	sprintf@c
+  1634                           
+  1635                           ; Switch size 1, requested type "space"
+  1636                           ; Number of cases is 3, Range of values is 0 to 105
+  1637                           ; switch strategies available:
+  1638                           ; Name         Instructions Cycles
+  1639                           ; simple_byte           10     6 (average)
+  1640                           ; jumptable            260     6 (fixed)
+  1641                           ; rangetable           110     6 (fixed)
+  1642                           ; spacedrange          218     9 (fixed)
+  1643                           ; locatedrange         106     3 (fixed)
+  1644                           ;	Chosen strategy is simple_byte
+  1645  060F  3A00               	xorlw	0	; case 0
+  1646  0610  1903               	skipnz
+  1647  0611  2E82               	goto	l3334
+  1648  0612  3A64               	xorlw	100	; case 100
+  1649  0613  1903               	skipnz
+  1650  0614  2E19               	goto	l3294
+  1651  0615  3A0D               	xorlw	13	; case 105
+  1652  0616  1903               	skipnz
+  1653  0617  2E19               	goto	l3294
+  1654  0618  2DEF               	goto	l3332
+  1655  0619                     l3294:	
+  1656  0619  0823               	movf	sprintf@ap,w
+  1657  061A  0084               	movwf	4
+  1658  061B  0800               	movf	0,w
+  1659  061C  00A6               	movwf	sprintf@_val
+  1660  061D  0A84               	incf	4,f
+  1661  061E  0800               	movf	0,w
+  1662  061F  00A7               	movwf	sprintf@_val+1
+  1663  0620  0AA3               	incf	sprintf@ap,f
+  1664  0621  0AA3               	incf	sprintf@ap,f
+  1665  0622  1FA7               	btfss	sprintf@_val+1,7
+  1666  0623  2E2B               	goto	l3304
+  1667  0624  3003               	movlw	3
+  1668  0625  04A4               	iorwf	sprintf@flag,f
+  1669  0626  09A6               	comf	sprintf@_val,f
+  1670  0627  09A7               	comf	sprintf@_val+1,f
+  1671  0628  0AA6               	incf	sprintf@_val,f
+  1672  0629  1903               	skipnz
+  1673  062A  0AA7               	incf	sprintf@_val+1,f
+  1674  062B                     l3304:	
+  1675  062B  01AB               	clrf	sprintf@c
+  1676  062C  0AAB               	incf	sprintf@c,f
+  1677  062D                     l3308:	
+  1678  062D  1003               	clrc
+  1679  062E  0D2B               	rlf	sprintf@c,w
+  1680  062F  3E01               	addlw	low (_dpowers-__stringbase)
+  1681  0630  0084               	movwf	4
+  1682  0631  120A  118A  2003   	fcall	stringdir
+      +       120A  118A         
+  1683  0636  00FC               	movwf	??_sprintf
+  1684  0637  120A  118A  2003   	fcall	stringdir
+      +       120A  118A         
+  1685  063C  00FD               	movwf	??_sprintf+1
+  1686  063D  0227               	subwf	sprintf@_val+1,w
+  1687  063E  1D03               	skipz
+  1688  063F  2E42               	goto	u385
+  1689  0640  087C               	movf	??_sprintf,w
+  1690  0641  0226               	subwf	sprintf@_val,w
+  1691  0642                     u385:	
+  1692  0642  1C03               	btfss	3,0
+  1693  0643  2E49               	goto	l3316
+  1694  0644  0AAB               	incf	sprintf@c,f
+  1695  0645  082B               	movf	sprintf@c,w
+  1696  0646  3A05               	xorlw	5
+  1697  0647  1D03               	skipz
+  1698  0648  2E2D               	goto	l3308
+  1699  0649                     l3316:	
+  1700  0649  0824               	movf	sprintf@flag,w
+  1701  064A  3903               	andlw	3
+  1702  064B  1903               	btfsc	3,2
+  1703  064C  2E52               	goto	l3322
+  1704  064D  082A               	movf	sprintf@sp,w
+  1705  064E  0084               	movwf	4
+  1706  064F  302D               	movlw	45
+  1707  0650  0080               	movwf	0
+  1708  0651  0AAA               	incf	sprintf@sp,f
+  1709  0652                     l3322:	
+  1710  0652  082B               	movf	sprintf@c,w
+  1711  0653  00A5               	movwf	sprintf@prec
+  1712  0654  2E7E               	goto	l3330
+  1713  0655                     l3324:	
+  1714  0655  300A               	movlw	10
+  1715  0656  00F7               	movwf	?___lwmod
+  1716  0657  01F8               	clrf	?___lwmod+1
+  1717  0658  1003               	clrc
+  1718  0659  0D25               	rlf	sprintf@prec,w
+  1719  065A  3E01               	addlw	low (_dpowers-__stringbase)
+  1720  065B  0084               	movwf	4
+  1721  065C  120A  118A  2003   	fcall	stringdir
+      +       120A  118A         
+  1722  0661  00F0               	movwf	?___lwdiv
+  1723  0662  120A  118A  2003   	fcall	stringdir
+      +       120A  118A         
+  1724  0667  00F1               	movwf	?___lwdiv+1
+  1725  0668  0827               	movf	sprintf@_val+1,w
+  1726  0669  00F3               	movwf	?___lwdiv+3
+  1727  066A  0826               	movf	sprintf@_val,w
+  1728  066B  00F2               	movwf	?___lwdiv+2
+  1729  066C  2686  120A  118A   	fcall	___lwdiv
+  1730  066F  0871               	movf	?___lwdiv+1,w
+  1731  0670  00FA               	movwf	?___lwmod+3
+  1732  0671  0870               	movf	?___lwdiv,w
+  1733  0672  00F9               	movwf	?___lwmod+2
+  1734  0673  26B0  120A  118A   	fcall	___lwmod
+  1735  0676  0877               	movf	?___lwmod,w
+  1736  0677  3E30               	addlw	48
+  1737  0678  00AB               	movwf	sprintf@c
+  1738  0679  082A               	movf	sprintf@sp,w
+  1739  067A  0084               	movwf	4
+  1740  067B  082B               	movf	sprintf@c,w
+  1741  067C  0080               	movwf	0
+  1742  067D  0AAA               	incf	sprintf@sp,f
+  1743  067E                     l3330:	
+  1744  067E  03A5               	decf	sprintf@prec,f
+  1745  067F  0F25               	incfsz	sprintf@prec,w
+  1746  0680  2E55               	goto	l3324
+  1747  0681  2DEF               	goto	l3332
+  1748  0682                     l3334:	
+  1749  0682  082A               	movf	sprintf@sp,w
+  1750  0683  0084               	movwf	4
+  1751  0684  0180               	clrf	0
+  1752  0685  0008               	return
+  1753  0686                     __end_of_sprintf:	
+  1754  0686                     __ptext410:	
+  1755 ;; =============== function ___lwmod ends ============
+  1756                           
+  1757                           
+  1758 ;; *************** function ___lwdiv *****************
+  1759 ;; Defined at:
+  1760 ;;		line 5 in file "C:\Program Files (x86)\HI-TECH Software\PICC\9.82\sources\lwdiv.c"
+  1761 ;; Parameters:    Size  Location     Type
+  1762 ;;  divisor         2    0[COMMON] unsigned int 
+  1763 ;;  dividend        2    2[COMMON] unsigned int 
+  1764 ;; Auto vars:     Size  Location     Type
+  1765 ;;  quotient        2    4[COMMON] unsigned int 
+  1766 ;;  counter         1    6[COMMON] unsigned char 
+  1767 ;; Return value:  Size  Location     Type
+  1768 ;;                  2    0[COMMON] unsigned int 
+  1769 ;; Registers used:
+  1770 ;;		wreg, status,2, status,0
+  1771 ;; Tracked objects:
+  1772 ;;		On entry : 17F/0
+  1773 ;;		On exit  : 17F/0
+  1774 ;;		Unchanged: FFE80/0
+  1775 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1776 ;;      Params:         4       0       0       0       0
+  1777 ;;      Locals:         3       0       0       0       0
+  1778 ;;      Temps:          0       0       0       0       0
+  1779 ;;      Totals:         7       0       0       0       0
+  1780 ;;Total ram usage:        7 bytes
+  1781 ;; Hardware stack levels used:    1
+  1782 ;; This function calls:
+  1783 ;;		Nothing
+  1784 ;; This function is called by:
+  1785 ;;		_sprintf
+  1786 ;; This function uses a non-reentrant model
+  1787 ;;
+  1788  0686                     ___lwdiv:	
+  1789                           
+  1790                           ; Regs used in ___lwdiv: [wreg+status,2+status,0]
+  1791  0686  01F4               	clrf	___lwdiv@quotient
+  1792  0687  01F5               	clrf	___lwdiv@quotient+1
+  1793  0688  0871               	movf	___lwdiv@divisor+1,w
+  1794  0689  0470               	iorwf	___lwdiv@divisor,w
+  1795  068A  1903               	skipnz
+  1796  068B  2EAB               	goto	l3210
+  1797  068C  01F6               	clrf	___lwdiv@counter
+  1798  068D                     L3:	
+  1799  068D  0AF6               	incf	___lwdiv@counter,f
+  1800  068E  1BF1               	btfsc	___lwdiv@divisor+1,7
+  1801  068F  2E94               	goto	l3198
+  1802  0690  1003               	clrc
+  1803  0691  0DF0               	rlf	___lwdiv@divisor,f
+  1804  0692  0DF1               	rlf	___lwdiv@divisor+1,f
+  1805  0693  2E8D               	goto	L3
+  1806  0694                     l3198:	
+  1807  0694  1003               	clrc
+  1808  0695  0DF4               	rlf	___lwdiv@quotient,f
+  1809  0696  0DF5               	rlf	___lwdiv@quotient+1,f
+  1810  0697  0871               	movf	___lwdiv@divisor+1,w
+  1811  0698  0273               	subwf	___lwdiv@dividend+1,w
+  1812  0699  1D03               	skipz
+  1813  069A  2E9D               	goto	u285
+  1814  069B  0870               	movf	___lwdiv@divisor,w
+  1815  069C  0272               	subwf	___lwdiv@dividend,w
+  1816  069D                     u285:	
+  1817  069D  1C03               	skipc
+  1818  069E  2EA7               	goto	L4
+  1819  069F  0870               	movf	___lwdiv@divisor,w
+  1820  06A0  02F2               	subwf	___lwdiv@dividend,f
+  1821  06A1  0871               	movf	___lwdiv@divisor+1,w
+  1822  06A2  1C03               	skipc
+  1823  06A3  03F3               	decf	___lwdiv@dividend+1,f
+  1824  06A4  02F3               	subwf	___lwdiv@dividend+1,f
+  1825  06A5  1474               	bsf	___lwdiv@quotient,0
+  1826  06A6  1003               	clrc
+  1827  06A7                     L4:	
+  1828  06A7  0CF1               	rrf	___lwdiv@divisor+1,f
+  1829  06A8  0CF0               	rrf	___lwdiv@divisor,f
+  1830  06A9  0BF6               	decfsz	___lwdiv@counter,f
+  1831  06AA  2E94               	goto	l3198
+  1832  06AB                     l3210:	
+  1833  06AB  0875               	movf	___lwdiv@quotient+1,w
+  1834  06AC  00F1               	movwf	?___lwdiv+1
+  1835  06AD  0874               	movf	___lwdiv@quotient,w
+  1836  06AE  00F0               	movwf	?___lwdiv
+  1837  06AF  0008               	return
+  1838  06B0                     __end_of___lwdiv:	
+  1839  06B0                     __ptext409:	
+  1840 ;; =============== function _pause ends ============
+  1841                           
+  1842                           
+  1843 ;; *************** function ___lwmod *****************
+  1844 ;; Defined at:
+  1845 ;;		line 5 in file "C:\Program Files (x86)\HI-TECH Software\PICC\9.82\sources\lwmod.c"
+  1846 ;; Parameters:    Size  Location     Type
+  1847 ;;  divisor         2    7[COMMON] unsigned int 
+  1848 ;;  dividend        2    9[COMMON] unsigned int 
+  1849 ;; Auto vars:     Size  Location     Type
+  1850 ;;  counter         1   11[COMMON] unsigned char 
+  1851 ;; Return value:  Size  Location     Type
+  1852 ;;                  2    7[COMMON] unsigned int 
+  1853 ;; Registers used:
+  1854 ;;		wreg, status,2, status,0
+  1855 ;; Tracked objects:
+  1856 ;;		On entry : 17F/0
+  1857 ;;		On exit  : 17F/0
+  1858 ;;		Unchanged: FFE80/0
+  1859 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1860 ;;      Params:         4       0       0       0       0
+  1861 ;;      Locals:         1       0       0       0       0
+  1862 ;;      Temps:          0       0       0       0       0
+  1863 ;;      Totals:         5       0       0       0       0
+  1864 ;;Total ram usage:        5 bytes
+  1865 ;; Hardware stack levels used:    1
+  1866 ;; This function calls:
+  1867 ;;		Nothing
+  1868 ;; This function is called by:
+  1869 ;;		_sprintf
+  1870 ;; This function uses a non-reentrant model
+  1871 ;;
+  1872  06B0                     ___lwmod:	
+  1873                           
+  1874                           ; Regs used in ___lwmod: [wreg+status,2+status,0]
+  1875  06B0  0878               	movf	___lwmod@divisor+1,w
+  1876  06B1  0477               	iorwf	___lwmod@divisor,w
+  1877  06B2  1903               	skipnz
+  1878  06B3  2ECF               	goto	l3230
+  1879  06B4  01FB               	clrf	___lwmod@counter
+  1880  06B5                     L1:	
+  1881  06B5  0AFB               	incf	___lwmod@counter,f
+  1882  06B6  1BF8               	btfsc	___lwmod@divisor+1,7
+  1883  06B7  2EBC               	goto	l3222
+  1884  06B8  1003               	clrc
+  1885  06B9  0DF7               	rlf	___lwmod@divisor,f
+  1886  06BA  0DF8               	rlf	___lwmod@divisor+1,f
+  1887  06BB  2EB5               	goto	L1
+  1888  06BC                     l3222:	
+  1889  06BC  0878               	movf	___lwmod@divisor+1,w
+  1890  06BD  027A               	subwf	___lwmod@dividend+1,w
+  1891  06BE  1D03               	skipz
+  1892  06BF  2EC2               	goto	u325
+  1893  06C0  0877               	movf	___lwmod@divisor,w
+  1894  06C1  0279               	subwf	___lwmod@dividend,w
+  1895  06C2                     u325:	
+  1896  06C2  1C03               	skipc
+  1897  06C3  2ECB               	goto	L2
+  1898  06C4  0877               	movf	___lwmod@divisor,w
+  1899  06C5  02F9               	subwf	___lwmod@dividend,f
+  1900  06C6  0878               	movf	___lwmod@divisor+1,w
+  1901  06C7  1C03               	skipc
+  1902  06C8  03FA               	decf	___lwmod@dividend+1,f
+  1903  06C9  02FA               	subwf	___lwmod@dividend+1,f
+  1904  06CA  1003               	clrc
+  1905  06CB                     L2:	
+  1906  06CB  0CF8               	rrf	___lwmod@divisor+1,f
+  1907  06CC  0CF7               	rrf	___lwmod@divisor,f
+  1908  06CD  0BFB               	decfsz	___lwmod@counter,f
+  1909  06CE  2EBC               	goto	l3222
+  1910  06CF                     l3230:	
+  1911  06CF  087A               	movf	___lwmod@dividend+1,w
+  1912  06D0  00F8               	movwf	?___lwmod+1
+  1913  06D1  0879               	movf	___lwmod@dividend,w
+  1914  06D2  00F7               	movwf	?___lwmod
+  1915  06D3  0008               	return
+  1916  06D4                     __end_of___lwmod:	
+  1917                           
+  1918                           	psect	text407
+  1919  053A                     __ptext407:	
+  1920 ;; =============== function _i2c_start ends ============
+  1921                           
+  1922                           
+  1923 ;; *************** function _lcd_clear *****************
+  1924 ;; Defined at:
+  1925 ;;		line 643 in file "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
+  1926 ;; Parameters:    Size  Location     Type
+  1927 ;;		None
+  1928 ;; Auto vars:     Size  Location     Type
+  1929 ;;		None
+  1930 ;; Return value:  Size  Location     Type
+  1931 ;;		None               void
+  1932 ;; Registers used:
+  1933 ;;		wreg, status,2, status,0, pclath, cstack
+  1934 ;; Tracked objects:
+  1935 ;;		On entry : 17F/0
+  1936 ;;		On exit  : 17F/0
+  1937 ;;		Unchanged: FFE80/0
+  1938 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1939 ;;      Params:         0       0       0       0       0
+  1940 ;;      Locals:         0       0       0       0       0
+  1941 ;;      Temps:          0       0       0       0       0
+  1942 ;;      Totals:         0       0       0       0       0
+  1943 ;;Total ram usage:        0 bytes
+  1944 ;; Hardware stack levels used:    1
+  1945 ;; Hardware stack levels required when called:    1
+  1946 ;; This function calls:
+  1947 ;;		_lcd_write
+  1948 ;; This function is called by:
+  1949 ;;		_main
+  1950 ;; This function uses a non-reentrant model
+  1951 ;;
+  1952  053A                     _lcd_clear:	
+  1953  053A  3001               	movlw	1
+  1954                           
+  1955                           ;eeprom_i2c.c: 644: RA7 = 0;
+  1956                           
+  1957                           ; Regs used in _lcd_clear: [wreg+status,2+status,0+pclath+cstack]
+  1958  053B  1385               	bcf	5,7
+  1959                           
+  1960                           ;eeprom_i2c.c: 645: lcd_write(0x1);
+  1961  053C  2D3D               	ljmp	_lcd_write
+  1962  053D                     __end_of_lcd_clear:	
+  1963  053D                     __ptext414:	
+  1964 ;; =============== function _putch ends ============
+  1965                           
+  1966                           
+  1967 ;; *************** function _lcd_write *****************
+  1968 ;; Defined at:
+  1969 ;;		line 623 in file "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
+  1970 ;; Parameters:    Size  Location     Type
+  1971 ;;  c               1    wreg     unsigned char 
+  1972 ;; Auto vars:     Size  Location     Type
+  1973 ;;  c               1    0[COMMON] unsigned char 
+  1974 ;;  temp            1    1[COMMON] unsigned char 
+  1975 ;; Return value:  Size  Location     Type
+  1976 ;;		None               void
+  1977 ;; Registers used:
+  1978 ;;		wreg, status,2, status,0
+  1979 ;; Tracked objects:
+  1980 ;;		On entry : 17F/0
+  1981 ;;		On exit  : 17F/0
+  1982 ;;		Unchanged: FFE80/0
+  1983 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  1984 ;;      Params:         0       0       0       0       0
+  1985 ;;      Locals:         2       0       0       0       0
+  1986 ;;      Temps:          0       0       0       0       0
+  1987 ;;      Totals:         2       0       0       0       0
+  1988 ;;Total ram usage:        2 bytes
+  1989 ;; Hardware stack levels used:    1
+  1990 ;; This function calls:
+  1991 ;;		Nothing
+  1992 ;; This function is called by:
+  1993 ;;		_lcd_clear
+  1994 ;;		_main
+  1995 ;; This function uses a non-reentrant model
+  1996 ;;
+  1997  053D                     _lcd_write:	
+  1998                           
+  1999                           ; Regs used in _lcd_write: [wreg+status,2+status,0]
+  2000                           ;lcd_write@c stored from wreg
+  2001  053D  00F0               	movwf	lcd_write@c
+  2002                           
+  2003                           ;eeprom_i2c.c: 626: char temp = ( ( ( c >> 4 ) & 0x0F );
+  2004  053E  0E70               	swapf	lcd_write@c,w
+  2005  053F  390F               	andlw	15
+  2006                           
+  2007                           ;eeprom_i2c.c: 627: PORTD = PORTD & 0xF0;
+  2008                           
+  2009                           ;eeprom_i2c.c: 628: PORTD = PORTD + temp;
+  2010                           
+  2011                           ;eeprom_i2c.c: 629: ((RA6=1),(RA6=0));
+  2012  0540  2546  120A  118A   	fcall	PL2	;call to abstracted procedure
+  2013                           
+  2014                           ;eeprom_i2c.c: 631: temp = ( c & 0x0F );
+  2015  0543  0870               	movf	lcd_write@c,w
+  2016                           
+  2017                           ;eeprom_i2c.c: 632: PORTD = PORTD & 0xF0;
+  2018                           
+  2019                           ;eeprom_i2c.c: 633: PORTD = PORTD + temp;
+  2020                           
+  2021                           ;eeprom_i2c.c: 634: ((RA6=1),(RA6=0));
+  2022  0544  2546               	fcall	PL2	;call to abstracted procedure
+  2023  0545  0008               	return
+  2024  0546                     __end_of_lcd_write:	
+  2025  0546                     PL2:	
+  2026  0546  00F1               	movwf	lcd_write@temp
+  2027  0547  300F               	movlw	15
+  2028  0548  05F1               	andwf	lcd_write@temp,f
+  2029  0549  30F0               	movlw	240
+  2030  054A  0588               	andwf	8,f	;volatile
+  2031  054B  0871               	movf	lcd_write@temp,w
+  2032  054C  0788               	addwf	8,f	;volatile
+  2033  054D  1705               	bsf	5,6
+  2034  054E  1305               	bcf	5,6
+  2035  054F  0008               	return
+  2036                           
+  2037                           	psect	text412
+  2038  0529                     __ptext412:	
+  2039 ;; =============== function _i2c_waitForIdle ends ============
+  2040                           
+  2041                           
+  2042 ;; *************** function _i2c_init *****************
+  2043 ;; Defined at:
+  2044 ;;		line 1020 in file "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
+  2045 ;; Parameters:    Size  Location     Type
+  2046 ;;		None
+  2047 ;; Auto vars:     Size  Location     Type
+  2048 ;;		None
+  2049 ;; Return value:  Size  Location     Type
+  2050 ;;		None               void
+  2051 ;; Registers used:
+  2052 ;;		wreg, status,2
+  2053 ;; Tracked objects:
+  2054 ;;		On entry : 17F/40
+  2055 ;;		On exit  : 17F/0
+  2056 ;;		Unchanged: FFE80/0
+  2057 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  2058 ;;      Params:         0       0       0       0       0
+  2059 ;;      Locals:         0       0       0       0       0
+  2060 ;;      Temps:          0       0       0       0       0
+  2061 ;;      Totals:         0       0       0       0       0
+  2062 ;;Total ram usage:        0 bytes
+  2063 ;; Hardware stack levels used:    1
+  2064 ;; This function calls:
+  2065 ;;		Nothing
+  2066 ;; This function is called by:
+  2067 ;;		_main
+  2068 ;; This function uses a non-reentrant model
+  2069 ;;
+  2070  0529                     _i2c_init:	
+  2071                           
+  2072                           ;eeprom_i2c.c: 1021: TRISC3=1;
+  2073                           
+  2074                           ; Regs used in _i2c_init: [wreg+status,2]
+  2075  0529  1683               	bsf	3,5	;RP0=1, select bank1
+  2076  052A  1303               	bcf	3,6	;RP1=0, select bank1
+  2077  052B  3038               	movlw	56
+  2078  052C  1587               	bsf	7,3
+  2079                           
+  2080                           ;eeprom_i2c.c: 1022: TRISC4=1;
+  2081  052D  1607               	bsf	7,4
+  2082                           
+  2083                           ;eeprom_i2c.c: 1024: SSPCON = 0x38;
+  2084  052E  1283               	bcf	3,5	;RP0=0, select bank0
+  2085  052F  0094               	movwf	20	;volatile
+  2086                           
+  2087                           ;eeprom_i2c.c: 1025: SSPCON2 = 0x00;
+  2088  0530  1683               	bsf	3,5	;RP0=1, select bank1
+  2089  0531  0191               	clrf	17	;volatile
+  2090                           
+  2091                           ;eeprom_i2c.c: 1028: SSPADD = 0x27;
+  2092  0532  3027               	movlw	39
+  2093  0533  0093               	movwf	19	;volatile
+  2094                           
+  2095                           ;eeprom_i2c.c: 1031: CKE=1;
+  2096  0534  1714               	bsf	20,6
+  2097                           
+  2098                           ;eeprom_i2c.c: 1032: SMP=1;
+  2099  0535  1794               	bsf	20,7
+  2100                           
+  2101                           ;eeprom_i2c.c: 1034: SSPIF=0;
+  2102  0536  1283               	bcf	3,5	;RP0=0, select bank0
+  2103  0537  118C               	bcf	12,3
+  2104                           
+  2105                           ;eeprom_i2c.c: 1035: BCLIF=0;
+  2106  0538  118D               	bcf	13,3
+  2107  0539  0008               	return
+  2108  053A                     __end_of_i2c_init:	
+  2109                           
+  2110                           	psect	text413
+  2111  0518                     __ptext413:	
+  2112 ;; =============== function _i2c_init ends ============
+  2113                           
+  2114                           
+  2115 ;; *************** function _putch *****************
+  2116 ;; Defined at:
+  2117 ;;		line 776 in file "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
+  2118 ;; Parameters:    Size  Location     Type
+  2119 ;;  byte            1    wreg     unsigned char 
+  2120 ;; Auto vars:     Size  Location     Type
+  2121 ;;  byte            1    0[COMMON] unsigned char 
+  2122 ;; Return value:  Size  Location     Type
+  2123 ;;		None               void
+  2124 ;; Registers used:
+  2125 ;;		wreg
+  2126 ;; Tracked objects:
+  2127 ;;		On entry : 0/0
+  2128 ;;		On exit  : 60/0
+  2129 ;;		Unchanged: FFF9F/0
+  2130 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  2131 ;;      Params:         0       0       0       0       0
+  2132 ;;      Locals:         1       0       0       0       0
+  2133 ;;      Temps:          0       0       0       0       0
+  2134 ;;      Totals:         1       0       0       0       0
+  2135 ;;Total ram usage:        1 bytes
+  2136 ;; Hardware stack levels used:    1
+  2137 ;; This function calls:
+  2138 ;;		Nothing
+  2139 ;; This function is called by:
+  2140 ;;		_main
+  2141 ;; This function uses a non-reentrant model
+  2142 ;;
+  2143  0518                     _putch:	
+  2144                           
+  2145                           ; Regs used in _putch: [wreg]
+  2146                           ;putch@byte stored from wreg
+  2147  0518  00F0               	movwf	putch@byte
+  2148  0519                     l1215:	
+  2149                           ;eeprom_i2c.c: 778: while(!TXIF)
+  2150                           
+  2151  0519  1283               	bcf	3,5	;RP0=0, select bank0
+  2152  051A  1303               	bcf	3,6	;RP1=0, select bank0
+  2153  051B  1E0C               	btfss	12,4
+  2154  051C  2D19               	goto	l1215
+  2155                           
+  2156                           ;eeprom_i2c.c: 780: TXREG = byte;
+  2157  051D  0870               	movf	putch@byte,w
+  2158  051E  0099               	movwf	25	;volatile
+  2159  051F  0008               	return
+  2160  0520                     __end_of_putch:	
+  2161                           
+  2162                           	psect	text416
+  2163  0520                     __ptext416:	
+  2164 ;; =============== function _msecbase ends ============
+  2165                           
+  2166                           
+  2167 ;; *************** function _init_micro *****************
+  2168 ;; Defined at:
+  2169 ;;		line 112 in file "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
+  2170 ;; Parameters:    Size  Location     Type
+  2171 ;;		None
+  2172 ;; Auto vars:     Size  Location     Type
+  2173 ;;		None
+  2174 ;; Return value:  Size  Location     Type
+  2175 ;;		None               void
+  2176 ;; Registers used:
+  2177 ;;		status,2
+  2178 ;; Tracked objects:
+  2179 ;;		On entry : 17F/0
+  2180 ;;		On exit  : 17F/40
+  2181 ;;		Unchanged: FFE80/0
+  2182 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+  2183 ;;      Params:         0       0       0       0       0
+  2184 ;;      Locals:         0       0       0       0       0
+  2185 ;;      Temps:          0       0       0       0       0
+  2186 ;;      Totals:         0       0       0       0       0
+  2187 ;;Total ram usage:        0 bytes
+  2188 ;; Hardware stack levels used:    1
+  2189 ;; This function calls:
+  2190 ;;		Nothing
+  2191 ;; This function is called by:
+  2192 ;;		_main
+  2193 ;; This function uses a non-reentrant model
+  2194 ;;
+  2195  0520                     _init_micro:	
+  2196                           
+  2197                           ;eeprom_i2c.c: 113: ANSEL = 0;
+  2198                           
+  2199                           ; Regs used in _init_micro: [status,2]
+  2200  0520  1683               	bsf	3,5	;RP0=1, select bank3
+  2201  0521  1703               	bsf	3,6	;RP1=1, select bank3
+  2202  0522  0188               	clrf	8	;volatile
+  2203                           
+  2204                           ;eeprom_i2c.c: 114: ANSELH = 0;
+  2205  0523  0189               	clrf	9	;volatile
+  2206                           
+  2207                           ;eeprom_i2c.c: 115: CM1CON0 = 0;
+  2208  0524  1283               	bcf	3,5	;RP0=0, select bank2
+  2209  0525  0187               	clrf	7	;volatile
+  2210                           
+  2211                           ;eeprom_i2c.c: 116: CM2CON0 = 0;
+  2212  0526  0188               	clrf	8	;volatile
+  2213                           
+  2214                           ;eeprom_i2c.c: 121: INTCON=0;
+  2215  0527  018B               	clrf	11	;volatile
+  2216  0528  0008               	return
+  2217  0529                     __end_of_init_micro:	
+  2218                           
+  2219                           	psect	text417
+  2220  0000                     __ptext417:	
+  2221 ;; =============== function _init_micro ends ============
+  2222                           
+  2223  007E                     btemp	set	126	;btemp
+  2224  007E                     wtemp0	set	126
 
 
 HI-TECH Software PICC Macro Assembler V9.82 build 9453 
-Symbol Table                                                                                   Mon Nov 11 19:13:54 2019
+Symbol Table                                                                                   Mon Nov 11 19:44:21 2019
 
-                l2400 0000                  l2402 07D0                  l2412 07E9                  l2404 0000  
-                l2414 0000                  l2406 0000                  l2408 0000                  l2394 0000  
-                l2396 0000                  l2398 0000                  _main 07C0                  btemp 007E  
-                start 0000                 ?_main 0070                 _PORTB 0006                 _TRISB 0086  
-               _pause 0000                 status 0003                 wtemp0 007E          __end_of_main 0800  
-              ??_main 0074                ?_pause 0070             ?_I2C_EEIN 0070        __pcstackCOMMON 0070  
-          ??_I2C_EEIN 0070               ??_pause 0074             ?_i2c_init 0070            __pmaintext 07C0  
-           _I2C_EEOUT 0000            ??_i2c_init 0070            _init_micro 0000               _pause$0 0070  
-             main@cnt 0074  end_of_initialization 07BC            ?_I2C_EEOUT 0070           _I2C_EEOUT$1 0070  
-         ?_init_micro 0070   start_initialization 07BC           ??_I2C_EEOUT 0071              _I2C_EEIN 0000  
-            _i2c_init 0000          ??_init_micro 0070         __size_of_main 0040  
+                       pc 0002                        fsr 0004                       _CKE 04A6  
+                     _RA6 002E                       _RA7 002F                       _RE1 0049  
+                     u325 06C2                       _PEN 048A                       u345 05D4  
+                     u435 0790                       u285 069D                       u385 0642  
+                     _SEN 0488                       _SMP 04A7                       _R_W 04A2  
+                     fsr0 0004                       indf 0000                      l1051 0000  
+                    l1302 0000                      l1215 0519                      l1066 05E8  
+                    l1218 0000                      l1075 0000                      l1069 0000  
+                    l1343 0000                      l3200 0000                      l1273 0000  
+                    l1186 0000                      l3210 06AB                      l1282 0000  
+                    l1291 05A1                      l3204 0000                      l1292 05A2  
+                    l1189 0000                      l1285 0000                      l1293 0000  
+                    l3142 0000                      l3150 0000                      l3222 06BC  
+                    l3230 06CF                      l3214 0000                      l3302 0000  
+                    l1279 0000                      l3144 0000                      l3160 0000  
+                    l3152 0000                      l3208 0000                      l3240 05C6  
+                    l1288 0000                      l1296 0000                      l3320 0000  
+                    l3304 062B                      l3400 0000                      l2345 0000  
+                    l3162 0000                      l3154 0000                      l3146 0000  
+                    l3170 0000                      l3234 05C1                      l3242 0000  
+                    l3250 0000                      l3330 067E                      l3322 0652  
+                    l3314 0000                      l3410 0000                      l3402 0000  
+                    l2355 0000                      l1299 0000                      l3156 0000  
+                    l3148 0000                      l3164 0000                      l3180 0000  
+                    l3172 0000                      l3228 0000                      l3244 0000  
+                    l3252 0000                      l3260 0000                      l3324 0655  
+                    l3316 0649                      l3308 062D                      l3332 05EF  
+                    l3340 0000                      l3420 0000                      l3412 0000  
+                    l3404 0000                      l3158 0000                      l3182 0000  
+                    l3174 0000                      l3190 0000                      l3238 0000  
+                    l3246 0000                      l3254 0000                      l3262 0000  
+                    l3326 0000                      l3334 0682                      l3342 0000  
+                    l3430 0000                      l3422 0000                      l3414 0000  
+                    l3406 0000                      l3350 0000                      l3176 0000  
+                    l3168 0000                      l3184 0000                      l3248 0000  
+                    l3256 0000                      l3264 0000                      l3272 0000  
+                    l3328 0000                      l3280 0000                      l3440 0000  
+                    l3432 0000                      l3416 0000                      l3408 0000  
+                    l3360 0000                      l3352 0000                      l3178 0000  
+                    l3186 05A7                      l3266 0000                      l3258 0000  
+                    l3274 0000                      l3338 0000                      l3450 0000  
+                    l3442 0000                      l3418 0000                      l3370 0000  
+                    l3362 0000                      l3354 0000                      l3346 0000  
+                    l3188 0000                      l3268 0000                      l3276 0000  
+                    l3292 0000                      l3460 0000                      l3452 0000  
+                    l3444 0000                      l3436 0000                      l3428 0770  
+                    l3380 0000                      l3372 0000                      l3364 0000  
+                    l3356 0000                      l3348 0000                      l3198 0694  
+                    l3294 0619                      l3286 0000                      l3462 0000  
+                    l3438 079F                      l3390 0000                      l3382 0000  
+                    l3374 0000                      l3366 0000                      l3358 0000  
+                    l3296 0000                      l3288 0605                      l3448 07BA  
+                    l3392 0000                      l3384 0000                      l3376 0000  
+                    l3368 0000                      l3298 0000                      l3466 0000  
+                    l3458 07DA                      l3394 0000                      l3386 0000  
+                    l3378 0000                      l3396 0000                      l3388 0000  
+                    l3398 0000                      STR_1 0013                      _T0IF 005A  
+                    _RCEN 048B                      _TMR0 0001                      _RSEN 0489  
+                    _TXIF 0064          __end_of_I2C_EEIN 0585                      _main 06D4  
+                    btemp 007E         ??_i2c_waitForIdle 0070                      start 0000  
+           ?_i2c_repStart 0070                     ?_main 0070                     _ACKEN 048C  
+                   _ACKDT 048D                     _BCLIF 006B                     _ANSEL 0188  
+             i2c_read@ack 0077           __end_of___lwdiv 06B0           __end_of___lwmod 06D4  
+                   _RCSTA 0018                     _SPBRG 0099                     _PORTA 0005  
+                   _PORTB 0006                     _PORTD 0008                     _TRISA 0085  
+                   _TRISB 0086                     _TRISD 0088                     _SSPIF 0063  
+                   _TXREG 0019                     _TXSTA 0098         __end_of_I2C_EEOUT 0569  
+                   _pause 05C1                     _putch 0518                     main@i 003B  
+                   main@x 003D                     pclath 000A                     status 0003  
+                   wtemp0 007E           __end_of_sprintf 0686            ??_i2c_repStart 0075  
+            __end_of_main 0800          __end_of_i2c_init 053A          __end_of_i2c_read 05A7  
+        __end_of_i2c_stop 05BE                    ??_main 007E              I2C_EEIN@data 007A  
+                  ?_pause 0070                    ?_putch 0070                    _ANSELH 0189  
+                  _INTCON 000B                    _OSCCON 008F                    _SSPADD 0093  
+                  _TRISC3 043B                    _TRISC4 043C                    _TRISC6 043E  
+                  _TRISC7 043F                    _SSPCON 0014                    _SSPBUF 0013  
+      __size_of_i2c_start 0003        __size_of_i2c_write 0006                 ??___lwdiv 0074  
+               ??___lwmod 007B          __end_of_msecbase 05EC     i2c_write@i2cWriteData 0075  
+               ?_I2C_EEIN 0070                    pause@x 0074                 ??_sprintf 007C  
+           lcd_write@temp 0071            __pcstackCOMMON 0070             __end_of_pause 05E1  
+           __end_of_putch 0520                ??_I2C_EEIN 0079         __end_of_i2c_start 058E  
+       __end_of_i2c_write 058B      __end_of_i2c_repStart 05C1        __size_of_lcd_clear 0003  
+         _i2c_waitForIdle 05A7       i2c_read@i2cReadData 0078        __size_of_lcd_write 0009  
+                 ??_pause 0074                   ??_putch 0070                 ?_i2c_init 0070  
+               ?_i2c_read 0075                 ?_i2c_stop 0070                __pmaintext 06D4  
+                 _CM1CON0 0107                   _CM2CON0 0108                   _ACKSTAT 048E  
+                 _BAUDCTL 0187             I2C_EEOUT@data 0078                   _SSPCON2 0091  
+               _I2C_EEOUT 0550                ??_i2c_init 0070                ??_i2c_read 0077  
+              ??_i2c_stop 0075           I2C_EEIN@address 0079                 ?_msecbase 0070  
+       __end_of_lcd_clear 053D         __end_of_lcd_write 0546                   ___lwdiv 0686  
+                 ___lwmod 06B0                _init_micro 0520   __end_of_i2c_waitForIdle 05BB  
+                 _dpowers 0009                   main@cnt 003E                   _sprintf 05EC  
+    end_of_initialization 0514                ?_I2C_EEOUT 0078                ??_msecbase 0070  
+   __size_of_i2c_repStart 0003         __size_of_I2C_EEIN 001C                main@buffer 002C  
+              lcd_write@c 0070              _i2c_repStart 05BE               ?_init_micro 0070  
+        ?_i2c_waitForIdle 0070       start_initialization 0514                 _i2c_start 058B  
+               _i2c_write 0585               ??_I2C_EEOUT 0079         __size_of_i2c_init 0011  
+       __size_of_i2c_read 0019         __size_of_i2c_stop 0003              pause@usvalue 0070  
+           __pcstackBANK0 0020                ?_i2c_start 0070                ?_i2c_write 0070  
+     __size_of_init_micro 0009               sprintf@_val 0026               sprintf@flag 0024  
+             sprintf@prec 0025          ___lwdiv@dividend 0072         __size_of_msecbase 000B  
+               __ptext400 0550                 __ptext401 05EC                 __ptext410 0686  
+               __ptext402 0585                 __ptext411 05A7                 __ptext403 058E  
+               __ptext412 0529                 __ptext404 05BB                 __ptext413 0518  
+               __ptext405 05BE                 __ptext414 053D                 __ptext406 058B  
+               __ptext415 05E1                 __ptext407 053A                 __ptext416 0520  
+               __ptext408 05C1                 __ptext417 0000                 __ptext409 06B0  
+               __ptext399 0569                  ?___lwdiv 0070                  ?___lwmod 0077  
+               _lcd_clear 053A                 __pstrings 0003                 _lcd_write 053D  
+                _I2C_EEIN 0569          ___lwdiv@quotient 0074                  ?_sprintf 0020  
+          __size_of_pause 0020            __size_of_putch 0008                ?_lcd_clear 0070  
+             __stringbase 0008                ?_lcd_write 0070               ??_i2c_start 0075  
+             ??_i2c_write 0075                  _i2c_init 0529                  _i2c_read 058E  
+                _i2c_stop 05BB              ??_init_micro 0070          __size_of___lwdiv 002A  
+        __size_of___lwmod 0024           ___lwdiv@divisor 0070           ___lwdiv@counter 0076  
+        __size_of_sprintf 009A             __size_of_main 012C        __end_of_init_micro 0529  
+                _msecbase 05E1               ??_lcd_clear 0072               ??_lcd_write 0070  
+               putch@byte 0070  __size_of_i2c_waitForIdle 0014                 sprintf@ap 0023  
+               sprintf@sp 002A          ___lwmod@dividend 0079                 stringcode 0003  
+        I2C_EEOUT@address 0079                _OPTION_REG 0081                  sprintf@c 002B  
+                sprintf@f 0020           ___lwmod@divisor 0077           ___lwmod@counter 007B  
+                stringdir 0003                  stringtab 0003        __size_of_I2C_EEOUT 0019  
