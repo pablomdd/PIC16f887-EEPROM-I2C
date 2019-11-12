@@ -1,0 +1,311 @@
+
+
+HI-TECH Software PIC PRO Macro Assembler V9.82 build 9453 
+                                                                                               Mon Nov 11 19:13:54 2019
+
+HI-TECH Software Omniscient Code Generator (PRO mode) build 9453
+     1                           	processor	16F887
+     2                           	opt	pw 120
+     3                           	opt	pm
+     4                           	psect	config,global,class=CONFIG,delta=2
+     5                           	psect	maintext,global,class=CODE,delta=2
+     6                           	psect	cinit,global,class=CODE,delta=2
+     7                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1
+     8                           	psect	pa_nodes,global,class=CODE,delta=2
+     9                           	dabs	1,0x7E,2
+    10  000A                     	;#
+    11                           
+    12                           	psect	config
+    13  2007  E0D4               	dw	57556	;#
+    14  2008  FFFF               	dw	65535	;#
+    15                           
+    16                           	psect	maintext
+    17  07C0                     __pmaintext:	
+    18  0006                     _PORTB	set	6
+    19  0086                     _TRISB	set	134
+    20                           
+    21 ;;Data sizes: Strings 0, constant 0, data 0, bss 0, persistent 0 stack 0
+    22 ;;Auto spaces:   Size  Autos    Used
+    23 ;; COMMON          14      5       5
+    24 ;; BANK0           80      0       0
+    25 ;; BANK1           80      0       0
+    26 ;; BANK3           96      0       0
+    27 ;; BANK2           96      0       0
+    28 ;;
+    29 ;; Pointer list with targets:
+    30 ;;
+    31 ;; Critical Paths under _main in COMMON
+    32 ;;
+    33 ;;   _main->_pause
+    34 ;;
+    35 ;; Critical Paths under _main in BANK0
+    36 ;;
+    37 ;;   None.
+    38 ;;
+    39 ;; Critical Paths under _main in BANK1
+    40 ;;
+    41 ;;   None.
+    42 ;;
+    43 ;; Critical Paths under _main in BANK3
+    44 ;;
+    45 ;;   None.
+    46 ;;
+    47 ;; Critical Paths under _main in BANK2
+    48 ;;
+    49 ;;   None.
+    50 ;;
+    51 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+    52 ;;
+    53 ;;
+    54 ;;Call Graph Tables:
+    55 ;;
+    56 ;; ---------------------------------------------------------------------------------
+    57 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+    58 ;; ---------------------------------------------------------------------------------
+    59 ;; (0) _main                                                 1     1      0      60
+    60 ;;                                              4 COMMON     1     1      0
+    61 ;;                         _init_micro
+    62 ;;                           _i2c_init
+    63 ;;                          _I2C_EEOUT
+    64 ;;                              _pause
+    65 ;;                           _I2C_EEIN
+    66 ;; ---------------------------------------------------------------------------------
+    67 ;; (1) _I2C_EEIN                                             0     0      0       0
+    68 ;; ---------------------------------------------------------------------------------
+    69 ;; (1) _pause                                                4     0      4       0
+    70 ;;                                              0 COMMON     4     0      4
+    71 ;; ---------------------------------------------------------------------------------
+    72 ;; (1) _I2C_EEOUT                                            1     0      1       0
+    73 ;;                                              0 COMMON     1     0      1
+    74 ;; ---------------------------------------------------------------------------------
+    75 ;; (1) _i2c_init                                             0     0      0       0
+    76 ;; ---------------------------------------------------------------------------------
+    77 ;; (1) _init_micro                                           0     0      0       0
+    78 ;; ---------------------------------------------------------------------------------
+    79 ;; Estimated maximum stack depth 1
+    80 ;; ---------------------------------------------------------------------------------
+    81 ;; Call Graph Graphs:
+    82 ;; _main (ROOT)
+    83 ;;   _init_micro
+    84 ;;   _i2c_init
+    85 ;;   _I2C_EEOUT
+    86 ;;   _pause
+    87 ;;   _I2C_EEIN
+    88 ;;
+    89 ;; Address spaces:
+    90 ;;Name               Size   Autos  Total    Cost      Usage
+    91 ;;BITCOMMON            E      0       0       0        0.0%
+    92 ;;EEDATA             100      0       0       0        0.0%
+    93 ;;NULL                 0      0       0       0        0.0%
+    94 ;;CODE                 0      0       0       0        0.0%
+    95 ;;COMMON               E      5       5       1       35.7%
+    96 ;;BITSFR0              0      0       0       1        0.0%
+    97 ;;SFR0                 0      0       0       1        0.0%
+    98 ;;BITSFR1              0      0       0       2        0.0%
+    99 ;;SFR1                 0      0       0       2        0.0%
+   100 ;;STACK                0      0       1       2        0.0%
+   101 ;;ABS                  0      0       0       3        0.0%
+   102 ;;BITBANK0            50      0       0       4        0.0%
+   103 ;;BITSFR3              0      0       0       4        0.0%
+   104 ;;SFR3                 0      0       0       4        0.0%
+   105 ;;BANK0               50      0       0       5        0.0%
+   106 ;;BITSFR2              0      0       0       5        0.0%
+   107 ;;SFR2                 0      0       0       5        0.0%
+   108 ;;BITBANK1            50      0       0       6        0.0%
+   109 ;;BANK1               50      0       0       7        0.0%
+   110 ;;BITBANK3            60      0       0       8        0.0%
+   111 ;;BANK3               60      0       0       9        0.0%
+   112 ;;BITBANK2            60      0       0      10        0.0%
+   113 ;;BANK2               60      0       0      11        0.0%
+   114 ;;DATA                 0      0       0      12        0.0%
+   115 ;; *************** function _main *****************
+   116 ;; Defined at:
+   117 ;;		line 29 in file "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
+   118 ;; Parameters:    Size  Location     Type
+   119 ;;		None
+   120 ;; Auto vars:     Size  Location     Type
+   121 ;;  cnt             1    4[COMMON] unsigned char 
+   122 ;; Return value:  Size  Location     Type
+   123 ;;		None               void
+   124 ;; Registers used:
+   125 ;;		wreg, fsr0l, fsr0h, fsr1l, fsr1h, status,2, status,0, btemp+1, pclath, cstack
+   126 ;; Tracked objects:
+   127 ;;		On entry : 17F/0
+   128 ;;		On exit  : 0/0
+   129 ;;		Unchanged: 0/0
+   130 ;; Data sizes:     COMMON   BANK0   BANK1   BANK3   BANK2
+   131 ;;      Params:         0       0       0       0       0
+   132 ;;      Locals:         1       0       0       0       0
+   133 ;;      Temps:          0       0       0       0       0
+   134 ;;      Totals:         1       0       0       0       0
+   135 ;;Total ram usage:        1 bytes
+   136 ;; Hardware stack levels required when called:    1
+   137 ;; This function calls:
+   138 ;;		_init_micro
+   139 ;;		_i2c_init
+   140 ;;		_I2C_EEOUT
+   141 ;;		_pause
+   142 ;;		_I2C_EEIN
+   143 ;; This function is called by:
+   144 ;;		Startup code after reset
+   145 ;; This function uses a non-reentrant model
+   146 ;;
+   147  07C0                     _main:	
+   148                           
+   149                           ;eeprom_i2c.c: 30: init_micro();
+   150                           
+   151                           ; Regs used in _main: [allreg]
+   152  07C0  120A  118A  2000   	fcall	_init_micro
+      +       120A  118A         
+   153                           
+   154                           ;eeprom_i2c.c: 31: i2c_init();
+   155  07C5  120A  118A  2000   	fcall	_i2c_init
+      +       120A  118A         
+   156                           
+   157                           ;eeprom_i2c.c: 32: PORTB=0x00;
+   158  07CA  1283               	bcf	3,5	;RP0=0, select bank0
+   159  07CB  1303               	bcf	3,6	;RP1=0, select bank0
+   160  07CC  0186               	clrf	6	;volatile
+   161                           
+   162                           ;eeprom_i2c.c: 33: TRISB=0x00;
+   163  07CD  1683               	bsf	3,5	;RP0=1, select bank1
+   164  07CE  0186               	clrf	6	;volatile
+   165                           
+   166                           ;eeprom_i2c.c: 35: unsigned char cnt=0;
+   167  07CF  01F4               	clrf	main@cnt
+   168  07D0                     l2402:	
+   169                           ;eeprom_i2c.c: 37: while(cnt<=255)
+   170                           
+   171                           
+   172                           ;eeprom_i2c.c: 38: {
+   173                           ;eeprom_i2c.c: 39: PORTB=cnt;
+   174  07D0  0874               	movf	main@cnt,w
+   175  07D1  1283               	bcf	3,5	;RP0=0, select bank0
+   176  07D2  1303               	bcf	3,6	;RP1=0, select bank0
+   177  07D3  0086               	movwf	6	;volatile
+   178                           
+   179                           ;eeprom_i2c.c: 40: I2C_EEOUT(cnt,10-cnt);
+   180  07D4  0874               	movf	main@cnt,w
+   181  07D5  3C0A               	sublw	10
+   182  07D6  00F0               	movwf	?_I2C_EEOUT
+   183  07D7  0874               	movf	main@cnt,w
+   184  07D8  120A  118A  2000   	fcall	_I2C_EEOUT
+      +       120A  118A         
+   185  07DD  30FF               	movlw	255
+   186                           
+   187                           ;eeprom_i2c.c: 41: cnt=cnt+1;
+   188  07DE  0AF4               	incf	main@cnt,f
+   189                           
+   190                           ;eeprom_i2c.c: 42: pause(255);
+   191  07DF  00F0               	movwf	?_pause
+   192  07E0  01F1               	clrf	?_pause+1
+   193  07E1  01F2               	clrf	?_pause+2
+   194  07E2  01F3               	clrf	?_pause+3
+   195  07E3  120A  118A  2000   	fcall	_pause
+      +       120A  118A         
+   196  07E8  2FD0               	goto	l2402
+   197  07E9                     l2412:	
+   198                           
+   199                           ;eeprom_i2c.c: 48: {
+   200                           ;eeprom_i2c.c: 49: PORTB =I2C_EEIN(cnt);
+   201  07E9  0874               	movf	main@cnt,w
+   202  07EA  120A  118A  2000   	fcall	_I2C_EEIN
+      +       120A  118A         
+   203  07EF  1283               	bcf	3,5	;RP0=0, select bank0
+   204  07F0  1303               	bcf	3,6	;RP1=0, select bank0
+   205  07F1  0086               	movwf	6	;volatile
+   206                           
+   207                           ;eeprom_i2c.c: 50: pause (500);
+   208  07F2  3000               	movlw	0
+   209  07F3  00F3               	movwf	?_pause+3
+   210  07F4  00F2               	movwf	?_pause+2
+   211  07F5  3001               	movlw	1
+   212  07F6  00F1               	movwf	?_pause+1
+   213  07F7  30F4               	movlw	244
+   214  07F8  00F0               	movwf	?_pause
+   215  07F9  120A  118A  2000   	fcall	_pause
+      +       120A  118A         
+   216                           
+   217                           ;eeprom_i2c.c: 51: cnt=cnt + 1;
+   218  07FE  0AF4               	incf	main@cnt,f
+   219  07FF  2FE9               	goto	l2412
+   220  0800                     __end_of_main:	
+   221                           
+   222 ;; =============== function _main ends ============
+   223  007E                     btemp	set	126	;btemp
+   224  007E                     wtemp0	set	126
+   225                           
+   226                           	psect	cinit
+   227  07BC                     start_initialization:	
+   228  07BC                     end_of_initialization:	
+   229                           ;End of C runtime variable initialization code
+   230                           
+   231  07BC  0183               	clrf	3
+   232  07BD  120A  118A  2FC0   	ljmp	_main	;jump to C main() function
+   233                           
+   234                           	psect	cstackCOMMON
+   235  0070                     __pcstackCOMMON:	
+   236  0070                     ?_init_micro:	
+   237  0070                     ??_init_micro:	
+   238                           ; 0 bytes @ 0x0
+   239                           
+   240  0070                     ?_i2c_init:	
+   241                           ; 0 bytes @ 0x0
+   242                           
+   243  0070                     ??_i2c_init:	
+   244                           ; 0 bytes @ 0x0
+   245                           
+   246  0070                     ?_I2C_EEOUT:	
+   247                           ; 0 bytes @ 0x0
+   248                           
+   249  0070                     ?_pause:	
+   250                           ; 0 bytes @ 0x0
+   251                           
+   252  0070                     ??_I2C_EEIN:	
+   253                           ; 0 bytes @ 0x0
+   254                           
+   255  0070                     ?_main:	
+   256                           ; 0 bytes @ 0x0
+   257                           
+   258  0070                     ?_I2C_EEIN:	
+   259                           ; 0 bytes @ 0x0
+   260                           
+   261  0070                     _I2C_EEOUT$1:	
+   262                           ; 1 bytes @ 0x0
+   263                           
+   264  0070                     _pause$0:	
+   265                           ; 1 bytes @ 0x0
+   266                           
+   267                           
+   268                           ; 4 bytes @ 0x0
+   269  0070                     	ds	1
+   270  0071                     ??_I2C_EEOUT:	
+   271                           
+   272                           ; 0 bytes @ 0x1
+   273  0071                     	ds	3
+   274  0074                     ??_pause:	
+   275  0074                     ??_main:	
+   276                           ; 0 bytes @ 0x4
+   277                           
+   278  0074                     main@cnt:	
+   279                           ; 0 bytes @ 0x4
+   280                           
+   281                           
+   282                           ; 1 bytes @ 0x4
+   283  0074                     	ds	1
+
+
+HI-TECH Software PICC Macro Assembler V9.82 build 9453 
+Symbol Table                                                                                   Mon Nov 11 19:13:54 2019
+
+                l2400 0000                  l2402 07D0                  l2412 07E9                  l2404 0000  
+                l2414 0000                  l2406 0000                  l2408 0000                  l2394 0000  
+                l2396 0000                  l2398 0000                  _main 07C0                  btemp 007E  
+                start 0000                 ?_main 0070                 _PORTB 0006                 _TRISB 0086  
+               _pause 0000                 status 0003                 wtemp0 007E          __end_of_main 0800  
+              ??_main 0074                ?_pause 0070             ?_I2C_EEIN 0070        __pcstackCOMMON 0070  
+          ??_I2C_EEIN 0070               ??_pause 0074             ?_i2c_init 0070            __pmaintext 07C0  
+           _I2C_EEOUT 0000            ??_i2c_init 0070            _init_micro 0000               _pause$0 0070  
+             main@cnt 0074  end_of_initialization 07BC            ?_I2C_EEOUT 0070           _I2C_EEOUT$1 0070  
+         ?_init_micro 0070   start_initialization 07BC           ??_I2C_EEOUT 0071              _I2C_EEIN 0000  
+            _i2c_init 0000          ??_init_micro 0070         __size_of_main 0040  
