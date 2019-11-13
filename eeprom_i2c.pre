@@ -2684,7 +2684,7 @@ putch(0x0A);
 while(cnt<=20){
 PORTB = cnt+10;
 pause(300);
-I2C_EEOUT(cnt,10 - cnt);
+I2C_EEOUT(cnt,10);
 
 sprintf(buffer,"Directorio: %d ", cnt);
 for (char x = 0; x<15; x++)

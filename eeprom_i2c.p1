@@ -5315,9 +5315,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eeprom_i2c.c: 1248: pause(300);
 "1248
 [e ( _pause (1 -> -> -> 300 `i `l `ul ]
-[; ;eeprom_i2c.c: 1249: I2C_EEOUT(cnt,10 - cnt);
+[; ;eeprom_i2c.c: 1249: I2C_EEOUT(cnt,10);
 "1249
-[e ( _I2C_EEOUT (2 , _cnt -> - -> 10 `i -> _cnt `i `uc ]
+[e ( _I2C_EEOUT (2 , _cnt -> -> 10 `i `uc ]
 [; ;eeprom_i2c.c: 1251: sprintf(buffer,"Directorio: %d ", cnt);
 "1251
 [e ( _sprintf (1 , (. , &U _buffer :s 4C -> _cnt `i ]

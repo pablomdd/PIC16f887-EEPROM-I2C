@@ -648,7 +648,7 @@ main@cnt:	; 1 bytes @ 0x25
 ;; ---------------------------------------------------------------------------------
 ;; (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
 ;; ---------------------------------------------------------------------------------
-;; (0) _main                                                28    28      0    2640
+;; (0) _main                                                28    28      0    2618
 ;;                                             12 BANK0     26    26      0
 ;;                         _init_micro
 ;;                           _i2c_init
@@ -1369,12 +1369,11 @@ l3626:
 	line	1249
 	
 l3628:	
-;eeprom_i2c.c: 1249: I2C_EEOUT(cnt,10 - cnt);
+;eeprom_i2c.c: 1249: I2C_EEOUT(cnt,10);
+	movlw	(0Ah)
+	movwf	(?_I2C_EEOUT)
 	bcf	status, 5	;RP0=0, select bank0
 	bcf	status, 6	;RP1=0, select bank0
-	movf	(main@cnt),w
-	sublw	0Ah
-	movwf	(?_I2C_EEOUT)
 	movf	(main@cnt),w
 	fcall	_I2C_EEOUT
 	line	1251

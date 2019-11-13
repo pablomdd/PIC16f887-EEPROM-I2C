@@ -1246,7 +1246,7 @@ main(void){
 	while(cnt<=20){   /* write 10 numbers to eeprom */
 		PORTB = cnt+10;         		// The cnt value will display on the LEDs
 		pause(300);
-		I2C_EEOUT(cnt,10 - cnt);   	// Store 9 at address 1, 8 at address 2, ...
+		I2C_EEOUT(cnt,10);   	// Store 9 at address 1, 8 at address 2, ...
 
 		sprintf(buffer,"Directorio: %d ", cnt);
 		for (char x = 0; x<15; x++)

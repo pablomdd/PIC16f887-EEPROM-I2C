@@ -25,16 +25,16 @@ Machine type is 16F887
                 Name                               Link     Load   Length Selector   Space Scale
 startup.obj     end_init                              0        0        3        0       0
 EEPROM_12C.obj  config                             2007     2007        2     400E       0
-                text455                             3A5      3A5        9      74A       0
-                text452                             39D      39D        8      73A       0
-                text451                             3AE      3AE       11      75C       0
-                text446                             3BF      3BF       32      77E       0
-                text438                             48D      48D       EF      91A       0
-                text437                             3F1      3F1       9C      7E2       0
-                maintext                            57C      57C      284      AF8       0
+                text455                             3A6      3A6        9      74C       0
+                text452                             39E      39E        8      73C       0
+                text451                             3AF      3AF       11      75E       0
+                text446                             3C0      3C0       32      780       0
+                text438                             48E      48E       EF      91C       0
+                text437                             3F2      3F2       9C      7E4       0
+                maintext                            57D      57D      283      AFA       0
                 cstackBANK0                          20       20       26       20       1
                 cstackCOMMON                         70       70        E       70       1
-                cinit                               399      399        4      732       0
+                cinit                               39A      39A        4      734       0
                 strings                               3        3       8E        6       0
 
 TOTAL           Name                               Link     Load   Length     Space
@@ -42,14 +42,14 @@ TOTAL           Name                               Link     Load   Length     Sp
 
         CLASS   CODE           
                 end_init                              0        0        3         0
-                text455                             3A5      3A5        9         0
-                text452                             39D      39D        8         0
-                text451                             3AE      3AE       11         0
-                text446                             3BF      3BF       32         0
-                text438                             48D      48D       EF         0
-                text437                             3F1      3F1       9C         0
-                maintext                            57C      57C      284         0
-                cinit                               399      399        4         0
+                text455                             3A6      3A6        9         0
+                text452                             39E      39E        8         0
+                text451                             3AF      3AF       11         0
+                text446                             3C0      3C0       32         0
+                text438                             48E      48E       EF         0
+                text437                             3F2      3F2       9C         0
+                maintext                            57D      57D      283         0
+                cinit                               39A      39A        4         0
 
         CLASS   STRCODE        
 
@@ -98,14 +98,14 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
                 strings                        000003  00008E  000091         6       0  STRING      2
                 cstackBANK0                    000020  000026  000046        20       1  BANK0       1
                 cstackCOMMON                   000070  00000E  00007E        70       1  COMMON      1
-                cinit                          000399  000004  00039D       732       0  CODE        2
-                text452                        00039D  000008  0003A5       73A       0  CODE        2
-                text455                        0003A5  000009  0003AE       74A       0  CODE        2
-                text451                        0003AE  000011  0003BF       75C       0  CODE        2
-                text446                        0003BF  000032  0003F1       77E       0  CODE        2
-                text437                        0003F1  00009C  00048D       7E2       0  CODE        2
-                text438                        00048D  0000EF  00057C       91A       0  CODE        2
-                maintext                       00057C  000284  000800       AF8       0  CODE        2
+                cinit                          00039A  000004  00039E       734       0  CODE        2
+                text452                        00039E  000008  0003A6       73C       0  CODE        2
+                text455                        0003A6  000009  0003AF       74C       0  CODE        2
+                text451                        0003AF  000011  0003C0       75E       0  CODE        2
+                text446                        0003C0  000032  0003F2       780       0  CODE        2
+                text437                        0003F2  00009C  00048E       7E4       0  CODE        2
+                text438                        00048E  0000EF  00057D       91C       0  CODE        2
+                maintext                       00057D  000283  000800       AFA       0  CODE        2
                 config                         002007  000002  002009      400E       0  CONFIG      2
 
 
@@ -116,12 +116,12 @@ UNUSED ADDRESS RANGES
         BANK1            00A0-00EF             50           1
         BANK2            0110-016F             60           1
         BANK3            0190-01EF             60           1
-        CODE             0091-0398            308           2
+        CODE             0091-0399            309           2
                          0800-1FFF            800
-        CONST            0091-0398            100           2
+        CONST            0091-0399            100           2
                          0800-1FFF            100
         EEDATA           2100-21FF            100           2
-        ENTRY            0091-0398            100           2
+        ENTRY            0091-0399            100           2
                          0800-1FFF            100
         IDLOC            2000-2003              4           2
         RAM              0046-006F             2A           1
@@ -132,9 +132,9 @@ UNUSED ADDRESS RANGES
         SFR1             0080-009F             20           1
         SFR2             0100-010F             10           1
         SFR3             0180-018F             10           1
-        STRCODE          0091-0398            308           2
+        STRCODE          0091-0399            309           2
                          0800-1FFF           1800
-        STRING           0091-0398            100           2
+        STRING           0091-0399            100           2
                          0800-1FFF            100
 
                                   Symbol Table
@@ -195,8 +195,8 @@ _BCLIF                    (abs)        006B
 _CKE                      (abs)        04A6
 _CM1CON0                  (abs)        0107
 _CM2CON0                  (abs)        0108
-_I2C_EEIN                 text437      040A
-_I2C_EEOUT                text437      03F1
+_I2C_EEIN                 text437      040B
+_I2C_EEOUT                text437      03F2
 _INTCON                   (abs)        000B
 _OPTION_REG               (abs)        0081
 _OSCCON                   (abs)        008F
@@ -292,60 +292,60 @@ __Ltext                   text         0000
 __S0                      (abs)        2009
 __S1                      (abs)        007E
 __S2                      (abs)        0000
-___lwdiv                  text438      0528
+___lwdiv                  text438      0529
 ___lwdiv@counter          cstackCOMMON 0076
 ___lwdiv@dividend         cstackCOMMON 0072
 ___lwdiv@divisor          cstackCOMMON 0070
 ___lwdiv@quotient         cstackCOMMON 0074
-___lwmod                  text438      0552
+___lwmod                  text438      0553
 ___lwmod@counter          cstackCOMMON 007B
 ___lwmod@dividend         cstackCOMMON 0079
 ___lwmod@divisor          cstackCOMMON 0077
-__end_of_I2C_EEIN         text437      0426
-__end_of_I2C_EEOUT        text437      040A
-__end_of___lwdiv          text438      0552
-__end_of___lwmod          text438      0576
-__end_of_i2c_init         text451      03BF
-__end_of_i2c_read         text437      0448
-__end_of_i2c_repStart     text437      0462
-__end_of_i2c_start        text437      042F
-__end_of_i2c_stop         text437      045F
-__end_of_i2c_waitForIdle  text437      045C
-__end_of_i2c_write        text437      042C
-__end_of_init_micro       text455      03AE
-__end_of_lcd_clear        text446      03C2
-__end_of_lcd_goto         text446      03C6
-__end_of_lcd_puts         text446      03DE
-__end_of_lcd_write        text446      03E7
+__end_of_I2C_EEIN         text437      0427
+__end_of_I2C_EEOUT        text437      040B
+__end_of___lwdiv          text438      0553
+__end_of___lwmod          text438      0577
+__end_of_i2c_init         text451      03C0
+__end_of_i2c_read         text437      0449
+__end_of_i2c_repStart     text437      0463
+__end_of_i2c_start        text437      0430
+__end_of_i2c_stop         text437      0460
+__end_of_i2c_waitForIdle  text437      045D
+__end_of_i2c_write        text437      042D
+__end_of_init_micro       text455      03AF
+__end_of_lcd_clear        text446      03C3
+__end_of_lcd_goto         text446      03C7
+__end_of_lcd_puts         text446      03DF
+__end_of_lcd_write        text446      03E8
 __end_of_main             maintext     0800
-__end_of_msecbase         text437      048D
-__end_of_pause            text437      0482
-__end_of_putch            text452      03A5
-__end_of_sprintf          text438      0528
+__end_of_msecbase         text437      048E
+__end_of_pause            text437      0483
+__end_of_putch            text452      03A6
+__end_of_sprintf          text438      0529
 __pcstackBANK0            cstackBANK0  0020
 __pcstackCOMMON           cstackCOMMON 0070
-__pmaintext               maintext     057C
+__pmaintext               maintext     057D
 __pstrings                strings      0003
-__ptext436                text437      040A
-__ptext437                text437      03F1
-__ptext438                text438      048D
-__ptext439                text437      0426
-__ptext440                text437      042F
-__ptext441                text437      045C
-__ptext442                text437      045F
-__ptext443                text437      042C
-__ptext444                text446      03C2
-__ptext445                text446      03C6
-__ptext446                text446      03BF
-__ptext447                text437      0462
-__ptext448                text438      0552
-__ptext449                text438      0528
-__ptext450                text437      0448
-__ptext451                text451      03AE
-__ptext452                text452      039D
-__ptext453                text446      03DE
-__ptext454                text437      0482
-__ptext455                text455      03A5
+__ptext436                text437      040B
+__ptext437                text437      03F2
+__ptext438                text438      048E
+__ptext439                text437      0427
+__ptext440                text437      0430
+__ptext441                text437      045D
+__ptext442                text437      0460
+__ptext443                text437      042D
+__ptext444                text446      03C3
+__ptext445                text446      03C7
+__ptext446                text446      03C0
+__ptext447                text437      0463
+__ptext448                text438      0553
+__ptext449                text438      0529
+__ptext450                text437      0449
+__ptext451                text451      03AF
+__ptext452                text452      039E
+__ptext453                text446      03DF
+__ptext454                text437      0483
+__ptext455                text455      03A6
 __ptext456                text456      0000
 __size_of_I2C_EEIN        (abs)        0000
 __size_of_I2C_EEOUT       (abs)        0000
@@ -370,25 +370,25 @@ __size_of_putch           (abs)        0000
 __size_of_sprintf         (abs)        0000
 _dpowers                  strings      0009
 _exit                     init         0000
-_i2c_init                 text451      03AE
-_i2c_read                 text437      042F
-_i2c_repStart             text437      045F
-_i2c_start                text437      042C
-_i2c_stop                 text437      045C
-_i2c_waitForIdle          text437      0448
-_i2c_write                text437      0426
-_init_micro               text455      03A5
-_lcd_clear                text446      03BF
-_lcd_goto                 text446      03C2
-_lcd_puts                 text446      03C6
-_lcd_write                text446      03DE
-_main                     maintext     057C
-_msecbase                 text437      0482
-_pause                    text437      0462
-_putch                    text452      039D
-_sprintf                  text438      048D
+_i2c_init                 text451      03AF
+_i2c_read                 text437      0430
+_i2c_repStart             text437      0460
+_i2c_start                text437      042D
+_i2c_stop                 text437      045D
+_i2c_waitForIdle          text437      0449
+_i2c_write                text437      0427
+_init_micro               text455      03A6
+_lcd_clear                text446      03C0
+_lcd_goto                 text446      03C3
+_lcd_puts                 text446      03C7
+_lcd_write                text446      03DF
+_main                     maintext     057D
+_msecbase                 text437      0483
+_pause                    text437      0463
+_putch                    text452      039E
+_sprintf                  text438      048E
 btemp                     (abs)        007E
-end_of_initialization     cinit        0399
+end_of_initialization     cinit        039A
 i2c_read@ack              cstackCOMMON 0077
 i2c_read@i2cReadData      cstackCOMMON 0078
 i2c_write@i2cWriteData    cstackCOMMON 0075
@@ -588,5 +588,5 @@ sprintf@flag              cstackBANK0  0024
 sprintf@prec              cstackBANK0  0025
 sprintf@sp                cstackBANK0  002A
 start                     init         0000
-start_initialization      cinit        0399
+start_initialization      cinit        039A
 wtemp0                    (abs)        007E
