@@ -2181,7 +2181,7 @@ lcd_write(0x1);
 
 # 654
 void
-lcd_text(const char * s)
+lcd_puts(const char * s)
 {
 RA7 = 1;
 while(*s)
@@ -2591,8 +2591,7 @@ return(data);
 
 
 void
-main(void)
-{
+main(void){
 
 init_micro();
 i2c_init();
@@ -2603,7 +2602,7 @@ TRISB=0x00;
 TRISA=0x00;
 TRISD=0x00;
 
-# 1169
+# 1168
 RA7=0;
 RA6=0;
 RE1=0;
@@ -2645,6 +2644,7 @@ PORTA=0x01;
 putch(0x0D);
 putch(0x0A);
 
+
 for(int i=97; i<123; i++){
 putch(i);
 pause(20);
@@ -2652,36 +2652,106 @@ pause(20);
 putch(0x0D);
 putch(0x0A);
 
-
-
-unsigned char cnt=0;
-
-while(cnt<=255)
-{
-PORTB=cnt;
-I2C_EEOUT(cnt,10-cnt);
-cnt=cnt+1;
-pause(255);
-}
-
-cnt=0;
-
-while(cnt<=255)
-{
-PORTB =I2C_EEIN(cnt);
-pause (100);
-
-sprintf(buffer,"Valor es:%i  ", cnt);
-
-for (char x = 0; x<17; x++)
+putch(0x0D);
+putch(0x0A);
+sprintf(buffer,"Mostrando Escritura ");
+for (char x = 0; x<20; x++)
 {
 putch (buffer[x]);
 }
 pause(200);
+putch(0x0D);
+putch(0x0A);
+
+unsigned char cnt = 0;
+
+
+lcd_clear();
+lcd_goto(0);
+lcd_puts("Grabando.....");
+
+sprintf(buffer,"Tamanio de cnt %i", sizeof(cnt));
+for (char x = 0; x<20; x++)
+{
+putch (buffer[x]);
+}
+pause(200);
+putch(0x0D);
+putch(0x0A);
+
+
+
+while(cnt<=20){
+PORTB = cnt+10;
+pause(300);
+I2C_EEOUT(cnt,10 - cnt);
+
+sprintf(buffer,"Directorio: %d ", cnt);
+for (char x = 0; x<15; x++)
+{
+putch (buffer[x]);
+}
+putch(0x0D);
+putch(0x0A);
+
+sprintf(buffer,"Valor: %d ", cnt+10);
+for (char x = 0; x<10; x++)
+{
+putch (buffer[x]);
+}
 
 putch(0x0D);
 putch(0x0A);
 
+
+cnt=cnt+1;
+pause(100);
+}
+
+putch(0x0D);
+putch(0x0A);
+sprintf(buffer,"Mostrando Lectura ");
+for (char x = 0; x<18; x++)
+{
+putch (buffer[x]);
+}
+pause(100);
+putch(0x0D);
+putch(0x0A);
+
+cnt=0;
+
+unsigned char val = 123;
+
+
+while(cnt <= 20)
+{
+val = I2C_EEIN(cnt);
+PORTB = I2C_EEIN(cnt);
+pause (300);
+
+sprintf(buffer,"Directorio: %i ", cnt);
+for (char x = 0; x<16; x++)
+{
+putch (buffer[x]);
+}
+
+putch(0x0D);
+putch(0x0A);
+
+sprintf(buffer,"Valor: %i ", val);
+for (char x = 0; x<10; x++)
+{
+putch (buffer[x]);
+}
+pause(100);
+
+putch(0x0D);
+putch(0x0A);
+
+# 1324
+pause(255);
 cnt=cnt + 1;
 }
+
 }

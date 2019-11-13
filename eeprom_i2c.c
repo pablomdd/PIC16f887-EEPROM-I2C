@@ -652,7 +652,7 @@ lcd_clear(void)
 // ****************************************************
  
 void
-lcd_text(const char * s)
+lcd_puts(const char * s)
 {
 	LCD_RS = 1;	// write characters
 	while(*s)
@@ -1142,19 +1142,18 @@ unsigned char I2C_EEIN(unsigned char address)
 /********************************************************   MAIN   ************************************************************/
 
 void
-main(void)
-{
+main(void){
 
-init_micro();	// Initialize I/O
-i2c_init();    	// Initialize i2c 
-ANSEL=0x00; 
-ANSELH=0x00; 
-PORTB=0x00;    	// All LEDs off
-TRISB=0x00;    	// All PORTB outputs
-TRISA=0x00;
-TRISD=0x00;
-/*
-//ADC CONFIG    
+	init_micro();	// Initialize I/O
+	i2c_init();    	// Initialize i2c 
+	ANSEL=0x00; 
+	ANSELH=0x00; 
+	PORTB=0x00;    	// All LEDs off
+	TRISB=0x00;    	// All PORTB outputs
+	TRISA=0x00;
+	TRISD=0x00;
+	/*
+	//ADC CONFIG    
 	TRISE=0x03;
 	ADCON1=0b00000000;
 	PR2=0xFF;
@@ -1164,8 +1163,8 @@ TRISD=0x00;
 	T2CKPS1 = 1;
 	T2CKPS0 = 1;
 	TMR2ON = 1;
-*/
-//LCD VARS
+	*/
+	//LCD VARS
 	LCD_RS=0;
 	LCD_EN=0;
 	LCD_RW=0;
@@ -1206,6 +1205,7 @@ TRISD=0x00;
 	
 	putch(0x0D); 
     putch(0x0A); 
+	
 	//abecedario
     for(int i=97; i<123; i++){
         putch(i); 
@@ -1214,36 +1214,115 @@ TRISD=0x00;
     putch(0x0D); 
     putch(0x0A); 
 
-
-
-unsigned char cnt=0;
- 
- while(cnt<=255)   /* write 10 numbers to eeprom */
-  {        
-  PORTB=cnt;         		// The cnt value will display on the LEDs
-  I2C_EEOUT(cnt,10-cnt);   	// Store 9 at address 1, 8 at address 2, ...
-  cnt=cnt+1;				// Increment cnt variable
-  pause(255);				// Delay 255 milliseconds
-  }
-
- cnt=0;
-
- while(cnt<=255)
-  {
-	 PORTB =I2C_EEIN(cnt); 	// Display data read from EEPROM on LEDs in binary 
-	 pause (100);			// Delay for 1 second to read LEDs
-
-	sprintf(buffer,"Valor es:%i  ", cnt);
-	//	Muestra en Terminal el valor le?do desde el PIC
-	for (char x = 0; x<17; x++)
+	putch(0x0D);
+	putch(0x0A); 
+	sprintf(buffer,"Mostrando Escritura ");
+	for (char x = 0; x<20; x++)
 		{
 			putch (buffer[x]);
 		}
 	pause(200);
-	//	Retorno de Carro, Salto de l?nea en hex ASCII		
 	putch(0x0D); 
 	putch(0x0A); 
 
-	 cnt=cnt + 1;			// Increment cnt variable
-  }
+	unsigned char cnt = 0;
+ //	unsigned int cont = 0;
+
+	lcd_clear();				// Clear LCD screen
+	lcd_goto(0);				// select first line
+    lcd_puts("Grabando.....");	
+
+		sprintf(buffer,"Tamanio de cnt %i", sizeof(cnt));
+	for (char x = 0; x<20; x++)
+		{
+			putch (buffer[x]);
+		}
+	pause(200);
+	putch(0x0D); 
+	putch(0x0A); 
+
+	//En lugar de poner un contador char, ponemos uno int
+	//_________________________________________ESCRITURA____________________________________________	
+	while(cnt<=20){   /* write 10 numbers to eeprom */
+		PORTB = cnt+10;         		// The cnt value will display on the LEDs
+		pause(300);
+		I2C_EEOUT(cnt,10 - cnt);   	// Store 9 at address 1, 8 at address 2, ...
+
+		sprintf(buffer,"Directorio: %d ", cnt);
+		for (char x = 0; x<15; x++)
+		{
+			putch (buffer[x]);
+		}
+		putch(0x0D); 
+	    putch(0x0A);
+
+		sprintf(buffer,"Valor: %d ", cnt+10);
+		for (char x = 0; x<10; x++)
+		{
+			putch (buffer[x]);
+		}
+
+		putch(0x0D); 
+	    putch(0x0A); 
+	  	
+		//cont++;
+		cnt=cnt+1;				// Increment cnt variable
+	  	pause(100);				// Delay 255 milliseconds
+	  }
+	
+	putch(0x0D);
+	putch(0x0A); 
+	sprintf(buffer,"Mostrando Lectura ");
+	for (char x = 0; x<18; x++)
+		{
+			putch (buffer[x]);
+		}
+	pause(100);
+	putch(0x0D); 
+	putch(0x0A); 
+	
+	cnt=0;
+//	cont = 3;
+	unsigned char val = 123;
+	
+	//__________________________________LECTURA____________________________________________	
+	 while(cnt <= 20)
+	  {
+		val = I2C_EEIN(cnt);
+		PORTB = I2C_EEIN(cnt); 	// Display data read from EEPROM on LEDs in binary 
+		pause (300);			// Delay for 1 second to read LEDs
+	
+		sprintf(buffer,"Directorio: %i ", cnt);
+		for (char x = 0; x<16; x++)
+			{
+				putch (buffer[x]);
+			}
+		//	Retorno de Carro, Salto de l?nea en hex ASCII		
+		putch(0x0D); 
+		putch(0x0A); 
+
+		sprintf(buffer,"Valor: %i ", val);
+		for (char x = 0; x<10; x++)
+			{
+				putch (buffer[x]);
+			}
+		pause(100);
+		//	Retorno de Carro, Salto de l?nea en hex ASCII		
+		putch(0x0D); 
+		putch(0x0A); 
+
+/*	
+		//Imprime en LCD 
+			lcd_goto(0);
+			lcd_text(buffer);
+			lcd_goto(0x40);
+			lcd_text(val);
+			//esta pausa es para que el LCD muestre el mensaje
+			pause(1000);
+*/		
+		//cont++;
+	  	pause(255);
+		cnt=cnt + 1;			// Increment cnt variable
+	  }
+
 }

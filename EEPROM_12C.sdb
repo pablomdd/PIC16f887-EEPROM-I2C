@@ -661,8 +661,8 @@
 ]
 [u S1767 . 1 `S1760 1 . 1 0 ]
 "528 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\lib\doprnt.c
-[s S1907 . 4 `*DCuc 1 _cp 2 0 `ui 1 _len 2 2 ]
-[u S1910 . 4 `ui 1 _val 2 0 `S1907 1 _str 4 0 ]
+[s S1921 . 4 `*DCuc 1 _cp 2 0 `ui 1 _len 2 2 ]
+[u S1924 . 4 `ui 1 _val 2 0 `S1921 1 _str 4 0 ]
 "488
 [v _sprintf `(i  1 e 2 0 ]
 "5 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\sources\abdiv.c
@@ -760,7 +760,7 @@
 "643
 [v _lcd_clear `(v  1 e 0 0 ]
 "656
-[v _lcd_text `(v  1 e 0 0 ]
+[v _lcd_puts `(v  1 e 0 0 ]
 "670
 [v _lcd_symbol `(v  1 e 0 0 ]
 "682
@@ -811,7 +811,7 @@
 [v _I2C_EEOUT `(v  1 e 0 0 ]
 "1129
 [v _I2C_EEIN `(uc  1 e 1 0 ]
-"1146
+"1145
 [v _main `(v  1 e 0 0 ]
 "7 eeprom.c
 [v _eecpymem `(v  1 e 0 0 ]
@@ -1865,18 +1865,32 @@
 [v _EECON1bits `VES1767  1 e 1 @396 ]
 "350 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\lib\doprnt.c
 [v _dpowers `DC[5]ui  1 s 10 dpowers ]
-"1146 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
+"1145 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
 [v _main `(v  1 e 0 0 ]
 {
-"1238
-[v main@x `uc  1 a 1 29 ]
+"1305
+[v main@x_1903 `uc  1 a 1 36 ]
+"1296
+[v main@x_1901 `uc  1 a 1 35 ]
+"1260
+[v main@x_1896 `uc  1 a 1 33 ]
+"1252
+[v main@x_1894 `uc  1 a 1 32 ]
+"1276
+[v main@x_1898 `uc  1 a 1 34 ]
+"1236
+[v main@x_1892 `uc  1 a 1 31 ]
+"1220
+[v main@x `uc  1 a 1 30 ]
 "1210
-[v main@i `i  1 a 2 27 ]
-"1201
+[v main@i `i  1 a 2 28 ]
+"1200
 [v main@buffer `[15]uc  1 a 15 12 ]
-"1219
-[v main@cnt `uc  1 a 1 30 ]
-"1249
+"1228
+[v main@cnt `uc  1 a 1 37 ]
+"1286
+[v main@val `uc  1 a 1 27 ]
+"1328
 } 0
 "1129
 [v _I2C_EEIN `(uc  1 e 1 0 ]
@@ -1901,7 +1915,7 @@
 {
 [v sprintf@sp `*.0uc  1 a 1 wreg ]
 "528
-[v sprintf@_val `S1910  1 a 4 6 ]
+[v sprintf@_val `S1924  1 a 4 6 ]
 "494
 [v sprintf@c `c  1 a 1 11 ]
 "501
@@ -1946,6 +1960,20 @@
 [v _i2c_start `(v  1 e 0 0 ]
 {
 "1051
+} 0
+"682
+[v _lcd_goto `(v  1 e 0 0 ]
+{
+[v lcd_goto@pos `uc  1 a 1 wreg ]
+[v lcd_goto@pos `uc  1 a 1 wreg ]
+"685
+} 0
+"656
+[v _lcd_puts `(v  1 e 0 0 ]
+{
+[v lcd_puts@s `*.cDCuc  1 a 1 wreg ]
+[v lcd_puts@s `*.cDCuc  1 a 1 wreg ]
+"660
 } 0
 "643
 [v _lcd_clear `(v  1 e 0 0 ]
