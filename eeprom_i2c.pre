@@ -1617,74 +1617,418 @@ extern int vsscanf(const char *, const char *, va_list);
 extern int sprintf(char *, const char *, ...);
 extern int printf(const char *, ...);
 
-# 21 "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
-asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0xFFFC & 0xFFF7 & 0xFFFF & 0xFFDF & 0xFFFF & 0xFFFF & 0xFCFF & 0xFBFF & 0xF7FF & 0xEFFF & 0xFFFF");
+# 3 "C:\Program Files (x86)\HI-TECH Software\PICC\9.82\include\ctype.h"
+extern bit isalpha(char);
+extern bit isupper(char);
+extern bit islower(char);
+extern bit isdigit(char);
+extern bit isxdigit(char);
+extern bit isspace(char);
+extern bit ispunct(char);
+extern bit isalnum(char);
+extern bit isprint(char);
+extern bit isgraph(char);
+extern bit iscntrl(char);
+
+extern char toupper(char);
+extern char tolower(char);
+
+# 5 "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
+asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0xFFFC & 0xFFF7 & 0xFFFF & 0xFFDF & 0xFFFF & 0xFFFF & 0xFCFF & 0xFBFF & 0xEFFF & 0xFFFF");
+
+# 7
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0xFFFF & 0xFFFF");
 
-# 80 "C:\Program Files (x86)\HI-TECH Software\PICC\9.82\include\simplec1.1.h"
-void init_micro(void);
-void usecbase(void);
-void pauseus ( unsigned int usvalue );
-void msecbase(void);
-void pause( unsigned long usvalue );
-void high(char pin);
-void low(char pin);
-char input(char pin);
-void pulseout(char pin, unsigned long per);
-void lcd_write(unsigned char c);
-void lcd_clear(void);
-void lcd_text(const char * s);
-void lcd_symbol(char c);
-void lcd_goto(unsigned char pos);
-void lcd_number(char c);
-void lcd_init();
-void init_serial(int baud);
-void putch(unsigned char byte);
-unsigned char getch();
-void spi_init(void);
-char SPI_OUTPUT ( char spi_byte );
-void WR_BYTE ( char EE_address, char EE_data );
-char RD_BYTE ( char EE_address );
-void WR_MCP23S08 ( char regist, char data );
-char RD_MCP23S08 ( char regist );
-void pwmout1 (char duty, int freq);
-void pwmout2 (char duty, int freq);
-char adcin (char chan);
-void i2c_init();
-void i2c_waitForIdle();
-void i2c_start();
-void i2c_repStart();
-void i2c_stop();
-int i2c_read( unsigned char ack );
-unsigned char i2c_write( unsigned char i2cWriteData );
-void I2C_EEOUT (unsigned char address, unsigned char data);
-unsigned char I2C_EEIN(unsigned char address);
+# 14
+void gets_Serial(char *);
 
-# 27 "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
+unsigned char *pa=&PORTA;
+char in[17];
+int convint;
+int dir;
+int atoi( const char * s );
+
+
+
+unsigned short b0=0;
+int nin=0x00;
+
+unsigned char carac[5];
+unsigned char carac2[3];
+
+float num=0;
+float num1=0.00488758553;
+float num3=0;
+
+# 47
+unsigned char carac[5];
+float num;
+char init_value=0x03;
+
+
+void init_micro(void)
+{
+ANSEL = 0;
+ANSELH = 0;
+CM1CON0 = 0;
+CM2CON0 = 0;
+INTCON=0;
+}
+
+void msecbase(void)
+{
+OPTION_REG = 0b00000001;
+TMR0 = 0xD;
+while(!T0IF);
+T0IF = 0;
+}
+
+void pause( unsigned short usvalue )
+
+{
+unsigned short x;
+
+for (x=0; x<=usvalue; x++)
+{
+msecbase();
+}
+}
+
+void i2c_init()
+{
+TRISCbits.TRISC3=1;
+TRISCbits.TRISC4=1;
+SSPSTAT=0b10000000;
+SSPCON =0b00101000;
+SSPCON2 =0;
+
+
+SSPADD = ((4000000/(4UL*100000UL))-1);
+
+# 97
+}
+
+
+
+void i2c_start(void)
+{
+SSPCON2bits.SEN=1;
+while(SSPCON2bits.SEN==1);
+}
+
+
+
+void i2c_restart(void)
+{
+SSPCON2bits.RSEN=1;
+while(SSPCON2bits.RSEN==1);
+}
+
+
+
+void i2c_stop(void)
+{
+SSPCON2bits.PEN=1;
+while(SSPCON2bits.PEN==1);
+}
+
+
+
+char i2c_read( void )
+{
+PIR1bits.SSPIF=0;
+SSPCON2bits.RCEN=1;
+while(PIR1bits.SSPIF==0);
+return SSPBUF;
+}
+
+
+
+void I2C_ack(void)
+{
+PIR1bits.SSPIF=0;
+SSPCON2bits.ACKDT=0;
+SSPCON2bits.ACKEN=1;
+while(PIR1bits.SSPIF==0);
+}
+
+
+
+void I2C_nack(void)
+{
+PIR1bits.SSPIF=0;
+SSPCON2bits.ACKDT=1;
+SSPCON2bits.ACKEN=1;
+while(PIR1bits.SSPIF==0);
+}
+
+
+
+void i2c_write(char I2C_data)
+{
+PIR1bits.SSPIF=0;
+SSPBUF=I2C_data;
+while(PIR1bits.SSPIF==0);
+}
+
+# 167
+void I2C_EEOUT(unsigned char address1,unsigned char address2, unsigned char data)
+{
+i2c_start();
+i2c_write(0xa0);
+i2c_write(address1);
+i2c_write(address2);
+i2c_write(data);
+i2c_stop();
+pause(11);
+}
+
+# 183
+unsigned char I2C_EEIN(unsigned char address1, unsigned char address2)
+{
+unsigned char data;
+i2c_start();
+i2c_write(0xa0);
+i2c_write(address1);
+i2c_write(address2);
+i2c_restart();
+i2c_write(0xa1);
+data=i2c_read();
+I2C_nack();
+i2c_stop();
+return(data);
+}
+
+void lcd_write(unsigned char c)
+{
+pause(1);
+PORTD=((c >> 4) & 0x0F);
+((RA6=1),(RA6=0));
+PORTD=(c & 0x0F);
+((RA6=1),(RA6=0));
+}
+
+void lcd_clear(void)
+{
+RA7=0;
+lcd_write(0x1);
+pause(2);
+}
+
+void lcd_puts(const char * s)
+{
+RA7=1;
+while(*s)
+lcd_write(*s++);
+}
+
+void lcd_putch(char c)
+{
+RA7=1;
+lcd_write(c);
+}
+
+void lcd_goto(unsigned char pos)
+{
+RA7=0;
+lcd_write(0x80+pos);
+}
 void
 main(void)
 {
-init_micro();
+ANSEL=0x00;
+ANSELH=0;
+OSCCON=0xC0;
+TRISA=3;
+TRISB=0;
+TRISC=6;
+TRISD=0;
+TRISE=0;
+
+PR2=0xFC;
+CCP2CON=0x0C;
+CCP1CON=0x0C;
+CCPR1L=0x80;
+CCPR2L=0x80;
+PIR1=0;
+T2CON=0X07;
+while(PIR1);
+TRISC1=0;
+TRISC2=0;
+RA7=0;
+RA6=0;
+RA4=0;
+pause(15);
+PORTD=init_value;
+((RA6=1),(RA6=0));
+pause(10);
+((RA6=1),(RA6=0));
+pause(10);
+((RA6=1),(RA6=0));
+pause(10);
+PORTD=2;
+((RA6=1),(RA6=0));
+lcd_write(0x28);
+lcd_write(0xC);
+lcd_clear();
+lcd_write(0x06);
+
+
+TRISC7=1;
+TRISC6=0;
+OSCCON=0x70;
+SPBRG=12;
+RCSTA=0x90;
+TXSTA=0x20;
+BAUDCTL=0x00;
+pause(500);
+
+PORTA=0x01;
+*pa=0xFF;
+
+
+char char_recibido;
+char char_pwm;
+char buffer[15];
+
+PORTA=0x01;
+*pa=0xFF;
+
+putch(0x0D);
+putch(0x0A);
+
+
+for(int i=97; i<123; i++){
+putch(i);
+pause(20);
+}
+
+putch(0x0D);
+putch(0x0A);
+pause(100);
+
+PORTB=0;
+
+unsigned char cnt1,cnt2=0;
+unsigned int B1, B2, mil, dec, cen, uni=0;
+
+
+sprintf(buffer,"Escribiendo...");
+for (char x = 0; x<20; x++)
+{
+putch (buffer[x]);
+}
+pause(200);
+putch(0x0D);
+putch(0x0A);
+
+lcd_goto(0);
+lcd_puts("Escribiendo...");
+
 i2c_init();
-PORTB=0x00;
-TRISB=0x00;
 
-unsigned char cnt=0;
+PORTB=0;
 
-while(cnt<=255)
+pause(3000);
+
+
+while(cnt2 < 25)
 {
-PORTB=cnt;
-I2C_EEOUT(cnt,10-cnt);
-cnt=cnt+1;
-pause(255);
-}
+ADCON0=0xC1;
+GO_DONE=1;
+while(GO_DONE==1);
+CCPR1L=ADRESH;
+CCP1CON=(ADRESL>>2)|0x0C;
+nin=(ADRESH<<2)|(ADRESL>>6);
+num=nin*0.004887585533;
+sprintf(carac,"%1.3f",num);
 
-cnt=0;
+lcd_goto(0x40);
+lcd_puts("V1:");
+lcd_puts(carac);
 
-while(cnt<=255)
+sprintf(buffer,"V%i : %s  ",cnt2,carac);
+for (char x = 0; x<10; x++)
 {
-PORTB =I2C_EEIN(cnt);
-pause (500);
-cnt=cnt + 1;
+putch (buffer[x]);
 }
+putch(0x0D);
+putch(0x0A);
+
+pause (100);
+I2C_EEOUT(cnt1, cnt2, nin);
+pause(20);
+cnt2 = cnt2 + 1;
 }
+
+cnt2=0;
+
+lcd_clear();
+lcd_goto(0);
+lcd_puts("Leyendo...");
+
+sprintf(buffer,"Leyendo.... ");
+for (char x = 0; x<10; x++)
+{
+putch (buffer[x]);
+}
+pause(200);
+putch(0x0D);
+putch(0x0A);
+
+while(cnt2<25)
+{
+lcd_goto(0x40);
+B1=I2C_EEIN(cnt1,cnt2);
+
+# 399
+lcd_goto(0x40);
+nin=I2C_EEIN(cnt1,cnt2);
+pause(20);
+num=nin*0.004887585533;
+sprintf(carac,"%1.3f",num);
+lcd_goto(0x40);
+lcd_puts("V1:");
+lcd_puts(carac);
+pause (100);
+
+sprintf(buffer,"V%i : %s  ",cnt2,carac);
+for (char x = 0; x<10; x++)
+{
+putch (buffer[x]);
+}
+pause(200);
+putch(0x0D);
+putch(0x0A);
+
+pause (100);
+cnt2=cnt2 + 1;
+}
+
+# 462
+}
+
+void putch(char dato)
+{
+while(!TXIF) continue;
+TXREG=dato;
+}
+
+char getch()
+{
+while(!RCIF) continue;
+return RCREG;
+}
+
+void gets_Serial( char * s){
+
+for(int i=0; i<=16; i++) *(s+i)=0;
+for(int i=0; i<16; i++){
+char c=getch();
+
+if(c==10 | c==13) break;
+*(s+i)=c;
+}
+
+}
+

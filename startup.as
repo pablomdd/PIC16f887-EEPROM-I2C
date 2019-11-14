@@ -3,7 +3,7 @@
 	; Copyright (C) 1984-2011 HI-TECH Software
 	;Serial no. HCPICP-654321
 
-	; Auto-generated runtime startup code for prelink stage.
+	; Auto-generated runtime startup code for final link stage.
 
 	;
 	; Compiler options:
