@@ -1633,50 +1633,13 @@ extern bit iscntrl(char);
 extern char toupper(char);
 extern char tolower(char);
 
-# 24 "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
-asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0xFFFC & 0xFFF7 & 0xFFFF & 0xFFDF & 0xFFFF & 0xFFFF & 0xFCFF & 0xFBFF & 0xF7FF & 0xEFFF & 0xFFFF");
+# 5 "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
+asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0xFFFC & 0xFFF7 & 0xFFFF & 0xFFDF & 0xFFFF & 0xFFFF & 0xFCFF & 0xFBFF & 0xEFFF & 0xFFFF");
+
+# 7
 asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0xFFFF & 0xFFFF");
 
-# 80 "C:\Program Files (x86)\HI-TECH Software\PICC\9.82\include\simplec1.1.h"
-void init_micro(void);
-void usecbase(void);
-void pauseus ( unsigned int usvalue );
-void msecbase(void);
-void pause( unsigned long usvalue );
-void high(char pin);
-void low(char pin);
-char input(char pin);
-void pulseout(char pin, unsigned long per);
-void lcd_write(unsigned char c);
-void lcd_clear(void);
-void lcd_text(const char * s);
-void lcd_symbol(char c);
-void lcd_goto(unsigned char pos);
-void lcd_number(char c);
-void lcd_init();
-void init_serial(int baud);
-void putch(unsigned char byte);
-unsigned char getch();
-void spi_init(void);
-char SPI_OUTPUT ( char spi_byte );
-void WR_BYTE ( char EE_address, char EE_data );
-char RD_BYTE ( char EE_address );
-void WR_MCP23S08 ( char regist, char data );
-char RD_MCP23S08 ( char regist );
-void pwmout1 (char duty, int freq);
-void pwmout2 (char duty, int freq);
-char adcin (char chan);
-void i2c_init();
-void i2c_waitForIdle();
-void i2c_start();
-void i2c_repStart();
-void i2c_stop();
-int i2c_read( unsigned char ack );
-unsigned char i2c_write( unsigned char i2cWriteData );
-void I2C_EEOUT (unsigned char address, unsigned char data);
-unsigned char I2C_EEIN(unsigned char address);
-
-# 34 "C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c"
+# 14
 void gets_Serial(char *);
 
 unsigned char *pa=&PORTA;
@@ -1684,10 +1647,6 @@ char in[17];
 int convint;
 int dir;
 int atoi( const char * s );
-
-# 51
-char init_value=0x03;
-
 
 
 
@@ -1701,912 +1660,204 @@ float num=0;
 float num1=0.00488758553;
 float num3=0;
 
-# 111
+# 47
+unsigned char carac[5];
+float num;
+char init_value=0x03;
+
+
 void init_micro(void)
 {
 ANSEL = 0;
 ANSELH = 0;
 CM1CON0 = 0;
 CM2CON0 = 0;
-
-
-
-
 INTCON=0;
 }
 
-# 141
-void usecbase(void)
-{
-OPTION_REG = 0b00001000;
-TMR0 = 0xF7;
-while(!T0IF);
-T0IF = 0;
-}
-
-# 154
-void pauseus ( unsigned int usvalue )
-
-{
-unsigned int x;
-
-for (x=0; x<=usvalue; x++)
-{
-usecbase();
-}
-}
-
-# 181
 void msecbase(void)
 {
-OPTION_REG = 0b00000011;
+OPTION_REG = 0b00000001;
 TMR0 = 0xD;
 while(!T0IF);
 T0IF = 0;
 }
 
-# 196
-void pause( unsigned long usvalue )
+void pause( unsigned short usvalue )
 
 {
-unsigned long x;
-for (x=1; x<=(usvalue); x++)
+unsigned short x;
+
+for (x=0; x<=usvalue; x++)
 {
 msecbase();
 }
 }
 
-# 210
-void high(char pin)
+void i2c_init()
 {
-switch(pin)
-{
-case 0:
-TRISC7 = 0;
-RC7 = 1;
-break;
-
-case 1:
-TRISC6 = 0;
-RC6 = 1;
-break;
-
-case 2:
-TRISC5 = 0;
-RC5 = 1;
-break;
-
-case 3:
-TRISC4 = 0;
-RC4 = 1;
-break;
-
-case 4:
-TRISC3 = 0;
-RC3 = 1;
-break;
-
-case 5:
-TRISC2 = 0;
-RC2 = 1;
-break;
-
-case 6:
-TRISC1 = 0;
-RC1 = 1;
-break;
-
-case 7:
-TRISC0 = 0;
-RC0 = 1;
-break;
-
-case 8:
-TRISB0 = 0;
-RB0 = 1;
-break;
-
-case 9:
-TRISB1 = 0;
-RB1 = 1;
-break;
-
-case 10:
-TRISB2 = 0;
-RB2 = 1;
-break;
-
-case 11:
-TRISB3 = 0;
-RB3 = 1;
-break;
-
-case 12:
-TRISB4 = 0;
-RB4 = 1;
-break;
-
-case 13:
-TRISB5 = 0;
-RB5 = 1;
-break;
+TRISCbits.TRISC3=1;
+TRISCbits.TRISC4=1;
+SSPSTAT=0b10000000;
+SSPCON =0b00101000;
+SSPCON2 =0;
 
 
-default:
-break;
-}
+SSPADD = ((4000000/(4UL*100000UL))-1);
+
+# 97
 }
 
-# 294
-void low(char pin)
+
+
+void i2c_start(void)
 {
-switch(pin)
-{
-case 0:
-TRISC7 = 0;
-RC7 = 0;
-break;
-
-case 1:
-TRISC6 = 0;
-RC6 = 0;
-break;
-
-case 2:
-TRISC5 = 0;
-RC5 = 0;
-break;
-
-case 3:
-TRISC4 = 0;
-RC4 = 0;
-break;
-
-case 4:
-TRISC3 = 0;
-RC3 = 0;
-break;
-
-case 5:
-TRISC2 = 0;
-RC2 = 0;
-break;
-
-case 6:
-TRISC1 = 0;
-RC1 = 0;
-break;
-
-case 7:
-TRISC0 = 0;
-RC0 = 0;
-break;
-
-case 8:
-TRISB0 = 0;
-RB0 = 0;
-break;
-
-case 9:
-TRISB1 = 0;
-RB1 = 0;
-break;
-
-case 10:
-TRISB2 = 0;
-RB2 = 0;
-break;
-
-case 11:
-TRISB3 = 0;
-RB3 = 0;
-break;
-
-case 12:
-TRISB4 = 0;
-RB4 = 0;
-break;
-
-case 13:
-TRISB5 = 0;
-RB5 = 0;
-break;
-
-
-default:
-break;
-}
+SSPCON2bits.SEN=1;
+while(SSPCON2bits.SEN==1);
 }
 
-# 378
-char input(char pin)
+
+
+void i2c_restart(void)
 {
-char val = 0;
-switch(pin)
-{
-case 0:
-TRISC7 = 1;
-if (RC7 == 1)
-{val = 1;}
-else
-{val = 0;}
-break;
-
-case 1:
-TRISC6 = 1;
-if (RC6 == 1)
-{val = 1;}
-else
-{val = 0;}
-break;
-
-case 2:
-TRISC5 = 1;
-if (RC5 == 1)
-{val = 1;}
-else
-{val = 0;}
-break;
-
-case 3:
-TRISC4 = 1;
-if (RC4 == 1)
-{val = 1;}
-else
-{val = 0;}
-break;
-
-case 4:
-TRISC3 = 1;
-if (RC3 == 1)
-{val = 1;}
-else
-{val = 0;}
-break;
-
-case 5:
-TRISC2 = 1;
-if (RC2 == 1)
-{val = 1;}
-else
-{val = 0;}
-break;
-
-case 6:
-TRISC1 = 1;
-if (RC1 == 1)
-{val = 1;}
-else
-{val = 0;}
-break;
-
-case 7:
-TRISC0 = 1;
-if (RC0 == 1)
-{val = 1;}
-else
-{val = 0;}
-break;
-
-case 8:
-TRISB0 = 1;
-if (RB0 == 1)
-{val = 1;}
-else
-{val = 0;}
-break;
-
-case 9:
-TRISB1 = 1;
-if (RB1 == 1)
-{val = 1;}
-else
-{val = 0;}
-break;
-
-case 10:
-TRISB2 = 1;
-if (RB2 == 1)
-{val = 1;}
-else
-{val = 0;}
-break;
-
-case 11:
-TRISB3 = 1;
-if (RB3 == 1)
-{val = 1;}
-else
-{val = 0;}
-break;
-
-case 12:
-TRISB4 = 1;
-if (RB4 == 1)
-{val = 1;}
-else
-{val = 0;}
-break;
-
-case 13:
-TRISB5 = 1;
-if (RB5 == 1)
-{val = 1;}
-else
-{val = 0;}
-break;
-
-
-default:
-break;
+SSPCON2bits.RSEN=1;
+while(SSPCON2bits.RSEN==1);
 }
 
-return val;
-}
 
-# 507
-void pulseout(char pin, unsigned long per)
+
+void i2c_stop(void)
 {
-switch(pin)
+SSPCON2bits.PEN=1;
+while(SSPCON2bits.PEN==1);
+}
+
+
+
+char i2c_read( void )
 {
-case 0:
-TRISC7 = 0;
-RC7 = 1;
-pauseus(per);
-RC7 = 0;
-break;
-
-case 1:
-TRISC6 = 0;
-RC6 = 1;
-pauseus(per);
-RC6 = 0;
-break;
-
-case 2:
-TRISC5 = 0;
-RC5 = 1;
-pauseus(per);
-RC5 = 0;
-break;
-
-case 3:
-TRISC4 = 0;
-RC4 = 1;
-pauseus(per);
-RC4 = 0;
-break;
-
-case 4:
-TRISC3 = 0;
-RC3 = 1;
-pauseus(per);
-RC3 = 0;
-break;
-
-case 5:
-TRISC2 = 0;
-RC2 = 1;
-pauseus(per);
-RC2 = 0;
-break;
-
-case 6:
-TRISC1 = 0;
-RC1 = 1;
-pauseus(per);
-RC1 = 0;
-break;
-
-case 7:
-TRISC0 = 0;
-RC0 = 1;
-pauseus(per);
-RC0 = 0;
-break;
-
-case 8:
-TRISB0 = 0;
-RB0 = 1;
-pauseus(per);
-RB0 = 0;
-break;
-
-case 9:
-TRISB1 = 0;
-RB1 = 1;
-pauseus(per);
-RB1 = 0;
-break;
-
-case 10:
-TRISB2 = 0;
-RB2 = 1;
-pauseus(per);
-RB2 = 0;
-break;
-
-case 11:
-TRISB3 = 0;
-RB3 = 1;
-pauseus(per);
-RB3 = 0;
-break;
-
-case 12:
-TRISB4 = 0;
-RB4 = 1;
-pauseus(per);
-RB4 = 0;
-break;
-
-case 13:
-TRISB5 = 0;
-RB5 = 1;
-pauseus(per);
-RB5 = 0;
-break;
-
-
-default:
-break;
-}
-}
-
-# 621
-void
-lcd_write(unsigned char c)
-{
-
-
-char temp = ( ( ( c >> 4 ) & 0x0F );
-PORTD = PORTD & 0xF0;
-PORTD = PORTD + temp;
-((RA6=1),(RA6=0));
-
-temp = ( c & 0x0F );
-PORTD = PORTD & 0xF0;
-PORTD = PORTD + temp;
-((RA6=1),(RA6=0));
-}
-
-# 641
-void
-lcd_clear(void)
-{
-RA7 = 0;
-lcd_write(0x1);
-
-}
-
-# 654
-void
-lcd_puts(const char * s)
-{
-RA7 = 1;
-while(*s)
-lcd_write(*s++);
-}
-
-# 668
-void
-lcd_symbol(char c)
-{
-RA7 = 1;
-lcd_write( c );
-}
-
-# 680
-void
-lcd_goto(unsigned char pos)
-{
-RA7 = 0;
-lcd_write(0x80+pos);
-}
-
-# 691
-void
-lcd_number(char c)
-{
-char hund = c/100;
-char tens = (c % 100)/10;
-char ones = (c % 100) % 10;
-RA7 = 1;
-lcd_write(hund + 0x30);
-lcd_write(tens + 0x30);
-lcd_write(ones + 0x30);
-}
-
-# 709
-void
-lcd_init()
-{
-
-TRISB = 0;
-
-# 719
-RA7 = 0;
-RA6 = 0;
-RE1 = 0;
-
-char init_value = 0x3;
-
-pause (15);
-char temp = init_value;
-PORTD = PORTD & 0xF0;
-PORTD = PORTD + temp;
-((RA6=1),(RA6=0));
-pause(10);
-((RA6=1),(RA6=0));
-pause(10);
-((RA6=1),(RA6=0));
-pause(10);
-char temp = 2;
-PORTD = PORTD & 0xF0;
-PORTD = PORTD + temp;
-((RA6=1),(RA6=0));
-
-lcd_write(0x28);
-
-lcd_write(0xF);
-lcd_clear();
-lcd_write(0x6);
-}
-
-# 755
-void init_serial(int baud)
-{
-TRISC7 = 1;
-TRISC6 = 0;
-if (baud == 2400)
-{SPBRG = 103;}
-else
-{SPBRG = 25;}
-
-
-RCSTA = 0x90;
-TXSTA = 0x20;
-BAUDCTL = 0;
-}
-
-# 774
-void
-putch(unsigned char byte)
-{
-
-while(!TXIF)
-continue;
-TXREG = byte;
-}
-
-# 788
-unsigned char
-getch()
-{
-
-while(!RCIF)
-continue;
-return RCREG;
-}
-
-# 802
-void spi_init(void)
-{
-
-# 809
-TRISC5 = 0;
-TRISC3 = 0;
-TRISA5 = 0;
-
-
-
-
-SSPCON = 0b00000010;
-CKP = 0;
-
-
-SMP = 1;
-CKE = 1;
-
-
-SSPEN = 1;
-pause(1);
-}
-
-# 832
-char SPI_OUTPUT ( char spi_byte )
-{
-SSPBUF = spi_byte;
-do {
-}
-while(!BF);
+PIR1bits.SSPIF=0;
+SSPCON2bits.RCEN=1;
+while(PIR1bits.SSPIF==0);
 return SSPBUF;
 }
 
-# 847
-void WR_BYTE ( char EE_address, char EE_data )
+
+
+void I2C_ack(void)
 {
-char dummy;
-RA5 = 0;
-dummy = SPI_OUTPUT ( 0x06 );
-RA5 = 1;
-pause(5);
-RA5 = 0;
-dummy = SPI_OUTPUT ( 0x02 );
-dummy = SPI_OUTPUT ( EE_address );
-dummy = SPI_OUTPUT ( EE_data );
-RA5 = 1;
-
-}
-
-# 868
-char RD_BYTE ( char EE_address )
-{
-char dummy;
-char spi_received = 0;
-RA5 = 0;
-dummy = SPI_OUTPUT (0x03);
-dummy = SPI_OUTPUT (EE_address );
-spi_received = SPI_OUTPUT ( 0x00 );
-RA5 = 1;
-
-
-return spi_received;
-}
-
-# 886
-void WR_MCP23S08 ( char regist, char data )
-{
-char dummy;
-RA5 = 0;
-dummy = SPI_OUTPUT ( 0x40 );
-dummy = SPI_OUTPUT ( regist );
-dummy = SPI_OUTPUT ( data );
-RA5 = 1;
-
-}
-
-# 901
-char RD_MCP23S08 ( char regist )
-{
-char dummy;
-RA5 = 0;
-dummy = SPI_OUTPUT (0x41);
-dummy = SPI_OUTPUT (regist);
-char data = SPI_OUTPUT ( 0x00 );
-RA5 = 1;
-return data;
+PIR1bits.SSPIF=0;
+SSPCON2bits.ACKDT=0;
+SSPCON2bits.ACKEN=1;
+while(PIR1bits.SSPIF==0);
 }
 
 
 
-void pwmout1 (char duty, int freq)
+void I2C_nack(void)
 {
-TRISC2 = 1;
-CCP1CON = 0;
-
-
-PR2 = (250000/freq)-1;
-CCPR1L = ((duty*(PR2+1))/100);
-TMR2IE = 0;
-T2CKPS0 = 1;
-T2CKPS1 = 1;
-CCP1CON = 0b00001100;
-TMR2ON = 1;
-
-while (TMR2IF ==0)
-{}
-
-TRISC2 = 0;
+PIR1bits.SSPIF=0;
+SSPCON2bits.ACKDT=1;
+SSPCON2bits.ACKEN=1;
+while(PIR1bits.SSPIF==0);
 }
 
 
 
-
-void pwmout2 (char duty, int freq)
+void i2c_write(char I2C_data)
 {
-TRISC1 = 1;
-CCP2CON = 0;
-
-PR2 = (250000/freq)-1;
-CCPR2L = ((duty*(PR2+1))/100);
-TMR2IE = 0;
-T2CKPS0 = 1;
-T2CKPS1 = 1;
-CCP2CON = 0b00001100;
-TMR2ON = 1;
-
-while (TMR2IF ==0)
-{}
-
-TRISC1 = 0;
+PIR1bits.SSPIF=0;
+SSPBUF=I2C_data;
+while(PIR1bits.SSPIF==0);
 }
 
-
-
-
-char adcin (char chan)
-{
-switch(chan)
-{
-case 0:
-TRISA0 = 1;
-ANS0 = 1;
-ADCON0 = 0b11000000;
-break;
-
-case 1:
-TRISA1 = 1;
-ANS1 = 1;
-ADCON0 = 0b11000100;
-break;
-
-case 2:
-TRISA2 = 1;
-ANS2 = 1;
-ADCON0 = 0b11001000;
-break;
-
-case 3:
-TRISA3 = 1;
-ANS3 = 1;
-ADCON0 = 0b11001100;
-break;
-
-case 4:
-TRISA5 = 1;
-ANS4 = 1;
-ADCON0 = 0b11010000;
-break;
-
-default:
-break;
-}
-
-ADON = 1;
-pause (1);
-GO_DONE = 1;
-while(GO_DONE == 1);
-char value = ADRESH;
-return value;
-
-}
-
-# 1019
-void i2c_init()
-{
-TRISC3=1;
-TRISC4=1;
-
-SSPCON = 0x38;
-SSPCON2 = 0x00;
-
-
-SSPADD = 0x27;
-
-
-CKE=1;
-SMP=1;
-
-SSPIF=0;
-BCLIF=0;
-}
-
-
-
-void i2c_waitForIdle()
-{
-while (( SSPCON2 & 0x1F ) | R_W ) {};
-}
-
-
-
-void i2c_start()
-{
-i2c_waitForIdle();
-SEN=1;
-}
-
-
-
-void i2c_repStart()
-{
-i2c_waitForIdle();
-RSEN=1;
-}
-
-
-
-void i2c_stop()
-{
-i2c_waitForIdle();
-PEN=1;
-}
-
-
-
-int i2c_read( unsigned char ack )
-{
-unsigned char i2cReadData;
-
-i2c_waitForIdle();
-
-RCEN=1;
-
-i2c_waitForIdle();
-
-i2cReadData = SSPBUF;
-
-i2c_waitForIdle();
-
-if ( ack )
-{
-ACKDT=0;
-}
-else
-{
-ACKDT=1;
-}
-ACKEN=1;
-
-return( i2cReadData );
-}
-
-
-
-unsigned char i2c_write( unsigned char i2cWriteData )
-{
-i2c_waitForIdle();
-SSPBUF = i2cWriteData;
-
-return ( ! ACKSTAT );
-}
-
-# 1113
-void I2C_EEOUT(unsigned char address, unsigned char data)
+# 167
+void I2C_EEOUT(unsigned char address1,unsigned char address2, unsigned char data)
 {
 i2c_start();
 i2c_write(0xa0);
-i2c_write(address);
+i2c_write(address1);
+i2c_write(address2);
 i2c_write(data);
 i2c_stop();
 pause(11);
 }
 
-# 1128
-unsigned char I2C_EEIN(unsigned char address)
+# 183
+unsigned char I2C_EEIN(unsigned char address1, unsigned char address2)
 {
 unsigned char data;
-
 i2c_start();
 i2c_write(0xa0);
-i2c_write(address);
-i2c_repStart();
+i2c_write(address1);
+i2c_write(address2);
+i2c_restart();
 i2c_write(0xa1);
-data=i2c_read(0);
+data=i2c_read();
+I2C_nack();
 i2c_stop();
 return(data);
 }
 
+void lcd_write(unsigned char c)
+{
+pause(1);
+PORTD=((c >> 4) & 0x0F);
+((RA6=1),(RA6=0));
+PORTD=(c & 0x0F);
+((RA6=1),(RA6=0));
+}
 
+void lcd_clear(void)
+{
+RA7=0;
+lcd_write(0x1);
+pause(2);
+}
 
+void lcd_puts(const char * s)
+{
+RA7=1;
+while(*s)
+lcd_write(*s++);
+}
+
+void lcd_putch(char c)
+{
+RA7=1;
+lcd_write(c);
+}
+
+void lcd_goto(unsigned char pos)
+{
+RA7=0;
+lcd_write(0x80+pos);
+}
 void
-main(void){
-
-init_micro();
-i2c_init();
+main(void)
+{
 ANSEL=0x00;
-ANSELH=0x00;
-PORTB=0x00;
-TRISB=0x00;
-TRISA=0x00;
-TRISD=0x00;
+ANSELH=0;
+OSCCON=0xC0;
+TRISA=3;
+TRISB=0;
+TRISC=6;
+TRISD=0;
+TRISE=0;
 
-# 1168
+PR2=0xFC;
+CCP2CON=0x0C;
+CCP1CON=0x0C;
+CCPR1L=0x80;
+CCPR2L=0x80;
+PIR1=0;
+T2CON=0X07;
+while(PIR1);
+TRISC1=0;
+TRISC2=0;
 RA7=0;
 RA6=0;
-RE1=0;
-
+RA4=0;
 pause(15);
 PORTD=init_value;
 ((RA6=1),(RA6=0));
@@ -2617,11 +1868,11 @@ pause(10);
 pause(10);
 PORTD=2;
 ((RA6=1),(RA6=0));
-
 lcd_write(0x28);
 lcd_write(0xC);
 lcd_clear();
 lcd_write(0x06);
+
 
 TRISC7=1;
 TRISC6=0;
@@ -2632,11 +1883,13 @@ TXSTA=0x20;
 BAUDCTL=0x00;
 pause(500);
 
+PORTA=0x01;
+*pa=0xFF;
+
 
 char char_recibido;
 char char_pwm;
 char buffer[15];
-
 
 PORTA=0x01;
 *pa=0xFF;
@@ -2649,12 +1902,18 @@ for(int i=97; i<123; i++){
 putch(i);
 pause(20);
 }
-putch(0x0D);
-putch(0x0A);
 
 putch(0x0D);
 putch(0x0A);
-sprintf(buffer,"Mostrando Escritura ");
+pause(100);
+
+PORTB=0;
+
+unsigned char cnt1,cnt2=0;
+unsigned int B1, B2, mil, dec, cen, uni=0;
+
+
+sprintf(buffer,"Escribiendo...");
 for (char x = 0; x<20; x++)
 {
 putch (buffer[x]);
@@ -2663,15 +1922,53 @@ pause(200);
 putch(0x0D);
 putch(0x0A);
 
-unsigned char cnt = 0;
+lcd_goto(0);
+lcd_puts("Escribiendo...");
 
+i2c_init();
+
+PORTB=0;
+
+pause(3000);
+
+
+while(cnt2 < 25)
+{
+ADCON0=0xC1;
+GO_DONE=1;
+while(GO_DONE==1);
+CCPR1L=ADRESH;
+CCP1CON=(ADRESL>>2)|0x0C;
+nin=(ADRESH<<2)|(ADRESL>>6);
+num=nin*0.004887585533;
+sprintf(carac,"%1.3f",num);
+
+lcd_goto(0x40);
+lcd_puts("V1:");
+lcd_puts(carac);
+
+sprintf(buffer,"V%i : %s  ",cnt2,carac);
+for (char x = 0; x<10; x++)
+{
+putch (buffer[x]);
+}
+putch(0x0D);
+putch(0x0A);
+
+pause (100);
+I2C_EEOUT(cnt1, cnt2, nin);
+pause(20);
+cnt2 = cnt2 + 1;
+}
+
+cnt2=0;
 
 lcd_clear();
 lcd_goto(0);
-lcd_puts("Grabando.....");
+lcd_puts("Leyendo...");
 
-sprintf(buffer,"Tamanio de cnt %i", sizeof(cnt));
-for (char x = 0; x<20; x++)
+sprintf(buffer,"Leyendo.... ");
+for (char x = 0; x<10; x++)
 {
 putch (buffer[x]);
 }
@@ -2679,79 +1976,59 @@ pause(200);
 putch(0x0D);
 putch(0x0A);
 
-
-
-while(cnt<=20){
-PORTB = cnt+10;
-pause(300);
-I2C_EEOUT(cnt,10);
-
-sprintf(buffer,"Directorio: %d ", cnt);
-for (char x = 0; x<15; x++)
+while(cnt2<25)
 {
-putch (buffer[x]);
-}
-putch(0x0D);
-putch(0x0A);
+lcd_goto(0x40);
+B1=I2C_EEIN(cnt1,cnt2);
 
-sprintf(buffer,"Valor: %d ", cnt+10);
+# 399
+lcd_goto(0x40);
+nin=I2C_EEIN(cnt1,cnt2);
+pause(20);
+num=nin*0.004887585533;
+sprintf(carac,"%1.3f",num);
+lcd_goto(0x40);
+lcd_puts("V1:");
+lcd_puts(carac);
+pause (100);
+
+sprintf(buffer,"V%i : %s  ",cnt2,carac);
 for (char x = 0; x<10; x++)
 {
 putch (buffer[x]);
 }
-
+pause(200);
 putch(0x0D);
 putch(0x0A);
 
-
-cnt=cnt+1;
-pause(100);
+pause (100);
+cnt2=cnt2 + 1;
 }
 
-putch(0x0D);
-putch(0x0A);
-sprintf(buffer,"Mostrando Lectura ");
-for (char x = 0; x<18; x++)
+# 462
+}
+
+void putch(char dato)
 {
-putch (buffer[x]);
+while(!TXIF) continue;
+TXREG=dato;
 }
-pause(100);
-putch(0x0D);
-putch(0x0A);
 
-cnt=0;
-
-unsigned char val = 123;
-
-
-while(cnt <= 20)
+char getch()
 {
-val = I2C_EEIN(cnt);
-PORTB = I2C_EEIN(cnt);
-pause (300);
-
-sprintf(buffer,"Directorio: %i ", cnt);
-for (char x = 0; x<16; x++)
-{
-putch (buffer[x]);
+while(!RCIF) continue;
+return RCREG;
 }
 
-putch(0x0D);
-putch(0x0A);
+void gets_Serial( char * s){
 
-sprintf(buffer,"Valor: %i ", val);
-for (char x = 0; x<10; x++)
-{
-putch (buffer[x]);
-}
-pause(100);
+for(int i=0; i<=16; i++) *(s+i)=0;
+for(int i=0; i<16; i++){
+char c=getch();
 
-putch(0x0D);
-putch(0x0A);
-
-# 1324
-pause(255);
-cnt=cnt + 1;
+if(c==10 | c==13) break;
+*(s+i)=c;
 }
 
 }
+
