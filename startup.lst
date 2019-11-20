@@ -1,7 +1,7 @@
 
 
 HI-TECH Software PIC Macro Assembler V9.82 build 9453 
-                                                                                                           Wed Nov 13 20:21:37 2019
+                                                                                                           Wed Nov 20 16:01:04 2019
 
 
      1                           
@@ -73,8 +73,8 @@ HI-TECH Software PIC Macro Assembler V9.82 build 9453
 
 
 HI-TECH Software PICC Macro Assembler V9.82 build 9453 
-Symbol Table                                                                                               Wed Nov 13 20:21:37 2019
+Symbol Table                                                                                               Wed Nov 20 16:01:04 2019
 
-               _main 099C                 _exit 0000                 start 0000  start_initialization 0052  
+               _main 09A0                 _exit 0000                 start 0000  start_initialization 0052  
            intlevel0 0000             intlevel1 0000             intlevel2 0000             intlevel3 0000  
            intlevel4 0000             intlevel5 0000             reset_vec 0000  

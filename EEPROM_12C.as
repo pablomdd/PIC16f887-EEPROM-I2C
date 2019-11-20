@@ -2269,22 +2269,18 @@ l6298:
 	line	340
 	
 l6300:	
-;eeprom_i2c.c: 340: sprintf(carac,"%1.3f",num);
+;eeprom_i2c.c: 340: sprintf(carac,"%1.3f",nin);
 	movlw	((STR_3-__stringbase))&0ffh
 	bcf	status, 5	;RP0=0, select bank0
 	movwf	(?_sprintf)
 	bsf	status, 5	;RP0=1, select bank1
-	movf	(_num)^080h,w
-	bcf	status, 5	;RP0=0, select bank0
-	movwf	0+(?_sprintf)+01h
-	bsf	status, 5	;RP0=1, select bank1
-	movf	(_num+1)^080h,w
+	movf	(_nin+1)^080h,w
 	bcf	status, 5	;RP0=0, select bank0
 	movwf	1+(?_sprintf)+01h
 	bsf	status, 5	;RP0=1, select bank1
-	movf	(_num+2)^080h,w
+	movf	(_nin)^080h,w
 	bcf	status, 5	;RP0=0, select bank0
-	movwf	2+(?_sprintf)+01h
+	movwf	0+(?_sprintf)+01h
 	movlw	(_carac)&0ffh
 	fcall	_sprintf
 	line	342
@@ -2374,7 +2370,7 @@ l6322:
 	clrf	(?_pause+1)
 	fcall	_pause
 	line	355
-;eeprom_i2c.c: 355: I2C_EEOUT(cnt1, cnt2, nin);
+;eeprom_i2c.c: 355: I2C_EEOUT(cnt1, cnt2, (char)nin);
 	bsf	status, 5	;RP0=1, select bank1
 	bcf	status, 6	;RP1=0, select bank1
 	movf	(main@cnt2)^080h,w

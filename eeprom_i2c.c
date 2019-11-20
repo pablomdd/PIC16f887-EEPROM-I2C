@@ -337,7 +337,7 @@ main(void)
 			CCP1CON=(ADRESL>>2)|0x0C;
 			nin=(ADRESH<<2)|(ADRESL>>6);
 			num=nin*0.004887585533;
-			sprintf(carac,"%1.3f",num);
+			sprintf(carac,"%1.3f",nin);
 
 			lcd_goto(0x40);
 			lcd_puts("V1:");
@@ -352,7 +352,7 @@ main(void)
    		 	putch(0x0A);
 
 	 		pause (100);
-			I2C_EEOUT(cnt1, cnt2, nin);
+			I2C_EEOUT(cnt1, cnt2, (char)nin);
 			pause(20); 
 			cnt2 = cnt2 + 1;
 	 }

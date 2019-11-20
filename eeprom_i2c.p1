@@ -3421,9 +3421,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eeprom_i2c.c: 339: num=nin*0.004887585533;
 "339
 [e = _num -> * -> _nin `d .0.004887585533 `f ]
-[; ;eeprom_i2c.c: 340: sprintf(carac,"%1.3f",num);
+[; ;eeprom_i2c.c: 340: sprintf(carac,"%1.3f",nin);
 "340
-[e ( _sprintf (1 , (. , &U _carac :s 3C -> _num `d ]
+[e ( _sprintf (1 , (. , &U _carac :s 3C _nin ]
 [; ;eeprom_i2c.c: 342: lcd_goto(0x40);
 "342
 [e ( _lcd_goto (1 -> -> 64 `i `uc ]
@@ -3468,7 +3468,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;eeprom_i2c.c: 354: pause (100);
 "354
 [e ( _pause (1 -> -> 100 `i `us ]
-[; ;eeprom_i2c.c: 355: I2C_EEOUT(cnt1, cnt2, nin);
+[; ;eeprom_i2c.c: 355: I2C_EEOUT(cnt1, cnt2, (char)nin);
 "355
 [e ( _I2C_EEOUT (3 , , _cnt1 _cnt2 -> _nin `uc ]
 [; ;eeprom_i2c.c: 356: pause(20);

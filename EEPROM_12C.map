@@ -31,10 +31,10 @@ EEPROM_12C.obj  config                             2007     2007        2     40
                 text745                            167C     167C       C2     2CF8       0
                 text730                            173E     173E       C2     2E7C       0
                 text728                             C9F      C9F      361     193E       0
-                text724                             84A      84A      152     1094       0
+                text724                             84E      84E      152     109C       0
                 text719                            15BE     15BE       BE     2B7C       0
                 text718                              61       61      79F       C2       0
-                maintext                            99C      99C      303     1338       0
+                maintext                            9A0      9A0      2FF     1340       0
                 cstackBANK0                          20       20       3C       20       1
                 cstackCOMMON                         70       70        E       70       1
                 cstackBANK1                          A0       A0       30       A0       1
@@ -53,10 +53,10 @@ TOTAL           Name                               Link     Load   Length     Sp
                 text745                            167C     167C       C2         0
                 text730                            173E     173E       C2         0
                 text728                             C9F      C9F      361         0
-                text724                             84A      84A      152         0
+                text724                             84E      84E      152         0
                 text719                            15BE     15BE       BE         0
                 text718                              61       61      79F         0
-                maintext                            99C      99C      303         0
+                maintext                            9A0      9A0      2FF         0
                 cinit                                52       52        F         0
 
         CLASS   STRCODE        
@@ -112,8 +112,8 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
                 cstackBANK1                    0000A0  00003A  0000DA        A0       1  BANK1       1
                 cinit                          000052  00000F  000061        A4       0  CODE        2
                 text718                        000061  00079F  000800        C2       0  CODE        2
-                text724                        00084A  000152  00099C      1094       0  CODE        2
-                maintext                       00099C  000303  000C9F      1338       0  CODE        2
+                text724                        00084E  000152  0009A0      109C       0  CODE        2
+                maintext                       0009A0  0002FF  000C9F      1340       0  CODE        2
                 text728                        000C9F  000361  001000      193E       0  CODE        2
                 strings                        001000  0000C9  0010C9      2000       0  STRING      2
                 text746                        001546  000078  0015BE      2A8C       0  CODE        2
@@ -131,16 +131,16 @@ UNUSED ADDRESS RANGES
         BANK2            0110-016F             60           1
         BANK3            0190-01EF             60           1
         CODE             0003-003C             3A           2
-                         0800-0849             4A
+                         0800-084D             4E
                          10C9-1545            47D
                          1800-1FFF            800
         CONST            0003-003C             3A           2
-                         0800-0849             4A
+                         0800-084D             4E
                          10C9-1545            100
                          1800-1FFF            100
         EEDATA           2100-21FF            100           2
         ENTRY            0003-003C             3A           2
-                         0800-0849             4A
+                         0800-084D             4E
                          10C9-1545            100
                          1800-1FFF            100
         IDLOC            2000-2003              4           2
@@ -153,11 +153,11 @@ UNUSED ADDRESS RANGES
         SFR2             0100-010F             10           1
         SFR3             0180-018F             10           1
         STRCODE          0003-003C             3A           2
-                         0800-0849             4A
+                         0800-084D             4E
                          10C9-1545            47D
                          1800-1FFF            800
         STRING           0003-003C             3A           2
-                         0800-0849             4A
+                         0800-084D             4E
                          10C9-1545            100
                          1800-1FFF            100
 
@@ -411,12 +411,12 @@ ___fttol@exp1          cstackBANK0  002C
 ___fttol@f1            cstackBANK0  0020
 ___fttol@lval          cstackBANK0  0028
 ___fttol@sign1         cstackBANK0  0027
-___lbdiv               text724      094F
+___lbdiv               text724      0953
 ___lbdiv@counter       cstackCOMMON 0077
 ___lbdiv@dividend      cstackCOMMON 0076
 ___lbdiv@divisor       cstackCOMMON 0075
 ___lbdiv@quotient      cstackCOMMON 0078
-___lbmod               text724      096A
+___lbmod               text724      096E
 ___lbmod@counter       cstackCOMMON 0073
 ___lbmod@dividend      cstackCOMMON 0072
 ___lbmod@divisor       cstackCOMMON 0070
@@ -457,15 +457,15 @@ __end_of___ftneg       text718      073D
 __end_of___ftpack      text728      0FA7
 __end_of___ftsub       text718      0755
 __end_of___fttol       text718      06ED
-__end_of___lbdiv       text724      096A
-__end_of___lbmod       text724      0986
+__end_of___lbdiv       text724      096E
+__end_of___lbmod       text724      098A
 __end_of___lldiv       text718      0735
 __end_of___llmod       text718      063F
 __end_of___lltoft      text728      0CD8
 __end_of___wmul        text718      0692
 __end_of__div_to_l_    text745      1731
 __end_of__tdiv_to_l_   text746      15BE
-__end_of_fround        text724      094F
+__end_of_fround        text724      0953
 __end_of_i2c_init      text755      0052
 __end_of_i2c_read      text719      161F
 __end_of_i2c_restart   text719      1617
@@ -488,7 +488,7 @@ __pbssBANK1            bssBANK1     00D0
 __pcstackBANK0         cstackBANK0  0020
 __pcstackBANK1         cstackBANK1  00A0
 __pcstackCOMMON        cstackCOMMON 0070
-__pmaintext            maintext     099C
+__pmaintext            maintext     09A0
 __powers_              strings      1037
 __pstrings             strings      1000
 __ptext718             text718      0061
@@ -497,7 +497,7 @@ __ptext720             text719      1631
 __ptext721             text719      1627
 __ptext722             text718      073D
 __ptext723             text728      0CD8
-__ptext724             text724      084A
+__ptext724             text724      084E
 __ptext725             text719      164E
 __ptext726             text719      15C5
 __ptext727             text728      0CBA
@@ -514,8 +514,8 @@ __ptext737             text718      0601
 __ptext738             text728      0E6A
 __ptext739             text718      0692
 __ptext740             text728      0F69
-__ptext741             text724      096A
-__ptext742             text724      094F
+__ptext741             text724      096E
+__ptext742             text724      0953
 __ptext743             text718      0679
 __ptext744             text728      0F5B
 __ptext745             text745      167C
@@ -580,7 +580,7 @@ __tdiv_to_l_@quot      cstackBANK0  0020
 _carac                 bssBANK1     00D5
 _dpowers               strings      105E
 _exit                  init         0000
-_fround                text724      084A
+_fround                text724      084E
 _fround$2941           cstackBANK0  004E
 _fround$2942           cstackBANK0  004B
 _i2c_init              text755      0045
@@ -595,7 +595,7 @@ _lcd_clear             text719      1627
 _lcd_goto              text719      15BE
 _lcd_puts              text719      1631
 _lcd_write             text719      164E
-_main                  maintext     099C
+_main                  maintext     09A0
 _msecbase              text719      1671
 _nin                   bssBANK1     00D3
 _num                   bssBANK1     00D0
