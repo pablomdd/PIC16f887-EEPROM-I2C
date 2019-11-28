@@ -1626,7 +1626,6 @@ asm("\tpsect config,class=CONFIG,delta=2"); asm("\tdw ""0xFFFF & 0xFFFF");
 # 19
 unsigned char nin;
 unsigned char carac[5];
-unsigned char carac1[5];
 float num;
 char init_value=0x03;
 unsigned short b0=0;
@@ -1709,12 +1708,11 @@ TRISCbits.TRISC4=1;
 SSPSTAT=0b10000000;
 SSPCON =0b00101000;
 SSPCON2 =0;
-SMP = 0;
 
 
 SSPADD = ((4000000/(4UL*100000UL))-1);
 
-# 115
+# 113
 }
 
 
@@ -1780,7 +1778,7 @@ SSPBUF=I2C_data;
 while(PIR1bits.SSPIF==0);
 }
 
-# 185
+# 183
 void I2C_EEOUT(unsigned char address1,unsigned char address2, unsigned char data)
 {
 i2c_start();
@@ -1792,7 +1790,7 @@ i2c_stop();
 pause(11);
 }
 
-# 201
+# 199
 unsigned char I2C_EEIN(unsigned char address1, unsigned char address2)
 {
 unsigned char data;
@@ -1812,52 +1810,47 @@ void lcd_write(unsigned int c)
 {
 pause(1);
 PORTD=((c >> 4) & 0x0F);
-((RE2=1),(RE2=0));
+((RE1=1),(RE1=0));
 PORTD=(c & 0x0F);
-((RE2=1),(RE2=0));
+((RE1=1),(RE1=0));
 }
 
 void lcd_clear(void)
 {
-RE0=0;
+RE2=0;
 lcd_write(0x1);
 pause(2);
 }
 
 void lcd_puts(const char * s)
 {
-RE0=1;
+RE2=1;
 while(*s)
 lcd_write(*s++);
 }
 
 void lcd_putch(char c)
 {
-RE0=1;
+RE2=1;
 lcd_write(c);
 }
 
 void lcd_goto(unsigned char pos)
 {
-RE0=0;
+RE2=0;
 lcd_write(0x80+pos);
 }
 void
 main(void)
 {
-ANSEL=3;
+ANSEL=32;
 ANSELH=0;
 OSCCON=0xC0;
-TRISA=3;
+TRISA=0xFF;
 TRISB=0;
 TRISC=6;
 TRISD=0;
-TRISE=0;
-
-IRCF1 = 1;
-IRCF1 = 1;
-IRCF2 = 1;
-SCS = 1;
+TRISE=1;
 
 PR2=0xFC;
 CCP2CON=0x0C;
@@ -1869,79 +1862,26 @@ T2CON=0X07;
 while(PIR1);
 TRISC1=0;
 TRISC2=0;
-RE0=0;
 RE2=0;
 RE1=0;
+RE0=0;
 pause(15);
 PORTD=init_value;
-((RE2=1),(RE2=0));
+((RE1=1),(RE1=0));
 pause(10);
-((RE2=1),(RE2=0));
+((RE1=1),(RE1=0));
 pause(10);
-((RE2=1),(RE2=0));
+((RE1=1),(RE1=0));
 pause(10);
 PORTD=2;
-((RE2=1),(RE2=0));
+((RE1=1),(RE1=0));
 lcd_write(0x28);
 lcd_write(0xC);
 lcd_clear();
 lcd_write(0x06);
 PORTB=0;
-unsigned char ct, cnt1, cnt2=0;
-unsigned int B1, B2, mil, cnum, dec, cen, uni, cntd, numi=0;
-
-lcd_goto(0);
-lcd_puts("Escribiendo...");
-i2c_init();
-PORTB=0;
-cnt1=0;
-cnt2=0;
-cntd=0;
-cnum=0;
-
-
-
-
-while(cnt1<1)
-{
-cnt2=0;
-cntd=0;
-while(cnt2<300)
-{
-cnum=cnt2+(255*cnt1);
-ADCON0=0xC1;
-GO_DONE=1;
-while(GO_DONE==1);
-CCPR1L=ADRESH;
-CCP1CON=(ADRESL>>2)|0x0C;
-
-nin=ADRESH;
-num=nin*0.0196078431372;
-
-# 337
-PORTB=ADRESH;
-I2C_EEOUT(cnt1, cnt2, nin);
-cnt2=cnt2+1;
-cntd=cntd+1;
-}
-cnt1=cnt1+1;
-}
-
-cnt2=0;
-cnt1=0;
-cntd=0;
-lcd_clear();
-lcd_goto(0);
-lcd_puts("Leyendo...");
-
-char buffer[15];
-
-
-while(cnt1<1)
-{
-cnt2=0;
-while(cnt2<300)
-{
+unsigned char cnt1,cnt2=0;
+unsigned int B1, B2, mil, dec, cen, uni, cntd, cnt1i, cnt2i=0;
 TRISC7=1;
 TRISC6=0;
 OSCCON=0x70;
@@ -1952,39 +1892,150 @@ BAUDCTL=0x00;
 pause(500);
 PORTA=0x03;
 *pa=0xFF;
+lcd_clear();
+lcd_goto(0);
+lcd_puts("Espera comando");
+char char_recibido;
+char_recibido=getch();
+while(char_recibido=='E')
+{
+lcd_goto(0);
+lcd_puts("Escribiendo...");
+i2c_init();
+PORTB=0;
+cnt1=0;
+cnt2=0;
+cnt1i=0;
+cnt2i=0;
+cntd=0;
+while(cnt1i<4)
+{
+cnt2=0;
+cnt2i=0;
+cntd=0;
+while(cnt2i<256)
+{
+ADCON0=0xD5;
+GO_DONE=1;
+while(GO_DONE==1);
+CCPR1L=ADRESH;
+CCP1CON=(ADRESL>>2)|0x0C;
 
+nin=ADRESH;
+
+# 343
+I2C_EEOUT(cnt1, cnt2, nin);
+cnt2=cnt2+1;
+cnt2i=cnt2i+1;
+}
+cnt1=cnt1+1;
+cnt1i=cnt1i+1;
+}
+cnt2=0;
+cnt1=0;
+cnt2i=0;
+cnt1i=0;
+cntd=0;
+lcd_clear();
+lcd_goto(0);
+lcd_puts("Memoria Escrita");
+char_recibido=getch();
+}
+while(char_recibido=='L')
+{
+lcd_clear();
+lcd_goto(0);
+lcd_puts("Leyendo...");
+while(cnt1i<4)
+{
+cnt2=0;
+cnt2i=0;
+while(cnt2i<256)
+{
+PORTB=I2C_EEIN(cnt1,cnt2);
 sprintf(carac,"%1.3f",I2C_EEIN(cnt1,cnt2)*0.0196078431372);
-
 lcd_goto(0x40);
-
 lcd_puts("V:");
 lcd_goto(0x42);
 lcd_puts(carac);
-pause(10);
 
-cnum=cnt2+(255*cnt1);
+# 384
+B1=cnt1i;
+cen=B1/100;
+B2=B1-(cen*100);
+dec=B2/10;
+uni=B1-(cen*100)-(dec*10);
 
-lcd_puts(" Dir:");
-sprintf(carac1,"%i",cnum);
-lcd_puts(carac1);
 
-
-
-sprintf(buffer,"Dir:%i\tV:%s",cnum,carac);
-
-for (char x = 0; x<17; x++)
-{
-putch (buffer[x]);
-}
-
-# 413
+putch(cen+48);
+putch(dec+48);
+putch(uni+48);
 putch(0x0D);
 putch(0x0A);
+pause(250);
 
-pause (10);
-cnt2=cnt2 + 1;
+B1=cnt2i;
+cen=B1/100;
+B2=B1-(cen*100);
+dec=B2/10;
+uni=B1-(cen*100)-(dec*10);
+
+
+putch(cen+48);
+putch(dec+48);
+putch(uni+48);
+putch(0x0D);
+putch(0x0A);
+pause(250);
+
+
+
+cntd=cnt2+(cnt1*256)+1;
+B1=cntd;
+mil=B1/1000;
+B2=B1-(mil*1000);
+cen=B2/100;
+B2=B1-(mil*1000)-(cen*100);
+dec=B2/10;
+uni=B1-(mil*1000)-(cen*100)-(dec*10);
+putch(mil+48);
+putch(cen+48);
+putch(dec+48);
+putch(uni+48);
+putch(0x0D);
+putch(0x0A);
+pause(250);
+
+B1=I2C_EEIN(cnt1,cnt2)*0.0196078431372*1000;
+mil=B1/1000;
+B2=B1-(mil*1000);
+cen=B2/100;
+B2=B1-(mil*1000)-(cen*100);
+dec=B2/10;
+uni=B1-(mil*1000)-(cen*100)-(dec*10);
+
+putch(mil+48);
+putch('.');
+putch(cen+48);
+putch(dec+48);
+putch(uni+48);
+
+putch(0x0D);
+putch(0x0A);
+pause(250);
+
+cnt2=cnt2+1;
 cntd=cntd+1;
+cnt2i=cnt2i+1;
 }
+cnt1i=cnt1i+1;
 cnt1=cnt1+1;
 }
+lcd_clear();
+lcd_goto(0);
+lcd_puts("Memoria leida");
+char_recibido=getch();
+}
+
+# 475
 }

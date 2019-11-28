@@ -1,7 +1,7 @@
 
 
 HI-TECH Software PIC Macro Assembler V9.82 build 9453 
-                                                                                                           Wed Nov 27 18:38:39 2019
+                                                                                                           Wed Nov 27 20:26:50 2019
 
 
      1                           
@@ -44,12 +44,12 @@ HI-TECH Software PIC Macro Assembler V9.82 build 9453
     38                           	psect	intentry,class=CODE,delta=2
     39                           	psect	functab,class=CODE,delta=2
     40                           	global	intlevel0,intlevel1,intlevel2, intlevel3, intlevel4, intlevel5
-    41  0000                     intlevel0:
-    42  0000                     intlevel1:
-    43  0000                     intlevel2:
-    44  0000                     intlevel3:
-    45  0000                     intlevel4:
-    46  0000                     intlevel5:
+    41  0700                     intlevel0:
+    42  0700                     intlevel1:
+    43  0700                     intlevel2:
+    44  0700                     intlevel3:
+    45  0700                     intlevel4:
+    46  0700                     intlevel5:
     47                           	psect	init,class=CODE,delta=2
     48                           	psect	cinit,class=CODE,delta=2
     49                           	psect	text,class=CODE,delta=2
@@ -69,12 +69,12 @@ HI-TECH Software PIC Macro Assembler V9.82 build 9453
     63  0000                     _exit
     64                           	psect	end_init
     65                           	global start_initialization
-    66  0000  120A  118A  2851   	ljmp start_initialization	;jump to C runtime clear & initialization
+    66  0000  120A  118A  2FEC   	ljmp start_initialization	;jump to C runtime clear & initialization
 
 
 HI-TECH Software PICC Macro Assembler V9.82 build 9453 
-Symbol Table                                                                                               Wed Nov 27 18:38:39 2019
+Symbol Table                                                                                               Wed Nov 27 20:26:50 2019
 
-               _main 0AD1                 _exit 0000                 start 0000  start_initialization 0051  
-           intlevel0 0000             intlevel1 0000             intlevel2 0000             intlevel3 0000  
-           intlevel4 0000             intlevel5 0000             reset_vec 0000  
+               _main 01DF                 _exit 0000                 start 0000  start_initialization 07EC  
+           intlevel0 0700             intlevel1 0700             intlevel2 0700             intlevel3 0700  
+           intlevel4 0700             intlevel5 0700             reset_vec 0000  

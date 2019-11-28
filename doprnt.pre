@@ -400,47 +400,6 @@ case 'f':
 flag |= 0x400;
 break;
 
-# 700
-case 'd':
-case 'i':
-break;
-
-# 731
-case 's':
-
-# 737
-_val._str._cp = (*(const char * *)__va_arg((*(const char * **)ap), (const char *)0));
-
-# 743
-if(!_val._str._cp)
-_val._str._cp = "(null)";
-
-
-
-_val._str._len = 0;
-while(_val._str._cp[_val._str._len])
-_val._str._len++;
-
-# 756
-if(prec && prec < _val._str._len)
-_val._str._len = prec;
-
-
-if(width > _val._str._len)
-width -= _val._str._len;
-else
-width = 0;
-
-# 767
-while(width--)
-((*sp++ = (' ')));
-
-while(_val._str._len--)
-((*sp++ = (*_val._str._cp++)));
-
-# 777
-continue;
-
 # 805
 default:
 
@@ -577,27 +536,9 @@ prec--;
 continue;
 }
 
-# 1248
-{
-
-# 1254
-_val._val = (long)(*(int *)__va_arg((*(int **)ap), (int)0));
-
-if((long)_val._val < 0) {
-flag |= 0x03;
-_val._val = -_val._val;
-}
-
-}
-
 # 1285
 if(prec == 0 && _val._val == 0)
 prec++;
-
-# 1300
-for(c = 1 ; c != sizeof dpowers/sizeof dpowers[0] ; c++)
-if(_val._val < dpowers[c])
-break;
 
 # 1334
 if(c < prec)
@@ -638,20 +579,6 @@ if(flag & 0x03)
 ((*sp++ = ('-')));
 
 # 1464
-}
-
-# 1469
-while(prec--) {
-
-# 1473
-{
-
-# 1484
-c = (_val._val / dpowers[prec]) % 10 + '0';
-
-# 1515
-}
-((*sp++ = (c)));
 }
 
 # 1525
