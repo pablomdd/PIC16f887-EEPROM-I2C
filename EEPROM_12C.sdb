@@ -661,8 +661,8 @@
 ]
 [u S1767 . 1 `S1760 1 . 1 0 ]
 "520 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\lib\doprnt.c
-[s S1936 . 4 `*DCuc 1 _cp 2 0 `ui 1 _len 2 2 ]
-[u S1939 . 4 `ul 1 _val 4 0 `S1936 1 _str 4 0 ]
+[s S1928 . 4 `*DCuc 1 _cp 2 0 `ui 1 _len 2 2 ]
+[u S1931 . 4 `ul 1 _val 4 0 `S1928 1 _str 4 0 ]
 "406
 [v _fround `(d  1 s 3 fround ]
 "422
@@ -747,50 +747,52 @@
 [v ___tmul `(um  1 e 3 0 ]
 "3 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\sources\wmul.c
 [v ___wmul `(ui  1 e 2 0 ]
-"53 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
+"34 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
 [v _init_micro `(v  1 e 0 0 ]
-"62
-[v _msecbase `(v  1 e 0 0 ]
-"71
-[v _pause `(v  1 e 0 0 ]
-"81
-[v _i2c_init `(v  1 e 0 0 ]
-"102
-[v _i2c_start `(v  1 e 0 0 ]
-"110
-[v _i2c_restart `(v  1 e 0 0 ]
-"118
-[v _i2c_stop `(v  1 e 0 0 ]
-"126
-[v _i2c_read `(uc  1 e 1 0 ]
-"136
-[v _I2C_ack `(v  1 e 0 0 ]
-"146
-[v _I2C_nack `(v  1 e 0 0 ]
-"156
-[v _i2c_write `(v  1 e 0 0 ]
-"168
-[v _I2C_EEOUT `(v  1 e 0 0 ]
-"184
-[v _I2C_EEIN `(uc  1 e 1 0 ]
-"199
-[v _lcd_write `(v  1 e 0 0 ]
-"208
-[v _lcd_clear `(v  1 e 0 0 ]
-"215
-[v _lcd_puts `(v  1 e 0 0 ]
-"222
-[v _lcd_putch `(v  1 e 0 0 ]
-"228
-[v _lcd_goto `(v  1 e 0 0 ]
-"234
-[v _main `(v  1 e 0 0 ]
-"465
+"43
 [v _putch `(v  1 e 0 0 ]
-"471
+"49
 [v _getch `(uc  1 e 1 0 ]
-"476
+"54
 [v _gets_Serial `(v  1 e 0 0 ]
+"68
+[v _getString `(v  1 e 0 0 ]
+"79
+[v _msecbase `(v  1 e 0 0 ]
+"88
+[v _pause `(v  1 e 0 0 ]
+"98
+[v _i2c_init `(v  1 e 0 0 ]
+"120
+[v _i2c_start `(v  1 e 0 0 ]
+"128
+[v _i2c_restart `(v  1 e 0 0 ]
+"136
+[v _i2c_stop `(v  1 e 0 0 ]
+"144
+[v _i2c_read `(uc  1 e 1 0 ]
+"154
+[v _I2C_ack `(v  1 e 0 0 ]
+"164
+[v _I2C_nack `(v  1 e 0 0 ]
+"174
+[v _i2c_write `(v  1 e 0 0 ]
+"186
+[v _I2C_EEOUT `(v  1 e 0 0 ]
+"202
+[v _I2C_EEIN `(uc  1 e 1 0 ]
+"217
+[v _lcd_write `(v  1 e 0 0 ]
+"226
+[v _lcd_clear `(v  1 e 0 0 ]
+"233
+[v _lcd_puts `(v  1 e 0 0 ]
+"240
+[v _lcd_putch `(v  1 e 0 0 ]
+"246
+[v _lcd_goto `(v  1 e 0 0 ]
+"252
+[v _main `(v  1 e 0 0 ]
 "7 eeprom.c
 [v _eecpymem `(v  1 e 0 0 ]
 "25
@@ -1847,38 +1849,32 @@
 [v __powers_ `DC[13]d  1 e 39 0 ]
 "39
 [v __npowers_ `DC[13]d  1 e 39 0 ]
-"25 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
-[v _nin `i  1 e 2 0 ]
-"27
+"19 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
+[v _nin `uc  1 e 1 0 ]
+"20
 [v _carac `[5]uc  1 e 5 0 ]
-"30
-[v _num `f  1 e 3 0 ]
-"234
+"21
+[v _carac1 `[5]uc  1 e 5 0 ]
+"252
 [v _main `(v  1 e 0 0 ]
 {
-"410
-[v main@x_1881 `uc  1 a 1 46 ]
-"347
-[v main@x_1874 `uc  1 a 1 44 ]
-"367
-[v main@x_1877 `uc  1 a 1 45 ]
-"313
-[v main@x `uc  1 a 1 43 ]
-"297
-[v main@i `i  1 a 2 41 ]
-"288
+"390
+[v main@x `uc  1 a 1 45 ]
+"352
 [v main@buffer `[15]uc  1 a 15 25 ]
-"308
-[v main@cnt2 `uc  1 a 1 47 ]
-[v main@cnt1 `uc  1 a 1 40 ]
-"462
+"296
+[v main@cnum `ui  1 a 2 43 ]
+"295
+[v main@cnt1 `uc  1 a 1 47 ]
+[v main@cnt2 `uc  1 a 1 46 ]
+"422
 } 0
 "488 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\sources\doprnt.c
 [v _sprintf `(i  1 e 2 0 ]
 {
 [v sprintf@sp `*.0uc  1 a 1 wreg ]
 "520
-[v sprintf@_val `S1939  1 a 4 21 ]
+[v sprintf@_val `S1931  1 a 4 21 ]
 "511
 [v sprintf@fval `d  1 a 3 14 ]
 [v sprintf@integ `d  1 a 3 5 ]
@@ -1899,23 +1895,23 @@
 [v sprintf@f `*.cDCuc  1 p 1 50 ]
 "1533
 } 0
-"228 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
+"246 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
 [v _lcd_goto `(v  1 e 0 0 ]
 {
 [v lcd_goto@pos `uc  1 a 1 wreg ]
 [v lcd_goto@pos `uc  1 a 1 wreg ]
-"231
+"249
 } 0
-"215
+"233
 [v _lcd_puts `(v  1 e 0 0 ]
 {
-[v lcd_puts@s `*.mDCuc  1 p 2 5 ]
-"219
+[v lcd_puts@s `*.mDCuc  1 p 2 6 ]
+"237
 } 0
-"208
+"226
 [v _lcd_clear `(v  1 e 0 0 ]
 {
-"212
+"230
 } 0
 "17 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\sources\ftsub.c
 [v ___ftsub `(f  1 e 3 0 ]
@@ -1938,21 +1934,20 @@
 [v fround@prec `uc  1 a 1 wreg ]
 "414
 } 0
-"199 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
+"217 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
 [v _lcd_write `(v  1 e 0 0 ]
 {
-[v lcd_write@c `uc  1 a 1 wreg ]
-[v lcd_write@c `uc  1 a 1 wreg ]
-"205
+[v lcd_write@c `ui  1 p 2 4 ]
+"223
 } 0
-"168
+"186
 [v _I2C_EEOUT `(v  1 e 0 0 ]
 {
 [v I2C_EEOUT@address1 `uc  1 a 1 wreg ]
 [v I2C_EEOUT@address1 `uc  1 a 1 wreg ]
 [v I2C_EEOUT@address2 `uc  1 p 1 4 ]
 [v I2C_EEOUT@data `uc  1 p 1 5 ]
-"176
+"194
 } 0
 "36 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\sources\lltoft.c
 [v ___lltoft `(f  1 e 3 0 ]
@@ -1963,14 +1958,12 @@
 [v ___lltoft@c `ul  1 p 4 8 ]
 "46
 } 0
-"33 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\sources\awtoft.c
-[v ___awtoft `(f  1 e 3 0 ]
+"28 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\sources\lbtoft.c
+[v ___lbtoft `(f  1 e 3 0 ]
 {
-"34
-[v ___awtoft@sign `uc  1 a 1 11 ]
-"33
-[v ___awtoft@c `i  1 p 2 8 ]
-"42
+[v ___lbtoft@c `uc  1 a 1 wreg ]
+[v ___lbtoft@c `uc  1 a 1 wreg ]
+"30
 } 0
 "52 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\sources\ftmul.c
 [v ___ftmul `(f  1 e 3 0 ]
@@ -1998,25 +1991,25 @@
 [v ___ftadd@f2 `f  1 p 3 31 ]
 "148
 } 0
-"184 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
+"202 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
 [v _I2C_EEIN `(uc  1 e 1 0 ]
 {
 [v I2C_EEIN@address1 `uc  1 a 1 wreg ]
-"185
+"203
 [v I2C_EEIN@data `uc  1 a 1 3 ]
-"184
+"202
 [v I2C_EEIN@address1 `uc  1 a 1 wreg ]
 [v I2C_EEIN@address2 `uc  1 p 1 1 ]
-"196
+"214
 } 0
-"71
+"88
 [v _pause `(v  1 e 0 0 ]
 {
-"72
+"89
 [v pause@x `us  1 a 2 2 ]
-"71
+"88
 [v pause@usvalue `us  1 p 2 0 ]
-"78
+"95
 } 0
 "5 C:\Program Files (x86)\HI-TECH Software\PICC\9.82\sources\awmod.c
 [v ___awmod `(i  1 e 2 0 ]
@@ -2177,52 +2170,52 @@
 [v isdigit@c `uc  1 a 1 wreg ]
 "15
 } 0
-"465 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
-[v _putch `(v  1 e 0 0 ]
-{
-[v putch@dato `uc  1 a 1 wreg ]
-[v putch@dato `uc  1 a 1 wreg ]
-"468
-} 0
-"156
+"174 C:\Users\petir\Documents\PIC_PROG\C_EEPROM-I2C\eeprom_i2c.c
 [v _i2c_write `(v  1 e 0 0 ]
 {
 [v i2c_write@I2C_data `uc  1 a 1 wreg ]
 [v i2c_write@I2C_data `uc  1 a 1 wreg ]
-"160
+"178
 } 0
-"146
+"164
 [v _I2C_nack `(v  1 e 0 0 ]
 {
-"151
+"169
 } 0
-"126
+"144
 [v _i2c_read `(uc  1 e 1 0 ]
+{
+"149
+} 0
+"136
+[v _i2c_stop `(v  1 e 0 0 ]
+{
+"139
+} 0
+"128
+[v _i2c_restart `(v  1 e 0 0 ]
 {
 "131
 } 0
-"118
-[v _i2c_stop `(v  1 e 0 0 ]
-{
-"121
-} 0
-"110
-[v _i2c_restart `(v  1 e 0 0 ]
-{
-"113
-} 0
-"102
+"120
 [v _i2c_start `(v  1 e 0 0 ]
 {
-"105
+"123
 } 0
-"81
+"98
 [v _i2c_init `(v  1 e 0 0 ]
 {
-"97
+"115
 } 0
-"62
+"79
 [v _msecbase `(v  1 e 0 0 ]
 {
-"67
+"84
+} 0
+"43
+[v _putch `(v  1 e 0 0 ]
+{
+[v putch@dato `uc  1 a 1 wreg ]
+[v putch@dato `uc  1 a 1 wreg ]
+"46
 } 0

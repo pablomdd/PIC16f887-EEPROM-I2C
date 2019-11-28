@@ -25,53 +25,53 @@ Machine type is 16F887
                 Name                               Link     Load   Length Selector   Space Scale
 startup.obj     end_init                              0        0        3        0       0
 EEPROM_12C.obj  config                             2007     2007        2     400E       0
-                text755                              45       45        D       8A       0
-                text748                              3D       3D        8       7A       0
-                text746                            1546     1546       78     2A8C       0
-                text745                            167C     167C       C2     2CF8       0
-                text730                            173E     173E       C2     2E7C       0
-                text728                             C9F      C9F      361     193E       0
-                text724                             84E      84E      152     109C       0
-                text719                            15BE     15BE       BE     2B7C       0
-                text718                              61       61      79F       C2       0
-                maintext                            9A0      9A0      2FF     1340       0
+                text757                              3C       3C        7       78       0
+                text755                              43       43        E       86       0
+                text747                             907      907       78     120E       0
+                text746                            15B7     15B7       C2     2B6E       0
+                text731                            1679     1679       C2     2CF2       0
+                text729                             CAB      CAB      355     1956       0
+                text725                             97F      97F      152     12FE       0
+                text720                            173B     173B       C5     2E76       0
+                text719                              61       61      79F       C2       0
+                maintext                            AD1      AD1      1DA     15A2       0
                 cstackBANK0                          20       20       3C       20       1
                 cstackCOMMON                         70       70        E       70       1
                 cstackBANK1                          A0       A0       30       A0       1
-                bssBANK1                             D0       D0        A       A0       1
-                cinit                                52       52        F       A4       0
-                strings                            1000     1000       C9     2000       0
+                bssBANK1                             D0       D0        B       A0       1
+                cinit                                51       51       10       A2       0
+                strings                             800      800       C5     1000       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   CONST          
 
         CLASS   CODE           
                 end_init                              0        0        3         0
-                text755                              45       45        D         0
-                text748                              3D       3D        8         0
-                text746                            1546     1546       78         0
-                text745                            167C     167C       C2         0
-                text730                            173E     173E       C2         0
-                text728                             C9F      C9F      361         0
-                text724                             84E      84E      152         0
-                text719                            15BE     15BE       BE         0
-                text718                              61       61      79F         0
-                maintext                            9A0      9A0      2FF         0
-                cinit                                52       52        F         0
+                text757                              3C       3C        7         0
+                text755                              43       43        E         0
+                text747                             907      907       78         0
+                text746                            15B7     15B7       C2         0
+                text731                            1679     1679       C2         0
+                text729                             CAB      CAB      355         0
+                text725                             97F      97F      152         0
+                text720                            173B     173B       C5         0
+                text719                              61       61      79F         0
+                maintext                            AD1      AD1      1DA         0
+                cinit                                51       51       10         0
 
         CLASS   STRCODE        
 
         CLASS   ENTRY          
 
         CLASS   STRING         
-                strings                            1000     1000       C9         0
+                strings                             800      800       C5         0
 
         CLASS   BANK0          
                 cstackBANK0                          20       20       3C         1
 
         CLASS   BANK1          
                 cstackBANK1                          A0       A0       30         1
-                bssBANK1                             D0       D0        A         1
+                bssBANK1                             D0       D0        B         1
 
         CLASS   BANK2          
 
@@ -107,19 +107,19 @@ SEGMENTS        Name                           Load    Length   Top    Selector 
                 reset_vec                      000000  000003  000003         0       0  CODE        2
                 cstackBANK0                    000020  00003C  00005C        20       1  BANK0       1
                 cstackCOMMON                   000070  00000E  00007E        70       1  COMMON      1
-                text748                        00003D  000008  000045        7A       0  CODE        2
-                text755                        000045  00000D  000052        8A       0  CODE        2
-                cstackBANK1                    0000A0  00003A  0000DA        A0       1  BANK1       1
-                cinit                          000052  00000F  000061        A4       0  CODE        2
-                text718                        000061  00079F  000800        C2       0  CODE        2
-                text724                        00084E  000152  0009A0      109C       0  CODE        2
-                maintext                       0009A0  0002FF  000C9F      1340       0  CODE        2
-                text728                        000C9F  000361  001000      193E       0  CODE        2
-                strings                        001000  0000C9  0010C9      2000       0  STRING      2
-                text746                        001546  000078  0015BE      2A8C       0  CODE        2
-                text719                        0015BE  0000BE  00167C      2B7C       0  CODE        2
-                text745                        00167C  0000C2  00173E      2CF8       0  CODE        2
-                text730                        00173E  0000C2  001800      2E7C       0  CODE        2
+                text757                        00003C  000007  000043        78       0  CODE        2
+                text755                        000043  00000E  000051        86       0  CODE        2
+                cstackBANK1                    0000A0  00003B  0000DB        A0       1  BANK1       1
+                cinit                          000051  000010  000061        A2       0  CODE        2
+                text719                        000061  00079F  000800        C2       0  CODE        2
+                strings                        000800  0000C5  0008C5      1000       0  STRING      2
+                text747                        000907  000078  00097F      120E       0  CODE        2
+                text725                        00097F  000152  000AD1      12FE       0  CODE        2
+                maintext                       000AD1  0001DA  000CAB      15A2       0  CODE        2
+                text729                        000CAB  000355  001000      1956       0  CODE        2
+                text746                        0015B7  0000C2  001679      2B6E       0  CODE        2
+                text731                        001679  0000C2  00173B      2CF2       0  CODE        2
+                text720                        00173B  0000C5  001800      2E76       0  CODE        2
                 config                         002007  000002  002009      400E       0  CONFIG      2
 
 
@@ -127,38 +127,38 @@ UNUSED ADDRESS RANGES
 
         Name                Unused          Largest block    Delta
         BANK0            005C-006F             14           1
-        BANK1            00DA-00EF             16           1
+        BANK1            00DB-00EF             15           1
         BANK2            0110-016F             60           1
         BANK3            0190-01EF             60           1
-        CODE             0003-003C             3A           2
-                         0800-084D             4E
-                         10C9-1545            47D
+        CODE             0003-003B             39           2
+                         08C5-0906             42
+                         1000-15B6            5B7
                          1800-1FFF            800
-        CONST            0003-003C             3A           2
-                         0800-084D             4E
-                         10C9-1545            100
+        CONST            0003-003B             39           2
+                         08C5-0906             3B
+                         1000-15B6            100
                          1800-1FFF            100
         EEDATA           2100-21FF            100           2
-        ENTRY            0003-003C             3A           2
-                         0800-084D             4E
-                         10C9-1545            100
+        ENTRY            0003-003B             39           2
+                         08C5-0906             3B
+                         1000-15B6            100
                          1800-1FFF            100
         IDLOC            2000-2003              4           2
         RAM              005C-006F             14           1
-                         00DA-00EF             16
+                         00DB-00EF             15
                          0110-016F             60
                          0190-01EF             60
         SFR0             0000-001F             20           1
         SFR1             0080-009F             20           1
         SFR2             0100-010F             10           1
         SFR3             0180-018F             10           1
-        STRCODE          0003-003C             3A           2
-                         0800-084D             4E
-                         10C9-1545            47D
+        STRCODE          0003-003B             39           2
+                         08C5-0906             42
+                         1000-15B6            5B7
                          1800-1FFF            800
-        STRING           0003-003C             3A           2
-                         0800-084D             4E
-                         10C9-1545            100
+        STRING           0003-003B             39           2
+                         08C5-0906             3B
+                         1000-15B6            100
                          1800-1FFF            100
 
                                   Symbol Table
@@ -168,7 +168,6 @@ UNUSED ADDRESS RANGES
 ??_I2C_nack            cstackCOMMON 0070
 ??___awdiv             cstackCOMMON 007A
 ??___awmod             cstackCOMMON 0074
-??___awtoft            cstackCOMMON 007B
 ??___bmul              cstackCOMMON 007A
 ??___ftadd             cstackBANK0  0042
 ??___ftge              cstackCOMMON 0076
@@ -179,6 +178,7 @@ UNUSED ADDRESS RANGES
 ??___fttol             cstackBANK0  0024
 ??___lbdiv             cstackCOMMON 0076
 ??___lbmod             cstackCOMMON 0071
+??___lbtoft            cstackCOMMON 007B
 ??___lldiv             cstackCOMMON 0078
 ??___llmod             cstackCOMMON 007D
 ??___lltoft            cstackCOMMON 007C
@@ -193,10 +193,10 @@ UNUSED ADDRESS RANGES
 ??_i2c_stop            cstackCOMMON 0070
 ??_i2c_write           cstackCOMMON 0070
 ??_isdigit             cstackCOMMON 0070
-??_lcd_clear           cstackCOMMON 0075
-??_lcd_goto            cstackCOMMON 0075
-??_lcd_puts            cstackCOMMON 0077
-??_lcd_write           cstackCOMMON 0074
+??_lcd_clear           cstackCOMMON 0076
+??_lcd_goto            cstackCOMMON 0076
+??_lcd_puts            cstackCOMMON 0078
+??_lcd_write           cstackCOMMON 0076
 ??_main                cstackBANK0  005B
 ??_msecbase            cstackCOMMON 0070
 ??_pause               cstackCOMMON 0072
@@ -208,7 +208,6 @@ UNUSED ADDRESS RANGES
 ?_I2C_nack             cstackCOMMON 0070
 ?___awdiv              cstackCOMMON 0076
 ?___awmod              cstackCOMMON 0070
-?___awtoft             cstackCOMMON 0078
 ?___bmul               cstackCOMMON 0079
 ?___ftadd              cstackBANK0  003C
 ?___ftge               cstackCOMMON 0070
@@ -219,6 +218,7 @@ UNUSED ADDRESS RANGES
 ?___fttol              cstackBANK0  0020
 ?___lbdiv              cstackCOMMON 0075
 ?___lbmod              cstackCOMMON 0070
+?___lbtoft             cstackCOMMON 0078
 ?___lldiv              cstackCOMMON 0070
 ?___llmod              cstackBANK0  0020
 ?___lltoft             cstackCOMMON 0078
@@ -235,8 +235,8 @@ UNUSED ADDRESS RANGES
 ?_isdigit              cstackCOMMON 0070
 ?_lcd_clear            cstackCOMMON 0070
 ?_lcd_goto             cstackCOMMON 0070
-?_lcd_puts             cstackCOMMON 0075
-?_lcd_write            cstackCOMMON 0070
+?_lcd_puts             cstackCOMMON 0076
+?_lcd_write            cstackCOMMON 0074
 ?_main                 cstackCOMMON 0070
 ?_msecbase             cstackCOMMON 0070
 ?_pause                cstackCOMMON 0070
@@ -260,9 +260,11 @@ _CCP2CON               (abs)        001D
 _CCPR1L                (abs)        0015
 _CCPR2L                (abs)        001B
 _GO_DONE               (abs)        00F9
-_I2C_EEIN              text719      15E0
-_I2C_EEOUT             text719      15C5
-_I2C_nack              text719      161F
+_I2C_EEIN              text720      1761
+_I2C_EEOUT             text720      1746
+_I2C_nack              text720      17A0
+_IRCF1                 (abs)        047D
+_IRCF2                 (abs)        047E
 _OPTION_REG            (abs)        0081
 _OSCCON                (abs)        008F
 _PIR1                  (abs)        000C
@@ -271,10 +273,12 @@ _PORTA                 (abs)        0005
 _PORTB                 (abs)        0006
 _PORTD                 (abs)        0008
 _PR2                   (abs)        0092
-_RA4                   (abs)        002C
-_RA6                   (abs)        002E
-_RA7                   (abs)        002F
 _RCSTA                 (abs)        0018
+_RE0                   (abs)        0048
+_RE1                   (abs)        0049
+_RE2                   (abs)        004A
+_SCS                   (abs)        0478
+_SMP                   (abs)        04A7
 _SPBRG                 (abs)        0099
 _SSPADD                (abs)        0093
 _SSPBUF                (abs)        0013
@@ -361,182 +365,180 @@ __Lsfr3                sfr3         0000
 __Lstrings             strings      0000
 __Ltext                text         0000
 __S0                   (abs)        2009
-__S1                   (abs)        00DA
+__S1                   (abs)        00DB
 __S2                   (abs)        0000
-___awdiv               text728      0E6A
+___awdiv               text729      0E6A
 ___awdiv@counter       cstackCOMMON 007A
 ___awdiv@dividend      cstackCOMMON 0078
 ___awdiv@divisor       cstackCOMMON 0076
 ___awdiv@quotient      cstackCOMMON 007C
 ___awdiv@sign          cstackCOMMON 007B
-___awmod               text728      0EAF
+___awmod               text729      0EAF
 ___awmod@counter       cstackCOMMON 0074
 ___awmod@dividend      cstackCOMMON 0072
 ___awmod@divisor       cstackCOMMON 0070
 ___awmod@sign          cstackCOMMON 0075
-___awtoft              text728      0C9F
-___awtoft@c            cstackCOMMON 0078
-___awtoft@sign         cstackCOMMON 007B
-___bmul                text728      0F5B
+___bmul                text729      0F5B
 ___bmul@multiplicand   cstackCOMMON 0079
 ___bmul@multiplier     cstackCOMMON 007B
 ___bmul@product        cstackCOMMON 007A
-___ftadd               text730      173E
+___ftadd               text731      1679
 ___ftadd@exp1          cstackBANK0  0047
 ___ftadd@exp2          cstackBANK0  0046
 ___ftadd@f1            cstackBANK0  003C
 ___ftadd@f2            cstackBANK0  003F
 ___ftadd@sign          cstackBANK0  0045
-___ftge                text718      063F
+___ftge                text719      063F
 ___ftge@ff1            cstackCOMMON 0070
 ___ftge@ff2            cstackCOMMON 0073
-___ftmul               text728      0EEC
+___ftmul               text729      0EEC
 ___ftmul@cntr          cstackBANK0  003A
 ___ftmul@exp           cstackBANK0  0036
 ___ftmul@f1            cstackBANK0  002D
 ___ftmul@f2            cstackBANK0  0030
 ___ftmul@f3_as_product cstackBANK0  0037
 ___ftmul@sign          cstackBANK0  003B
-___ftneg               text718      0735
+___ftneg               text719      0735
 ___ftneg@f1            cstackCOMMON 0070
-___ftpack              text728      0F69
+___ftpack              text729      0F69
 ___ftpack@arg          cstackCOMMON 0070
 ___ftpack@exp          cstackCOMMON 0073
 ___ftpack@sign         cstackCOMMON 0074
-___ftsub               text718      073D
+___ftsub               text719      073D
 ___ftsub@f1            cstackBANK0  004B
 ___ftsub@f2            cstackBANK0  0048
-___fttol               text718      0692
+___fttol               text719      0692
 ___fttol@exp1          cstackBANK0  002C
 ___fttol@f1            cstackBANK0  0020
 ___fttol@lval          cstackBANK0  0028
 ___fttol@sign1         cstackBANK0  0027
-___lbdiv               text724      0953
+___lbdiv               text725      0A84
 ___lbdiv@counter       cstackCOMMON 0077
 ___lbdiv@dividend      cstackCOMMON 0076
 ___lbdiv@divisor       cstackCOMMON 0075
 ___lbdiv@quotient      cstackCOMMON 0078
-___lbmod               text724      096E
+___lbmod               text725      0A9F
 ___lbmod@counter       cstackCOMMON 0073
 ___lbmod@dividend      cstackCOMMON 0072
 ___lbmod@divisor       cstackCOMMON 0070
 ___lbmod@rem           cstackCOMMON 0074
-___lldiv               text718      06ED
+___lbtoft              text729      0CAB
+___lbtoft@c            cstackCOMMON 007B
+___lldiv               text719      06ED
 ___lldiv@counter       cstackCOMMON 007C
 ___lldiv@dividend      cstackCOMMON 0074
 ___lldiv@divisor       cstackCOMMON 0070
 ___lldiv@quotient      cstackCOMMON 0078
-___llmod               text718      0601
+___llmod               text719      0601
 ___llmod@counter       cstackCOMMON 007D
 ___llmod@dividend      cstackBANK0  0024
 ___llmod@divisor       cstackBANK0  0020
-___lltoft              text728      0CBA
+___lltoft              text729      0CBA
 ___lltoft@c            cstackCOMMON 0078
 ___lltoft@exp          cstackCOMMON 007C
-___wmul                text718      0679
+___wmul                text719      0679
 ___wmul@multiplicand   cstackCOMMON 0072
 ___wmul@multiplier     cstackCOMMON 0070
 ___wmul@product        cstackCOMMON 0074
-__div_to_l_            text745      167C
+__div_to_l_            text746      15B7
 __div_to_l_@cntr       cstackBANK0  0024
 __div_to_l_@exp1       cstackBANK0  0025
 __div_to_l_@f1         cstackCOMMON 0070
 __div_to_l_@f2         cstackCOMMON 0073
 __div_to_l_@quot       cstackBANK0  0020
-__end_of_I2C_EEIN      text719      1601
-__end_of_I2C_EEOUT     text719      15E0
-__end_of_I2C_nack      text719      1627
-__end_of___awdiv       text728      0EAF
-__end_of___awmod       text728      0EEC
-__end_of___awtoft      text728      0CBA
-__end_of___bmul        text728      0F69
-__end_of___ftadd       text730      1800
-__end_of___ftge        text718      066B
-__end_of___ftmul       text728      0F5B
-__end_of___ftneg       text718      073D
-__end_of___ftpack      text728      0FA7
-__end_of___ftsub       text718      0755
-__end_of___fttol       text718      06ED
-__end_of___lbdiv       text724      096E
-__end_of___lbmod       text724      098A
-__end_of___lldiv       text718      0735
-__end_of___llmod       text718      063F
-__end_of___lltoft      text728      0CD8
-__end_of___wmul        text718      0692
-__end_of__div_to_l_    text745      1731
-__end_of__tdiv_to_l_   text746      15BE
-__end_of_fround        text724      0953
-__end_of_i2c_init      text755      0052
-__end_of_i2c_read      text719      161F
-__end_of_i2c_restart   text719      1617
-__end_of_i2c_start     text719      160D
-__end_of_i2c_stop      text719      1612
-__end_of_i2c_write     text719      1609
-__end_of_isdigit       text718      0679
-__end_of_lcd_clear     text719      1631
-__end_of_lcd_goto      text719      15C5
-__end_of_lcd_puts      text719      164E
-__end_of_lcd_write     text719      1660
-__end_of_main          maintext     0C9F
-__end_of_msecbase      text719      167C
-__end_of_pause         text719      1671
-__end_of_putch         text748      0045
-__end_of_scale         text728      0E6A
-__end_of_sprintf       text718      0601
-__npowers_             strings      1010
+__end_of_I2C_EEIN      text720      1782
+__end_of_I2C_EEOUT     text720      1761
+__end_of_I2C_nack      text720      17A8
+__end_of___awdiv       text729      0EAF
+__end_of___awmod       text729      0EEC
+__end_of___bmul        text729      0F69
+__end_of___ftadd       text731      173B
+__end_of___ftge        text719      066B
+__end_of___ftmul       text729      0F5B
+__end_of___ftneg       text719      073D
+__end_of___ftpack      text729      0FA7
+__end_of___ftsub       text719      0755
+__end_of___fttol       text719      06ED
+__end_of___lbdiv       text725      0A9F
+__end_of___lbmod       text725      0ABB
+__end_of___lbtoft      text729      0CBA
+__end_of___lldiv       text719      0735
+__end_of___llmod       text719      063F
+__end_of___lltoft      text729      0CD8
+__end_of___wmul        text719      0692
+__end_of__div_to_l_    text746      166C
+__end_of__tdiv_to_l_   text747      097F
+__end_of_fround        text725      0A84
+__end_of_i2c_init      text755      0051
+__end_of_i2c_read      text720      17A0
+__end_of_i2c_restart   text720      1798
+__end_of_i2c_start     text720      178E
+__end_of_i2c_stop      text720      1793
+__end_of_i2c_write     text720      178A
+__end_of_isdigit       text719      0679
+__end_of_lcd_clear     text720      17B3
+__end_of_lcd_goto      text720      1746
+__end_of_lcd_puts      text720      17D3
+__end_of_lcd_write     text720      17E4
+__end_of_main          maintext     0CAB
+__end_of_msecbase      text720      1800
+__end_of_pause         text720      17F5
+__end_of_putch         text757      0043
+__end_of_scale         text729      0E6A
+__end_of_sprintf       text719      0601
+__npowers_             strings      0810
 __pbssBANK1            bssBANK1     00D0
 __pcstackBANK0         cstackBANK0  0020
 __pcstackBANK1         cstackBANK1  00A0
 __pcstackCOMMON        cstackCOMMON 0070
-__pmaintext            maintext     09A0
-__powers_              strings      1037
-__pstrings             strings      1000
-__ptext718             text718      0061
-__ptext719             text719      15BE
-__ptext720             text719      1631
-__ptext721             text719      1627
-__ptext722             text718      073D
-__ptext723             text728      0CD8
-__ptext724             text724      084E
-__ptext725             text719      164E
-__ptext726             text719      15C5
-__ptext727             text728      0CBA
-__ptext728             text728      0C9F
-__ptext729             text728      0EEC
-__ptext730             text730      173E
-__ptext731             text719      15E0
-__ptext732             text719      1660
-__ptext733             text728      0EAF
-__ptext734             text718      06ED
-__ptext735             text718      063F
-__ptext736             text718      0735
-__ptext737             text718      0601
-__ptext738             text728      0E6A
-__ptext739             text718      0692
-__ptext740             text728      0F69
-__ptext741             text724      096E
-__ptext742             text724      0953
-__ptext743             text718      0679
-__ptext744             text728      0F5B
-__ptext745             text745      167C
-__ptext746             text746      1546
-__ptext747             text718      066B
-__ptext748             text748      003D
-__ptext749             text719      1601
-__ptext750             text719      161F
-__ptext751             text719      1617
-__ptext752             text719      160D
-__ptext753             text719      1612
-__ptext754             text719      1609
-__ptext755             text755      0045
-__ptext756             text719      1671
-__ptext757             text757      0000
+__pmaintext            maintext     0AD1
+__powers_              strings      0837
+__pstrings             strings      0800
+__ptext719             text719      0061
+__ptext720             text720      173B
+__ptext721             text720      17B3
+__ptext722             text720      17A8
+__ptext723             text719      073D
+__ptext724             text729      0CD8
+__ptext725             text725      097F
+__ptext726             text720      17D3
+__ptext727             text720      1746
+__ptext728             text729      0CBA
+__ptext729             text729      0CAB
+__ptext730             text729      0EEC
+__ptext731             text731      1679
+__ptext732             text720      1761
+__ptext733             text720      17E4
+__ptext734             text729      0EAF
+__ptext735             text719      06ED
+__ptext736             text719      063F
+__ptext737             text719      0735
+__ptext738             text719      0601
+__ptext739             text729      0E6A
+__ptext740             text719      0692
+__ptext741             text729      0F69
+__ptext742             text725      0A9F
+__ptext743             text725      0A84
+__ptext744             text719      0679
+__ptext745             text729      0F5B
+__ptext746             text746      15B7
+__ptext747             text747      0907
+__ptext748             text719      066B
+__ptext749             text720      1782
+__ptext750             text720      17A0
+__ptext751             text720      1798
+__ptext752             text720      178E
+__ptext753             text720      1793
+__ptext754             text720      178A
+__ptext755             text755      0043
+__ptext756             text720      17F5
+__ptext757             text757      003C
+__ptext758             text758      0000
 __size_of_I2C_EEIN     (abs)        0000
 __size_of_I2C_EEOUT    (abs)        0000
 __size_of_I2C_nack     (abs)        0000
 __size_of___awdiv      (abs)        0000
 __size_of___awmod      (abs)        0000
-__size_of___awtoft     (abs)        0000
 __size_of___bmul       (abs)        0000
 __size_of___ftadd      (abs)        0000
 __size_of___ftge       (abs)        0000
@@ -547,6 +549,7 @@ __size_of___ftsub      (abs)        0000
 __size_of___fttol      (abs)        0000
 __size_of___lbdiv      (abs)        0000
 __size_of___lbmod      (abs)        0000
+__size_of___lbtoft     (abs)        0000
 __size_of___lldiv      (abs)        0000
 __size_of___llmod      (abs)        0000
 __size_of___lltoft     (abs)        0000
@@ -571,40 +574,41 @@ __size_of_pause        (abs)        0000
 __size_of_putch        (abs)        0000
 __size_of_scale        (abs)        0000
 __size_of_sprintf      (abs)        0000
-__tdiv_to_l_           text746      1546
+__tdiv_to_l_           text747      0907
 __tdiv_to_l_@cntr      cstackBANK0  0024
 __tdiv_to_l_@exp1      cstackBANK0  0025
 __tdiv_to_l_@f1        cstackCOMMON 0070
 __tdiv_to_l_@f2        cstackCOMMON 0073
 __tdiv_to_l_@quot      cstackBANK0  0020
-_carac                 bssBANK1     00D5
-_dpowers               strings      105E
+_carac                 bssBANK1     00D1
+_carac1                bssBANK1     00D6
+_dpowers               strings      085E
 _exit                  init         0000
-_fround                text724      084E
-_fround$2941           cstackBANK0  004E
-_fround$2942           cstackBANK0  004B
-_i2c_init              text755      0045
-_i2c_read              text719      1617
-_i2c_restart           text719      1612
-_i2c_start             text719      1609
-_i2c_stop              text719      160D
-_i2c_write             text719      1601
-_isdigit               text718      066B
-_isdigit$2459          cstackCOMMON 0070
-_lcd_clear             text719      1627
-_lcd_goto              text719      15BE
-_lcd_puts              text719      1631
-_lcd_write             text719      164E
-_main                  maintext     09A0
-_msecbase              text719      1671
-_nin                   bssBANK1     00D3
-_num                   bssBANK1     00D0
-_pause                 text719      1660
-_putch                 text748      003D
-_scale                 text728      0CD8
-_scale$2943            cstackBANK0  0043
-_sprintf               text718      0061
-_sprintf$1951          cstackBANK1  00A0
+_fround                text725      097F
+_fround$2942           cstackBANK0  004E
+_fround$2943           cstackBANK0  004B
+_i2c_init              text755      0043
+_i2c_read              text720      1798
+_i2c_restart           text720      1793
+_i2c_start             text720      178A
+_i2c_stop              text720      178E
+_i2c_write             text720      1782
+_isdigit               text719      066B
+_isdigit$2451          cstackCOMMON 0070
+_lcd_clear             text720      17A8
+_lcd_goto              text720      173B
+_lcd_puts              text720      17B3
+_lcd_write             text720      17D3
+_main                  maintext     0AD1
+_main$2941             cstackBANK1  00C8
+_msecbase              text720      17F5
+_nin                   bssBANK1     00D0
+_pause                 text720      17E4
+_putch                 text757      003C
+_scale                 text729      0CD8
+_scale$2944            cstackBANK0  0043
+_sprintf               text719      0061
+_sprintf$1943          cstackBANK1  00A0
 btemp                  (abs)        007E
 end_of_initialization  cinit        005D
 fround@prec            cstackBANK0  0051
@@ -616,337 +620,321 @@ intlevel3              functab      0000
 intlevel4              functab      0000
 intlevel5              functab      0000
 isdigit@c              cstackCOMMON 0071
-l1059                                   
-l1065                                   
-l1068                                   
-l1074                                   
-l1080                                   
-l1086                                   
-l1092                                   
-l1104                                   
-l1110                                   
-l1113                                   
-l1116                                   
-l1119                                   
-l1122                                   
-l1128                                   
-l1134                                   
-l1165                                   
-l1314                                   
-l2299                                   
-l2309                                   
-l2315                                   
-l2345                                   
-l2351                                   
-l2395                                   
-l2449                                   
-l2462                                   
-l2472                                   
-l2476                                   
-l2491                                   
-l2530                                   
-l2552                                   
-l2560                                   
-l2603                                   
-l5110                                   
-l5112                                   
-l5114                                   
-l5116                                   
-l5118                                   
-l5120                                   
-l5122                                   
-l5124                                   
-l5126                                   
-l5132                                   
-l5134                                   
-l5136                                   
-l5138                                   
-l5142                                   
-l5144                                   
-l5154                                   
-l5162                                   
-l5164                                   
-l5166                                   
-l5168                                   
-l5170                                   
-l5174                                   
-l5178                                   
-l5182                                   
-l5190                                   
-l5202                                   
-l5212                                   
-l5214                                   
-l5216                                   
-l5218                                   
-l5222                                   
-l5226                                   
-l5228                                   
-l5236                                   
-l5248                                   
-l5256                                   
-l5258                                   
-l5264                                   
-l5272                                   
-l5274                                   
-l5280                                   
-l5282                                   
-l5284                                   
-l5290                                   
-l5294                                   
-l5298                                   
-l5304                                   
-l5306                                   
-l5310                                   
-l5312                                   
-l5318                                   
-l5322                                   
-l5324                                   
-l5344                                   
-l5346                                   
-l5348                                   
-l5350                                   
-l5356                                   
-l5358                                   
-l5360                                   
-l5362                                   
-l5364                                   
-l5372                                   
-l5382                                   
-l5388                                   
-l5390                                   
-l5394                                   
-l5400                                   
-l5404                                   
-l5414                                   
-l5418                                   
-l5422                                   
-l5426                                   
-l5432                                   
-l5446                                   
-l5452                                   
-l5460                                   
-l5470                                   
-l5472                                   
-l5480                                   
-l5482                                   
-l5492                                   
-l5496                                   
-l5500                                   
-l5506                                   
-l5508                                   
-l5512                                   
-l5532                                   
-l5536                                   
-l5546                                   
-l5550                                   
-l5552                                   
-l5554                                   
-l5556                                   
-l5558                                   
-l5560                                   
-l5562                                   
-l5564                                   
-l5566                                   
-l5570                                   
-l5572                                   
-l5574                                   
-l5584                                   
-l5590                                   
-l5596                                   
-l5598                                   
-l5602                                   
-l5614                                   
-l5624                                   
-l5630                                   
-l5634                                   
-l5636                                   
-l5640                                   
-l5642                                   
-l5648                                   
-l5662                                   
-l5664                                   
-l5666                                   
-l5668                                   
-l5670                                   
-l5672                                   
-l5674                                   
-l5676                                   
-l5684                                   
-l5686                                   
-l5688                                   
-l5696                                   
-l5698                                   
-l5700                                   
-l5704                                   
-l5706                                   
-l5710                                   
-l5716                                   
-l5726                                   
-l5728                                   
-l5730                                   
-l5732                                   
-l5734                                   
-l5736                                   
-l5738                                   
-l5740                                   
-l5742                                   
-l5744                                   
-l5746                                   
-l5748                                   
-l5750                                   
-l5752                                   
-l5756                                   
-l5766                                   
-l5774                                   
-l5778                                   
-l5814                                   
-l5816                                   
-l5820                                   
-l5822                                   
-l5824                                   
-l5828                                   
-l5832                                   
-l5834                                   
-l5836                                   
-l5842                                   
-l5846                                   
-l5852                                   
-l5854                                   
-l5860                                   
-l5862                                   
-l5866                                   
-l5872                                   
-l5876                                   
-l5878                                   
-l5900                                   
-l5906                                   
-l5908                                   
-l5924                                   
-l5926                                   
-l5930                                   
-l5934                                   
-l5938                                   
-l5940                                   
-l5942                                   
-l5944                                   
-l5946                                   
-l5948                                   
-l5954                                   
-l5956                                   
-l5986                                   
-l5988                                   
-l5990                                   
-l5994                                   
-l6008                                   
-l6012                                   
-l6022                                   
-l6042                                   
-l6044                                   
-l6054                                   
-l6056                                   
-l6062                                   
-l6064                                   
-l6070                                   
-l6072                                   
-l6078                                   
-l6080                                   
-l6084                                   
-l6104                                   
-l6138                                   
-l6140                                   
-l6150                                   
-l6162                                   
-l6164                                   
-l6166                                   
-l6168                                   
-l6170                                   
-l6172                                   
-l6174                                   
-l6176                                   
-l6178                                   
-l6180                                   
-l6182                                   
-l6184                                   
-l6188                                   
-l6190                                   
-l6192                                   
-l6194                                   
-l6196                                   
-l6198                                   
-l6200                                   
-l6202                                   
-l6204                                   
-l6206                                   
-l6208                                   
-l6210                                   
-l6212                                   
-l6214                                   
-l6216                                   
-l6218                                   
-l6220                                   
-l6222                                   
-l6224                                   
-l6226                                   
-l6228                                   
-l6230                                   
-l6232                                   
-l6234                                   
-l6236                                   
-l6238                                   
-l6240                                   
-l6242                                   
-l6250                                   
-l6252                                   
-l6256                                   
-l6258                                   
-l6260                                   
-l6262                                   
-l6270                                   
-l6272                                   
-l6276                                   
-l6278                                   
-l6280                                   
-l6282                                   
-l6286                                   
-l6290                                   
-l6292                                   
-l6294                                   
-l6296                                   
-l6298                                   
-l6300                                   
-l6302                                   
-l6304                                   
-l6306                                   
-l6308                                   
-l6310                                   
-l6318                                   
-l6320                                   
-l6324                                   
-l6330                                   
-l6332                                   
-l6334                                   
-l6336                                   
-l6344                                   
-l6346                                   
-l6352                                   
-l6354                                   
-l6356                                   
-l6358                                   
-l6360                                   
-l6368                                   
-l6370                                   
-l6374                                   
-lcd_goto@pos           cstackCOMMON 0075
-lcd_puts@s             cstackCOMMON 0075
+l1053                                   
+l1082                                   
+l1088                                   
+l1091                                   
+l1097                                   
+l1103                                   
+l1109                                   
+l1115                                   
+l1127                                   
+l1133                                   
+l1136                                   
+l1139                                   
+l1142                                   
+l1145                                   
+l1151                                   
+l1157                                   
+l1313                                   
+l2298                                   
+l2308                                   
+l2314                                   
+l2344                                   
+l2350                                   
+l2394                                   
+l2436                                   
+l2461                                   
+l2471                                   
+l2475                                   
+l2490                                   
+l2529                                   
+l2551                                   
+l2559                                   
+l2602                                   
+l5091                                   
+l5095                                   
+l5097                                   
+l5099                                   
+l5101                                   
+l5103                                   
+l5105                                   
+l5107                                   
+l5109                                   
+l5111                                   
+l5113                                   
+l5119                                   
+l5121                                   
+l5123                                   
+l5125                                   
+l5127                                   
+l5137                                   
+l5145                                   
+l5147                                   
+l5149                                   
+l5151                                   
+l5153                                   
+l5157                                   
+l5161                                   
+l5165                                   
+l5173                                   
+l5185                                   
+l5195                                   
+l5197                                   
+l5199                                   
+l5201                                   
+l5205                                   
+l5209                                   
+l5211                                   
+l5219                                   
+l5231                                   
+l5239                                   
+l5241                                   
+l5247                                   
+l5255                                   
+l5257                                   
+l5263                                   
+l5265                                   
+l5267                                   
+l5273                                   
+l5277                                   
+l5281                                   
+l5287                                   
+l5289                                   
+l5293                                   
+l5295                                   
+l5301                                   
+l5305                                   
+l5307                                   
+l5327                                   
+l5329                                   
+l5331                                   
+l5333                                   
+l5339                                   
+l5341                                   
+l5343                                   
+l5345                                   
+l5347                                   
+l5355                                   
+l5365                                   
+l5371                                   
+l5373                                   
+l5377                                   
+l5383                                   
+l5387                                   
+l5397                                   
+l5401                                   
+l5405                                   
+l5409                                   
+l5415                                   
+l5429                                   
+l5435                                   
+l5443                                   
+l5453                                   
+l5455                                   
+l5463                                   
+l5465                                   
+l5475                                   
+l5479                                   
+l5483                                   
+l5489                                   
+l5491                                   
+l5495                                   
+l5515                                   
+l5519                                   
+l5529                                   
+l5533                                   
+l5535                                   
+l5537                                   
+l5539                                   
+l5541                                   
+l5543                                   
+l5545                                   
+l5547                                   
+l5549                                   
+l5553                                   
+l5555                                   
+l5557                                   
+l5567                                   
+l5573                                   
+l5579                                   
+l5581                                   
+l5585                                   
+l5597                                   
+l5607                                   
+l5613                                   
+l5617                                   
+l5619                                   
+l5623                                   
+l5625                                   
+l5631                                   
+l5645                                   
+l5647                                   
+l5649                                   
+l5651                                   
+l5653                                   
+l5655                                   
+l5657                                   
+l5659                                   
+l5667                                   
+l5669                                   
+l5671                                   
+l5679                                   
+l5681                                   
+l5683                                   
+l5687                                   
+l5691                                   
+l5701                                   
+l5703                                   
+l5705                                   
+l5707                                   
+l5709                                   
+l5711                                   
+l5715                                   
+l5717                                   
+l5719                                   
+l5721                                   
+l5723                                   
+l5725                                   
+l5727                                   
+l5731                                   
+l5741                                   
+l5749                                   
+l5753                                   
+l5789                                   
+l5791                                   
+l5795                                   
+l5797                                   
+l5799                                   
+l5803                                   
+l5807                                   
+l5809                                   
+l5811                                   
+l5817                                   
+l5821                                   
+l5827                                   
+l5829                                   
+l5835                                   
+l5837                                   
+l5841                                   
+l5847                                   
+l5851                                   
+l5853                                   
+l5875                                   
+l5881                                   
+l5883                                   
+l5899                                   
+l5901                                   
+l5905                                   
+l5909                                   
+l5913                                   
+l5915                                   
+l5917                                   
+l5919                                   
+l5921                                   
+l5923                                   
+l5929                                   
+l5931                                   
+l5961                                   
+l5963                                   
+l5965                                   
+l5969                                   
+l5983                                   
+l5987                                   
+l5997                                   
+l6017                                   
+l6019                                   
+l6029                                   
+l6031                                   
+l6037                                   
+l6039                                   
+l6045                                   
+l6047                                   
+l6053                                   
+l6055                                   
+l6059                                   
+l6079                                   
+l6113                                   
+l6115                                   
+l6125                                   
+l6137                                   
+l6139                                   
+l6141                                   
+l6143                                   
+l6145                                   
+l6147                                   
+l6149                                   
+l6151                                   
+l6153                                   
+l6155                                   
+l6157                                   
+l6159                                   
+l6161                                   
+l6165                                   
+l6167                                   
+l6169                                   
+l6171                                   
+l6173                                   
+l6175                                   
+l6177                                   
+l6179                                   
+l6181                                   
+l6183                                   
+l6185                                   
+l6187                                   
+l6189                                   
+l6191                                   
+l6193                                   
+l6195                                   
+l6197                                   
+l6199                                   
+l6201                                   
+l6203                                   
+l6205                                   
+l6207                                   
+l6209                                   
+l6211                                   
+l6213                                   
+l6215                                   
+l6217                                   
+l6221                                   
+l6223                                   
+l6225                                   
+l6229                                   
+l6231                                   
+l6233                                   
+l6235                                   
+l6237                                   
+l6253                                   
+l6255                                   
+l6257                                   
+l6259                                   
+l6261                                   
+l6263                                   
+l6265                                   
+l6267                                   
+l6269                                   
+l6271                                   
+l6273                                   
+l6275                                   
+l6277                                   
+l6279                                   
+l6281                                   
+l6283                                   
+l6285                                   
+l6287                                   
+l6289                                   
+l6297                                   
+l6299                                   
+l6303                                   
+lcd_goto@pos           cstackCOMMON 0076
+lcd_puts@s             cstackCOMMON 0076
 lcd_write@c            cstackCOMMON 0074
 main@buffer            cstackBANK1  00B9
-main@cnt1              cstackBANK1  00C8
-main@cnt2              cstackBANK1  00CF
-main@i                 cstackBANK1  00C9
-main@x                 cstackBANK1  00CB
-main@x_1874            cstackBANK1  00CC
-main@x_1877            cstackBANK1  00CD
-main@x_1881            cstackBANK1  00CE
+main@cnt1              cstackBANK1  00CF
+main@cnt2              cstackBANK1  00CE
+main@cnum              cstackBANK1  00CB
+main@x                 cstackBANK1  00CD
 pause@usvalue          cstackCOMMON 0070
 pause@x                cstackCOMMON 0072
 putch@dato             cstackCOMMON 0070
@@ -964,7 +952,7 @@ sprintf@prec           cstackBANK1  00B2
 sprintf@sp             cstackBANK1  00B1
 sprintf@width          cstackBANK1  00AA
 start                  init         0000
-start_initialization   cinit        0052
-u2320                                   
-u3200                                   
+start_initialization   cinit        0051
+u2240                                   
+u3110                                   
 wtemp0                 (abs)        007E
